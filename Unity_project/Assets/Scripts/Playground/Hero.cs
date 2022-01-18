@@ -5,6 +5,8 @@ using UnityEngine;
 namespace Playground {
     public class Hero : Character
     {
-        public Hero();
+        public Hero() {
+            Console.WriteLine("YO !");
+        }
     } 
 }

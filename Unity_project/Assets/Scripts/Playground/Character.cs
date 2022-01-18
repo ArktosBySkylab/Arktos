@@ -9,12 +9,14 @@ namespace Playground {
         protected int level;
         protected int pv;
         protected readonly int maxPv;
+        protected Weapon firstHand;
 
-        public abstract Character(int portefolio, int level, int pv, int maxPv) {
+        public abstract Character(Weapon firstHand, int portefolio, int level, int pv, int maxPv) {
             this.portefolio = portefolio;
             this.level = level;
             this.pv = pv;
             this.maxPv = maxPv;
+            this.firstHand = firstHand;
         }
 
         public abstract attack(Character ennemy);
