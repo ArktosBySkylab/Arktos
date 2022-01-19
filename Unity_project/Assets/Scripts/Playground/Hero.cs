@@ -5,51 +5,58 @@ using UnityEngine;
 
 namespace Playground
 {
-    public class Hero : Character
+    public abstract class Hero : Character
     {
-        private herosType type;
-        private Weapon secondHand;
-        private Weapon specialAttack;
+        protected readonly HerosNames name;
+        protected Weapon secondHand;
+        protected readonly Weapon specialAttack;
+        protected List<Item> inventory;
+        protected int maxInventory = 16; // Arbitrary number
 
-        // Here, the public constructor
-        // will process information about the hero's type
-        // and will call the private constructor with the right arguments
-        // to call the mother constructor
-        public Hero(herosType type)
+        // Getters and setters
+        public HerosNames Name => name;
+
+        public List<Item> Inventory => inventory;
+
+        // Add the item @item if it is possible
+        // Returm true if done, and false otherwise
+        public bool AddItem(Item item)
         {
-            this.type = type;
-            switch (type)
+            if (inventory.Count == maxInventory)
             {
-                case herosType.Alchimist:
-                    break;
-                
-                case herosType.Drow:
-                    break;
-                
-                case herosType.Invoker:
-                    break;
-                
-                case herosType.Kenku:
-                    break;
-                
-                case herosType.Kitsune:
-                    break;
-                
-                case herosType.Mage:
-                    break;
-                
-                case herosType.Ninja:
-                    break;
-                
-                case herosType.Rogue:
-                    break;
-                
-                case herosType.JojoTheKing:
-                    break;
-                
-                default:
-                    throw new ArgumentException("Hero Class Constructor: Unknown hero type.");
+                return false;
             }
+            
+            inventory.Add(item);
+            return true;
+        }
+
+        public Weapon SpecialAttack => specialAttack;
+
+        public Weapon SecondHand
+        {
+            get => secondHand;
+            set => secondHand = value;
+        }
+
+        public int MaxInventory
+        {
+            get => maxInventory;
+            set => maxInventory = value;
+        }
+
+        protected Hero(WeaponsType firstHand, int maxPv, int level, HerosNames name, WeaponsType secondHand,
+            SpecialAttacks specialAttack, List<Item> defaultItems = null) : base(firstHand, maxPv, level)
+        {
+            this.name = name;
+            this.secondHand = gameObject.AddComponent<Weapon>();
+            this.specialAttack = gameObject.AddComponent<Weapon>();
+            this.inventory = new List<Item>();
+            if (defaultItems != null)
+                foreach (Item defaultItem in defaultItems)
+                {
+                    this.inventory.Add(defaultItem);
+                }
         }
     }
 }

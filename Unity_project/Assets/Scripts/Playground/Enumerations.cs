@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Playground
 {
-    public enum herosType
+    public enum HerosNames
     {
-        Alchimist,
+        Alchemist = 0,
         Ninja,
         Kitsune,
         Mage,
@@ -18,13 +18,13 @@ namespace Playground
         JojoTheKing
     }
 
-    public enum monstersType
+    public enum MonstersNames
     {
         AMonster,
         AnotherMonster
     }
 
-    public enum weaponsType
+    public enum WeaponsType
     {
         Stick,
         SmallSword,
@@ -34,5 +34,20 @@ namespace Playground
         Shield,
         Shuriken,
         MagicWand
+    }
+
+    // Find a name for each
+    // The number associated must match with the number of the hero name in HerosNames
+    public enum SpecialAttacks
+    {
+        Alchemist = 0,
+        Ninja,
+        Kitsune,
+        Mage,
+        Rogue,
+        Drow,
+        Kenku,
+        Invoker,
+        JojoTheKing
     }
 }

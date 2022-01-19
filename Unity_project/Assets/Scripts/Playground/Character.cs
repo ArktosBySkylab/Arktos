@@ -8,9 +8,10 @@ namespace Playground
     public abstract class Character : MonoBehaviour
     {
         protected int portefolio; // Amount of money on a charcter
-        protected int level; 
+        protected int level;
+        protected int maxLevel = 10; // Arbitrary value
         protected int pv;
-        protected readonly int maxPv;
+        protected int maxPv;
         protected Weapon firstHand; // The weapon in the first hand
 
         
@@ -52,19 +53,12 @@ namespace Playground
             set => firstHand = value;
         }
 
-        protected Character(Weapon firstHand, int portefolio, int level, int maxPv)
+        protected Character(WeaponsType firstHand, int maxPv, int level)
         {
-            this.pv = maxPv;
+            this.firstHand = gameObject.AddComponent<Weapon>();
             this.maxPv = maxPv;
-            this.portefolio = portefolio;
+            this.pv = maxPv;
             this.level = level;
-            this.firstHand = firstHand;
-        }
-
-        protected Character()
-        {
-            //TODO
-            // Do something when no arguments is given
         }
         
         public void Attack(Character ennemy)

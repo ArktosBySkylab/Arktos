@@ -6,7 +6,7 @@ namespace Playground
 {
     public class Weapon : Item
     {
-        public Weapon(weaponsType weapon)
+        public Weapon(WeaponsType weapon)
         {
 
         }
