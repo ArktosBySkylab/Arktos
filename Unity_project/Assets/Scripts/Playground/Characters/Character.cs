@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
+using Playground.Items.Weapons;
 
-namespace Playground
+namespace Playground.Characters
 {
     public abstract class Character : MonoBehaviour
     {
@@ -53,7 +51,7 @@ namespace Playground
             set => firstHand = value;
         }
 
-        protected Character(WeaponsType firstHand, int maxPv, int level)
+        protected Character(WeaponsNames firstHand, int maxPv, int level)
         {
             this.firstHand = gameObject.AddComponent<Weapon>();
             this.maxPv = maxPv;

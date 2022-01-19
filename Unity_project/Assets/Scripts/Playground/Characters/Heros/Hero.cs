@@ -1,9 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Playground.Items;
+using Playground.Items.Weapons;
 
-namespace Playground
+namespace Playground.Characters.Heros
 {
     public abstract class Hero : Character
     {
@@ -45,7 +44,7 @@ namespace Playground
             set => maxInventory = value;
         }
 
-        protected Hero(WeaponsType firstHand, int maxPv, int level, HerosNames name, WeaponsType secondHand,
+        protected Hero(WeaponsNames firstHand, int maxPv, int level, HerosNames name, WeaponsNames secondHand,
             SpecialAttacks specialAttack, List<Item> defaultItems = null) : base(firstHand, maxPv, level)
         {
             this.name = name;
