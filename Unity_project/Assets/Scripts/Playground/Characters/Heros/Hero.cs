@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Playground.Items;
-using Playground.Items.Weapons;
+using Playground.Weapons;
 
 namespace Playground.Characters.Heros
 {

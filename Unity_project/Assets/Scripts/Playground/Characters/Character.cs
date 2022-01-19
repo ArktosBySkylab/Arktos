@@ -1,5 +1,5 @@
+using Playground.Weapons;
 using UnityEngine;
-using Playground.Items.Weapons;
 
 namespace Playground.Characters
 {

@@ -1,8 +1,9 @@
 using Playground.Characters.Heros;
+using UnityEngine;
 
-namespace Playground.Items.Weapons
+namespace Playground.Weapons
 {
-    public abstract class Weapon : Item
+    public abstract class Weapon : MonoBehaviour
     {
         protected Weapon(WeaponsNames weapon)
         {

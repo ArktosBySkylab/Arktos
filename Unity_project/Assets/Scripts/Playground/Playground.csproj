@@ -41,9 +41,6 @@
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Items\Weapons\SpecialAttacks" />
-    </ItemGroup>
 
 
 </Project>

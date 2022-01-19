@@ -1,4 +1,4 @@
-namespace Playground.Items.Weapons
+namespace Playground.Weapons
 {
     public enum WeaponsNames
     {
