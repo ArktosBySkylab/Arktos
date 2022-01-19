@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Playground {
-    public enum herosType : Hero {
+namespace Playground
+{
+    public enum herosType
+    {
         Alchimist,
         Ninja,
         Kitsune,
@@ -14,8 +17,15 @@ namespace Playground {
         Invoker,
         JojoTheKing
     }
-    
-    public enum weaponsType : Weapon {
+
+    public enum monstersType
+    {
+        AMonster,
+        AnotherMonster
+    }
+
+    public enum weaponsType
+    {
         Stick,
         SmallSword,
         HugeSword,
