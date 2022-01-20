@@ -4,12 +4,34 @@ using Playground.Weapons;
 
 namespace Playground.Characters.Heros
 {
+    /// <summary>
+    /// Mother class of all the heros
+    /// </summary>
     public abstract class Hero : Character
     {
-        protected readonly HerosNames name;
+        /// <summary>
+        /// The name of the hero (all types grouped in <c>HerosNames</c> enum)
+        /// </summary>
+        protected new readonly HerosNames name;
+        
+        /// <summary>
+        /// The secondHand weapon (the firstHand weappon is setted up in <c>Character</c> class)
+        /// </summary>
         protected Weapon secondHand;
+        
+        /// <summary>
+        /// The special attack of the hero
+        /// </summary>
         protected readonly Weapon specialAttack;
+        
+        /// <summary>
+        /// Inventory of the hero during the game
+        /// </summary>
         protected List<Item> inventory;
+        
+        /// <summary>
+        /// Max size of the inventory
+        /// </summary>
         protected int maxInventory = 16; // Arbitrary number
 
         // Getters and setters
@@ -17,8 +39,11 @@ namespace Playground.Characters.Heros
 
         public List<Item> Inventory => inventory;
 
-        // Add the item @item if it is possible
-        // Returm true if done, and false otherwise
+        /// <summary>
+        /// Add an item to the inventory if it's possible
+        /// </summary>
+        /// <param name="item">The item to add</param>
+        /// <returns>true if the @item have been added successfuly, false otherwise</returns>
         public bool AddItem(Item item)
         {
             if (inventory.Count == maxInventory)

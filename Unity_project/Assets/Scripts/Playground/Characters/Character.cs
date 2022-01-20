@@ -1,3 +1,4 @@
+using System;
 using Playground.Weapons;
 using UnityEngine;
 
@@ -12,6 +13,14 @@ namespace Playground.Characters
         protected int maxPv;
         protected Weapon firstHand; // The weapon in the first hand
 
+        /// <summary>
+        /// Variables used for Unity
+        /// </summary>
+        [SerializeField] protected CharacterController2D controller;
+        [SerializeField] protected float speed = 20f;
+        protected float horizontalMove = 0f;
+        protected bool jump = false;
+        
         
         // Setters and getters and associated functions
         private void Recover(int amount)
@@ -62,6 +71,22 @@ namespace Playground.Characters
         public void Attack(Character ennemy)
         {
             // TODO
+        }
+
+        public void Update()
+        {
+            horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = true;
+            }
+        }
+
+        public void FixedUpdate()
+        {
+           controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+           jump = false;
         }
     }
 }
