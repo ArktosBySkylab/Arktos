@@ -1,6 +1,7 @@
 using System;
 using Playground.Weapons;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Playground.Characters
 {
@@ -18,8 +19,12 @@ namespace Playground.Characters
         /// </summary>
         [SerializeField] protected CharacterController2D controller;
         [SerializeField] protected float speed = 20f;
+        /// <summary>
+        /// States variables
+        /// </summary>
         protected float horizontalMove = 0f;
         protected bool jump = false;
+        protected bool switchGravity = false;
         
         
         // Setters and getters and associated functions
@@ -81,12 +86,24 @@ namespace Playground.Characters
             {
                 jump = true;
             }
+
+            if (Input.GetButtonDown("SwitchGravity"))
+            {
+                switchGravity = true;
+            }
         }
 
         public void FixedUpdate()
         {
            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
            jump = false;
+
+           if (switchGravity)
+           {
+               Physics2D.gravity = -Physics2D.gravity;
+               gameObject.transform.Rotate(0f, 0f, 180f);
+               switchGravity = false;
+           }
         }
     }
 }
