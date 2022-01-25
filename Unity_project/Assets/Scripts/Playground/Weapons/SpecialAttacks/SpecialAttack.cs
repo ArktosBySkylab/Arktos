@@ -8,7 +8,7 @@ namespace Playground.Weapons.SpecialAttacks
 
         protected SpecialAttack()
         {
-            
+            type = WeaponsTypes.SpecialAttack;
         }
     }
 }
