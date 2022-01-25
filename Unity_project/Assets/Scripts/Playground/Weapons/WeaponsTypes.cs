@@ -8,6 +8,7 @@ namespace Playground.Weapons
         Fire, 
         Ice, 
         Water, 
-        Ground
+        Ground, 
+        SpecialAttack
     }
 }
