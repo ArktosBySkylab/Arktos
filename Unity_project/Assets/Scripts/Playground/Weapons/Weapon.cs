@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Playground.Weapons
 {
-    public abstract class Weapon : Items.Item
+    public abstract class Weapon : Item
     {
         protected int damage;
         protected Character owner;
         protected new WeaponsNames name;
-        protected WeaponsTypes type;
+        protected new WeaponsTypes type;
         protected Weapon()
         {
         }
