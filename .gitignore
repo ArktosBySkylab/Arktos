@@ -29,6 +29,8 @@ bin/
 *.userprefs
 *.pidb
 .DS_Store
+*.vscode
+*.idea/
 
 ###
 # OS generated
