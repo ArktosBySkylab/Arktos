@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Playground.Items;
 using Playground.Weapons;
+using Playground.Weapons.SpecialAttacks;
 
 namespace Playground.Characters.Heros
 {
@@ -22,7 +23,7 @@ namespace Playground.Characters.Heros
         /// <summary>
         /// The special attack of the hero
         /// </summary>
-        protected readonly Weapon specialAttack;
+        protected readonly SpecialAttack specialAttack;
         
         /// <summary>
         /// Inventory of the hero during the game
@@ -70,17 +71,19 @@ namespace Playground.Characters.Heros
         }
 
         protected Hero(WeaponsNames firstHand, int maxPv, int level, HerosNames name, WeaponsNames secondHand,
-            SpecialAttacks specialAttack, List<Item> defaultItems = null) : base(firstHand, maxPv, level)
+            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(firstHand, maxPv, level)
         {
             this.name = name;
             this.secondHand = gameObject.AddComponent<Weapon>();
-            this.specialAttack = gameObject.AddComponent<Weapon>();
+            this.specialAttack = gameObject.AddComponent<SpecialAttack>();
             this.inventory = new List<Item>();
             if (defaultItems != null)
+            {
                 foreach (Item defaultItem in defaultItems)
                 {
                     this.inventory.Add(defaultItem);
                 }
+            }
         }
     }
 }

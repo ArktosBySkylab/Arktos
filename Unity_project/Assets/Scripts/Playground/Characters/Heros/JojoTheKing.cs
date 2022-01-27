@@ -1,4 +1,5 @@
 using Playground.Weapons;
+using Playground.Weapons.SpecialAttacks;
 
 namespace Playground.Characters.Heros
 {
@@ -8,7 +9,7 @@ namespace Playground.Characters.Heros
     public class JojoTheKing : Hero
     {
         public JojoTheKing() : base(WeaponsNames.Stick, 20000, 10,
-            HerosNames.JojoTheKing, WeaponsNames.Stick, SpecialAttacks.JojoTheKing)
+            HerosNames.JojoTheKing, WeaponsNames.Stick, SpecialAttacksNames.Plouf)
         {
         }
     }

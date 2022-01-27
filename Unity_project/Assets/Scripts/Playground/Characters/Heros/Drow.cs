@@ -1,4 +1,5 @@
 using Playground.Weapons;
+using Playground.Weapons.SpecialAttacks;
 
 namespace Playground.Characters.Heros
 {
@@ -8,7 +9,7 @@ namespace Playground.Characters.Heros
     public class Drow : Hero
     {
         public Drow() : base(WeaponsNames.Stick, 2000, 1,
-            HerosNames.Drow, WeaponsNames.Stick, SpecialAttacks.Drow)
+            HerosNames.Drow, WeaponsNames.Stick, SpecialAttacksNames.Invisibility)
         {
         }
     }
