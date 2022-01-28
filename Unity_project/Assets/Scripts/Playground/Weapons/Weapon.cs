@@ -10,7 +10,7 @@ namespace Playground.Weapons
         protected int damage;
         protected Character owner;
         protected new WeaponsNames name;
-        protected new WeaponsTypes type;
+        protected WeaponsTypes type;
         protected Weapon()
         {
         }

@@ -8,14 +8,16 @@ namespace Playground.Characters
 		[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
 		[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 		[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
-		[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
+		[SerializeField] private bool m_AirControl = true;							// Whether or not a player can steer while jumping;
 		[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
-		[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
-		[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
+		[SerializeField] private LayerMask m_WhatIsCeil;							// A mask determining what is ceil to the character
+		[SerializeField] private Transform m_FootCheck;							// A position marking where to check if the player is grounded.
+		[SerializeField] private Transform m_HeadCheck;							// A position marking where to check for ceilings
 		[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
 
 		const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 		private bool m_Grounded;            // Whether or not the player is grounded.
+		private bool m_Ceiled;              // Whether or not the player is ceiled
 		const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 		private Rigidbody2D m_Rigidbody2D;
 		private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -24,7 +26,7 @@ namespace Playground.Characters
 		[Header("Events")]
 		[Space]
 
-		public UnityEvent OnLandEvent;
+		public UnityEvent OnLandEvent; // All event that have to be done when landing
 
 		[System.Serializable]
 		public class BoolEvent : UnityEvent<bool> { }
@@ -50,14 +52,32 @@ namespace Playground.Characters
 
 			// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 			// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-			for (int i = 0; i < colliders.Length; i++)
+			Collider2D[] collidersGround = Physics2D.OverlapCircleAll(m_FootCheck.position, k_GroundedRadius, m_WhatIsGround);
+			for (int i = 0; i < collidersGround.Length; i++)
 			{
-				if (colliders[i].gameObject != gameObject)
+				if (collidersGround[i].gameObject != gameObject)
 				{
+					Debug.Log("Ground");
 					m_Grounded = true;
 					if (!wasGrounded)
+					{
 						OnLandEvent.Invoke();
+					}
+				}
+			}
+
+
+
+			m_Ceiled = false;
+			// The player is ceiled if a circlecast to the ceilingcheck position hits anything designated as ceil
+			// This can be done using layers instead but Sample Assets will not overwrite your project settings.
+			Collider2D[] collidersCeil = Physics2D.OverlapCircleAll(m_FootCheck.position, k_CeilingRadius, m_WhatIsCeil);
+			for (int i = 0; i < collidersCeil.Length; i++)
+			{
+				if (collidersCeil[i].gameObject != gameObject)
+				{
+					Debug.Log("Ceil");
+					m_Ceiled = true;
 				}
 			}
 		}
@@ -69,14 +89,14 @@ namespace Playground.Characters
 			if (!crouch)
 			{
 				// If the character has a ceiling preventing them from standing up, keep them crouching
-				if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
+				if (Physics2D.OverlapCircle(m_HeadCheck.position, k_CeilingRadius, m_WhatIsGround))
 				{
 					crouch = true;
 				}
 			}
 
 			//only control the player if grounded or airControl is turned on
-			if (m_Grounded || m_AirControl)
+			if (m_Grounded || m_AirControl || m_Ceiled)
 			{
 
 				// If crouching
@@ -132,8 +152,24 @@ namespace Playground.Characters
 				m_Grounded = false;
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 			}
+			if (m_Ceiled && jump)
+			{
+				// Add an inverted vertical force to the player.
+				m_Grounded = false;
+				m_Rigidbody2D.AddForce(new Vector2(0f, -m_JumpForce));
+			}
 		}
 
+
+		public void SwitchGravity()
+		{
+			if (m_Grounded || m_Ceiled)
+			{
+				Physics2D.gravity = -Physics2D.gravity;
+				Debug.Log(gameObject.name);
+				gameObject.transform.Rotate(0f, 0f, 180f);
+			}
+		}
 
 		private void Flip()
 		{

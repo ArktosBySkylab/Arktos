@@ -100,8 +100,7 @@ namespace Playground.Characters
 
            if (switchGravity)
            {
-               Physics2D.gravity = -Physics2D.gravity;
-               gameObject.transform.Rotate(0f, 0f, 180f);
+               controller.SwitchGravity();
                switchGravity = false;
            }
         }
