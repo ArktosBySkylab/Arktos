@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Playground.Items;
 using Playground.Weapons;
 using Playground.Weapons.SpecialAttacks;
+using UnityEngine;
 
 namespace Playground.Characters.Heros
 {
@@ -16,9 +17,9 @@ namespace Playground.Characters.Heros
         protected new readonly HerosNames name;
         
         /// <summary>
-        /// The secondHand weapon (the firstHand weappon is setted up in <c>Character</c> class)
+        /// The secondaryWeapon weapon (the primaryWeapon weappon is setted up in <c>Character</c> class)
         /// </summary>
-        protected Weapon secondHand;
+        protected Weapon secondaryWeapon;
         
         /// <summary>
         /// The special attack of the hero
@@ -40,6 +41,11 @@ namespace Playground.Characters.Heros
 
         public List<Item> Inventory => inventory;
 
+        
+        // Unity state related variables
+        protected bool UseSecondaryWeapon = false;
+        
+        
         /// <summary>
         /// Add an item to the inventory if it's possible
         /// </summary>
@@ -60,8 +66,8 @@ namespace Playground.Characters.Heros
 
         public Weapon SecondHand
         {
-            get => secondHand;
-            set => secondHand = value;
+            get => secondaryWeapon;
+            set => secondaryWeapon = value;
         }
 
         public int MaxInventory
@@ -70,11 +76,11 @@ namespace Playground.Characters.Heros
             set => maxInventory = value;
         }
 
-        protected Hero(WeaponsNames firstHand, int maxPv, int level, HerosNames name, WeaponsNames secondHand,
-            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(firstHand, maxPv, level)
+        protected Hero(WeaponsNames primaryWeapon, int maxPv, int level, HerosNames name, WeaponsNames secondaryWeapon,
+            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(primaryWeapon, maxPv, level)
         {
             this.name = name;
-            this.secondHand = gameObject.AddComponent<Weapon>();
+            this.secondaryWeapon = gameObject.AddComponent<Weapon>();
             this.specialAttack = gameObject.AddComponent<SpecialAttack>();
             this.inventory = new List<Item>();
             if (defaultItems != null)
@@ -83,6 +89,24 @@ namespace Playground.Characters.Heros
                 {
                     this.inventory.Add(defaultItem);
                 }
+            }
+        }
+
+
+        public void Update()
+        {
+            if (Input.GetButtonDown("SecondaryWeapon"))
+                UseSecondaryWeapon = true;
+        }
+
+
+        public void FixedUpdate()
+        {
+            // Shooting with secondaryWeapon
+            if (UseSecondaryWeapon)
+            {
+                secondaryWeapon.Shoot();
+                UseSecondaryWeapon = false;
             }
         }
     }

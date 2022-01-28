@@ -14,5 +14,10 @@ namespace Playground.Weapons
         protected Weapon()
         {
         }
+
+        public bool Shoot()
+        {
+            return false;
+        }
     }
 }
