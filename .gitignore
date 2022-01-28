@@ -30,6 +30,7 @@ bin/
 *.pidb
 .DS_Store
 *.vscode
+*.vs
 *.idea/
 
 ###
