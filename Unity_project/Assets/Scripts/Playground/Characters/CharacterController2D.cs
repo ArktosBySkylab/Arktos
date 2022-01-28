@@ -57,7 +57,6 @@ namespace Playground.Characters
 			{
 				if (collidersGround[i].gameObject != gameObject)
 				{
-					Debug.Log("Ground");
 					m_Grounded = true;
 					if (!wasGrounded)
 					{
@@ -76,7 +75,6 @@ namespace Playground.Characters
 			{
 				if (collidersCeil[i].gameObject != gameObject)
 				{
-					Debug.Log("Ceil");
 					m_Ceiled = true;
 				}
 			}
@@ -166,7 +164,6 @@ namespace Playground.Characters
 			if (m_Grounded || m_Ceiled)
 			{
 				Physics2D.gravity = -Physics2D.gravity;
-				Debug.Log(gameObject.name);
 				gameObject.transform.Rotate(0f, 0f, 180f);
 			}
 		}
