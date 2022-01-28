@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using Playground.Weapons;
 using UnityEngine;
 using UnityEngine.AI;
@@ -91,6 +92,12 @@ namespace Playground.Characters
             {
                 switchGravity = true;
             }
+        }
+
+
+        public void OnBecameInvisible()
+        {
+            // TODO
         }
 
         public void FixedUpdate()
