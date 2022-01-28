@@ -15,9 +15,10 @@ namespace Playground.Weapons
         {
         }
 
-        public bool Shoot()
-        {
-            return false;
-        }
+        /// <summary>
+        /// Try to shoot something
+        /// </summary>
+        /// <returns>true if the shot have been done, false otherwise</returns>
+        public abstract bool Shoot();
     }
 }

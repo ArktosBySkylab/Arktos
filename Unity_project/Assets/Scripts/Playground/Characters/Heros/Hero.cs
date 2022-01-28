@@ -93,14 +93,14 @@ namespace Playground.Characters.Heros
         }
 
 
-        public void Update()
+        public new void Update()
         {
             if (Input.GetButtonDown("SecondaryWeapon"))
                 UseSecondaryWeapon = true;
         }
 
 
-        public void FixedUpdate()
+        public new void FixedUpdate()
         {
             // Shooting with secondaryWeapon
             if (UseSecondaryWeapon)
