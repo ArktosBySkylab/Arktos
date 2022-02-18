@@ -52,7 +52,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Menu_script\change_menu.cs" />
+     <Compile Include="Assets\Scripts\Menu_script\Pause_Menu.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\Kenku.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\Dogger.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
@@ -128,7 +128,7 @@
      <Compile Include="Assets\Scripts\Playground\Characters\Monsters\AMonster.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\HerosNames.cs" />
-     <Compile Include="Assets\Scripts\Menu_script\PauseScript.cs" />
+     <Compile Include="Assets\Scripts\Menu_script\Main_Menu_Interaction.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

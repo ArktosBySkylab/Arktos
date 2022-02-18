@@ -1,16 +1,20 @@
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseScript : MonoBehaviour
+public class change_menu : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public static bool IsGamePaused = false;
+    public static bool Gamelaunched = false;
 
     public GameObject PauseMenu;
-    // Update is called once per frame
+    public GameObject MainMenu;
+    public GameObject RestartButton;
+    public GameObject startButton;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -41,5 +45,23 @@ public class PauseScript : MonoBehaviour
     public void RestartLevel() //Restarts the level
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void PlayCampain()
+    {
+        //SceneManager.LoadScene("Campain");
+        MainMenu.SetActive(false);
+        PauseMenu.SetActive(false);
+        Gamelaunched = true;
+    }
+    public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
+    {
+        Application.Quit();
+    }
+
+    public void DisplayMainMenu()
+    {
+        MainMenu.SetActive(true);
+        startButton.SetActive(!Gamelaunched);
+        RestartButton.SetActive(Gamelaunched);
     }
 }
