@@ -8,7 +8,7 @@
         <RootNamespace>Menu_script</RootNamespace>
         <AssemblyName>Menu_script</AssemblyName>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

@@ -77,7 +77,7 @@ namespace Playground.Characters.Heros
         }
 
         protected Hero(WeaponsNames primaryWeapon, int maxPv, int level, HerosNames name, WeaponsNames secondaryWeapon,
-            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(primaryWeapon, maxPv, level)
+            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(maxPv, level)
         {
             this.name = name;
             this.secondaryWeapon = gameObject.AddComponent<Weapon>();
@@ -93,15 +93,18 @@ namespace Playground.Characters.Heros
         }
 
 
-        public new void Update()
+        public override void Update()
         {
+            base.Update();
+            
             if (Input.GetButtonDown("SecondaryWeapon"))
                 UseSecondaryWeapon = true;
         }
 
 
-        public new void FixedUpdate()
+        public override void FixedUpdate()
         {
+            base.FixedUpdate();
             // Shooting with secondaryWeapon
             if (UseSecondaryWeapon)
             {

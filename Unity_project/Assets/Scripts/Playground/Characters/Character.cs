@@ -67,7 +67,7 @@ namespace Playground.Characters
             set => primaryWeapon = value;
         }
 
-        protected Character(WeaponsNames primaryWeapon, int maxPv, int level)
+        protected Character(int maxPv, int level)
         {
             this.primaryWeapon = gameObject.AddComponent<Weapon>();
             this.maxPv = maxPv;
@@ -80,12 +80,14 @@ namespace Playground.Characters
             // TODO
         }
 
-        public void Update()
+        public virtual void Update()
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
 
             if (Input.GetButtonDown("Jump"))
+            {
                 jump = true;
+            }
 
             if (Input.GetButtonDown("SwitchGravity"))
                 switchGravity = true;
@@ -100,7 +102,7 @@ namespace Playground.Characters
             // TODO
         }
 
-        public void FixedUpdate()
+        public virtual void FixedUpdate()
         {
             // Moves
             controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
