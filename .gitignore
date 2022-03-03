@@ -19,7 +19,9 @@ sysinfo.txt
 # VS/MD solution and project files
 ###
 obj/
+obj.meta
 bin/
+bin.meta
 [Ee]xportedObj/
 *.booproj
 *.suo
