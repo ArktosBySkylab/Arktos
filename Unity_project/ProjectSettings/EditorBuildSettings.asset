@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Campain.unity
     guid: 179613da43e2353409143896718547d0
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 6704e7919caf8a14cbf6dfa76ed43466
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 8b359b8cbdbfc8942ab0a64adad4da0d
+  - enabled: 1
+    path: Assets/Scenes/testing_scene.unity
+    guid: 23f0bb4d3bf6a6570826976b8d110331
   m_configObjects: {}
