@@ -13,7 +13,7 @@ namespace Playground.Characters
         protected int maxLevel = 10; // Arbitrary value
         protected int pv;
         protected int maxPv;
-        protected Weapon firstHand; // The weapon in the first hand
+        protected Weapon primaryWeapon; // The weapon in the first hand
 
         /// <summary>
         /// Variables used for Unity
@@ -26,6 +26,7 @@ namespace Playground.Characters
         protected float horizontalMove = 0f;
         protected bool jump = false;
         protected bool switchGravity = false;
+        protected bool UsePrimaryWeapon = false;
         
         
         // Setters and getters and associated functions
@@ -62,13 +63,13 @@ namespace Playground.Characters
 
         public Weapon FirstHand
         {
-            get => firstHand;
-            set => firstHand = value;
+            get => primaryWeapon;
+            set => primaryWeapon = value;
         }
 
-        protected Character(WeaponsNames firstHand, int maxPv, int level)
+        protected Character(WeaponsNames primaryWeapon, int maxPv, int level)
         {
-            this.firstHand = gameObject.AddComponent<Weapon>();
+            this.primaryWeapon = gameObject.AddComponent<Weapon>();
             this.maxPv = maxPv;
             this.pv = maxPv;
             this.level = level;
@@ -84,14 +85,13 @@ namespace Playground.Characters
             horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
 
             if (Input.GetButtonDown("Jump"))
-            {
                 jump = true;
-            }
 
             if (Input.GetButtonDown("SwitchGravity"))
-            {
                 switchGravity = true;
-            }
+
+            if (Input.GetButtonDown("PrimaryWeapon"))
+                UsePrimaryWeapon = true;
         }
 
 
@@ -102,14 +102,23 @@ namespace Playground.Characters
 
         public void FixedUpdate()
         {
-           controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-           jump = false;
+            // Moves
+            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+            jump = false;
 
-           if (switchGravity)
-           {
-               controller.SwitchGravity();
-               switchGravity = false;
-           }
+            // Gravity
+            if (switchGravity)
+            {
+                controller.SwitchGravity();
+                switchGravity = false;
+            }
+            
+            // Shooting
+            if (UsePrimaryWeapon)
+            {
+                primaryWeapon.Shoot();
+                UsePrimaryWeapon = false;
+            }
         }
     }
 }

@@ -10,5 +10,10 @@ namespace Playground.Weapons.SpecialAttacks
         {
             type = WeaponsTypes.SpecialAttack;
         }
+
+        public override bool Shoot()
+        {
+            return false;
+        }
     }
 }
