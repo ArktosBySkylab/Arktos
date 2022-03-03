@@ -9,28 +9,28 @@ A readme can be found is each of those dir to have more explainations
 
 # Main tree
 .
-├── readme.md
-├── Scripts.sln
+├── readme.md   
+├── Scripts.sln   
+│   
+├── Levels/   
+│   ├── readme.md   
+│   └── Levels.csproj   
+│   
+├── Menus/   
+│   ├── readme.md   
+│   ├── Menus.csproj   
+│   ├── Main_Menu_Interaction.cs   
+│   └── Pause_Menu.cs   
+│   
+├── Multiplayer/   
+│   ├── readme.md   
+│   ├── Multiplayer.csproj   
+│   ├── Loading/   
+│   └── Lobby/   
 │
-├── Levels/
-│   ├── readme.md
-│   └── Levels.csproj
-│
-├── Menus/
-│   ├── readme.md
-│   ├── Menus.csproj
-│   ├── Main_Menu_Interaction.cs
-│   └── Pause_Menu.cs
-│
-├── Multiplayer/
-│   ├── readme.md
-│   ├── Multiplayer.csproj
-│   ├── Loading/
-│   └── Lobby/
-│
-└── Playground/
-    ├── readme.md
-    ├── Playground.csproj
-    ├── Characters/
-    ├── Items/
-    └── Weapons/
+└── Playground/   
+    ├── readme.md   
+    ├── Playground.csproj   
+    ├── Characters/   
+    ├── Items/   
+    └── Weapons/   
