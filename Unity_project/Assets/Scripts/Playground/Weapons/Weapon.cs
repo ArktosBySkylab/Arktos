@@ -11,10 +11,22 @@ namespace Playground.Weapons
         protected Character owner;
         protected new WeaponsNames name;
         protected WeaponsTypes type;
+
+        public int Damage => damage;
+
+        public Character Owner => owner;
+
+        public WeaponsNames Name => name;
+
+        public WeaponsTypes Type => type;
+
+        public int NbUse => nbUse;
+
+
         protected Weapon()
         {
         }
-
+        
         /// <summary>
         /// Try to shoot something
         /// </summary>

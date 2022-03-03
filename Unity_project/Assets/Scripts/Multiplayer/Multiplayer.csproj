@@ -5,10 +5,10 @@
         <ProjectGuid>{14E35795-2830-4AFF-BCDC-CA715CF2EB89}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Menu_script</RootNamespace>
-        <AssemblyName>Menu_script</AssemblyName>
+        <RootNamespace>Multiplayer</RootNamespace>
+        <AssemblyName>Multiplayer</AssemblyName>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -40,8 +40,5 @@
         <Reference Include="UnityEngine">
             <HintPath>/home/greg/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEngine.dll</HintPath>
         </Reference>
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
 </Project>

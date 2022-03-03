@@ -5,8 +5,8 @@
         <ProjectGuid>{14E35795-2830-4AFF-BCDC-CA715CF2EB89}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Playground</RootNamespace>
-        <AssemblyName>Playground</AssemblyName>
+        <RootNamespace>Menus</RootNamespace>
+        <AssemblyName>Menus</AssemblyName>
         <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
         <FileAlignment>512</FileAlignment>
