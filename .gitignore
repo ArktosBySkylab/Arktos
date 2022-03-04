@@ -46,3 +46,9 @@ bin.meta
 Icon?
 ehthumbs.db
 Thumbs.db
+
+
+
+# Personal scripts
+removeObj.sh
+removeObj.sh.meta

@@ -1,5 +1,7 @@
+using System;
 using Playground.Weapons;
 using Playground.Weapons.SpecialAttacks;
+using UnityEngine;
 
 namespace Playground.Characters.Heros
 {
@@ -11,6 +13,12 @@ namespace Playground.Characters.Heros
         public JojoTheKing() : base(WeaponsNames.Stick, 20000, 10,
             HerosNames.JojoTheKing, WeaponsNames.Stick, SpecialAttacksNames.Plouf)
         {
+           Debug.Log("Yo2"); 
+        }
+
+        public override void Awake()
+        {
+           Debug.Log("Yo"); 
         }
     }
 }

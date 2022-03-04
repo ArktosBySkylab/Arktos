@@ -24,7 +24,7 @@ namespace Playground.Characters.Heros
         /// <summary>
         /// The special attack of the hero
         /// </summary>
-        protected readonly SpecialAttack specialAttack;
+        protected SpecialAttack specialAttack;
         
         /// <summary>
         /// Inventory of the hero during the game
@@ -80,8 +80,6 @@ namespace Playground.Characters.Heros
             SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(maxPv, level)
         {
             this.name = name;
-            this.secondaryWeapon = gameObject.AddComponent<Weapon>();
-            this.specialAttack = gameObject.AddComponent<SpecialAttack>();
             this.inventory = new List<Item>();
             if (defaultItems != null)
             {
@@ -90,6 +88,13 @@ namespace Playground.Characters.Heros
                     this.inventory.Add(defaultItem);
                 }
             }
+        }
+
+        public new virtual void Awake()
+        {
+            base.Awake();
+            this.secondaryWeapon = gameObject.AddComponent<Weapon>();
+            this.specialAttack = gameObject.AddComponent<SpecialAttack>();
         }
 
 
