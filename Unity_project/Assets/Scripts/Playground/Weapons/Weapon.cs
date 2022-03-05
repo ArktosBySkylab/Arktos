@@ -26,13 +26,17 @@ namespace Playground.Weapons
 
         protected Weapon(int nbUse, int damage, WeaponsNames name, WeaponsTypes type)
         {
-            this.name = name.ToString();
             _name = name;
             this.nbUse = nbUse;
             this.damage = damage;
             this.type = type;
         }
-        
+
+        public void Awake()
+        {
+            this.name = _name.ToString();
+        }
+
         /// <summary>
         /// Try to shoot something
         /// </summary>

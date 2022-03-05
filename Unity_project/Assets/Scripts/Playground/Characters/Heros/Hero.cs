@@ -79,7 +79,6 @@ namespace Playground.Characters.Heros
         protected Hero(WeaponsNames primaryWeapon, int maxPv, int level, HerosNames heroName, WeaponsNames secondaryWeapon,
             SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(maxPv, level)
         {
-            this.name = heroName.ToString();
             this.heroName = heroName;
             this.inventory = new List<Item>();
             if (defaultItems != null)
@@ -94,6 +93,7 @@ namespace Playground.Characters.Heros
         public new virtual void Awake()
         {
             base.Awake();
+            this.name = heroName.ToString();
             this.secondaryWeapon = gameObject.AddComponent<Weapon>();
             this.specialAttack = gameObject.AddComponent<SpecialAttack>();
         }
