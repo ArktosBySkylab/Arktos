@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using Menus;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Levels
 {
 
-    public class testing_scene : MonoBehaviour
+    public class GameMaster : MonoBehaviour
     {
         [SerializeField] protected List<GameObject> players;
         [SerializeField] protected (int, int) startCoords = (0, 0);
@@ -44,12 +43,12 @@ namespace Levels
             IsGamePaused = true;
         }
 
-        protected void RestartLevel() //Restarts the level
+        public void RestartLevel() //Restarts the level
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        protected void PlayCampain()
+        public void PlayCampain()
         {
             //SceneManager.LoadScene("Campain");
             MainMenu.SetActive(false);
