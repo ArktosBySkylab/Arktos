@@ -23,6 +23,11 @@ public class Main_Menu_Interaction : MonoBehaviour
         //SceneManager.LoadScene("Campain");
         SceneManager.LoadScene("testing_scene");
     }
+    public void PlayMulti()
+    {
+        //SceneManager.LoadScene("Campain");
+        SceneManager.LoadScene("Loading");
+    }
     public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
     {
         Application.Quit();
