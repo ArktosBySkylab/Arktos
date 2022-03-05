@@ -69,12 +69,16 @@ namespace Playground.Characters
 
         protected Character(int maxPv, int level)
         {
-            this.primaryWeapon = gameObject.AddComponent<Weapon>();
             this.maxPv = maxPv;
             this.pv = maxPv;
             this.level = level;
         }
-        
+
+        protected virtual void Awake()
+        {
+            this.primaryWeapon = gameObject.AddComponent<Weapon>();
+        }
+
         public void Attack(Character ennemy)
         {
             // TODO
