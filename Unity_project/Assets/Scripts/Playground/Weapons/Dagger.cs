@@ -1,8 +1,8 @@
 namespace Playground.Weapons
 {
-    public class Dogger : Weapon
+    public class Dagger : Weapon
     {
-        public Dogger() {}
+        public Dagger() : base(10, 30, WeaponsNames.Dagger, WeaponsTypes.Distance) {}
         
         public override bool Shoot()
         {

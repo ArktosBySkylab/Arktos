@@ -14,7 +14,7 @@ namespace Playground.Characters.Heros
         /// <summary>
         /// The name of the hero (all types grouped in <c>HerosNames</c> enum)
         /// </summary>
-        protected new readonly HerosNames name;
+        protected new readonly HerosNames heroName;
         
         /// <summary>
         /// The secondaryWeapon weapon (the primaryWeapon weappon is setted up in <c>Character</c> class)
@@ -37,7 +37,7 @@ namespace Playground.Characters.Heros
         protected int maxInventory = 16; // Arbitrary number
 
         // Getters and setters
-        public HerosNames Name => name;
+        public HerosNames Name => heroName;
 
         public List<Item> Inventory => inventory;
 
@@ -76,10 +76,11 @@ namespace Playground.Characters.Heros
             set => maxInventory = value;
         }
 
-        protected Hero(WeaponsNames primaryWeapon, int maxPv, int level, HerosNames name, WeaponsNames secondaryWeapon,
-            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(maxPv, level)
+        protected Hero(WeaponsNames primaryWeapon, int maxPv, int level, HerosNames heroName, WeaponsNames secondaryWeapon,
+            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(maxPv, level, primaryWeapon)
         {
-            this.name = name;
+            this.name = heroName.ToString();
+            this.heroName = heroName;
             this.inventory = new List<Item>();
             if (defaultItems != null)
             {

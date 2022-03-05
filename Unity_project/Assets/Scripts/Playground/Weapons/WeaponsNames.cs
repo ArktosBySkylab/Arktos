@@ -6,8 +6,7 @@ namespace Playground.Weapons
         SmallSword,
         HugeSword,
         Bow,
-        Dogger,
-        Shield,
+        Dagger,
         Shuriken,
         MagicWand
     }
