@@ -5,15 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class change_menu : MonoBehaviour
+public class Pause_Menu : MonoBehaviour
 {
     public static bool IsGamePaused = false;
     public static bool Gamelaunched = false;
 
     public GameObject PauseMenu;
-    public GameObject MainMenu;
-    public GameObject RestartButton;
-    public GameObject startButton;
+    public GameObject SettingMenu;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -30,9 +28,13 @@ public class change_menu : MonoBehaviour
     }
     public void Resume()
     {
+        Debug.Log("hello Resume");
         PauseMenu.SetActive(false);
+        Debug.Log("hello Resume");
         Time.timeScale = 1;
+        Debug.Log("hello Resume");
         IsGamePaused = false;
+        Debug.Log("hello Resume");
     }
 
     private void Pause()
@@ -45,22 +47,14 @@ public class change_menu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void PlayCampain()
+    public void DisplaySettingMenu()
     {
         //SceneManager.LoadScene("Campain");
-        MainMenu.SetActive(false);
         PauseMenu.SetActive(false);
-        Gamelaunched = true;
+        SettingMenu.SetActive(true);
     }
     public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
     {
         Application.Quit();
-    }
-
-    public void DisplayMainMenu()
-    {
-        MainMenu.SetActive(true);
-        startButton.SetActive(!Gamelaunched);
-        RestartButton.SetActive(Gamelaunched);
     }
 }
