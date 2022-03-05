@@ -95,12 +95,6 @@ namespace Playground.Characters
                 UsePrimaryWeapon = true;
         }
 
-
-        public void OnBecameInvisible()
-        {
-            // TODO
-        }
-
         public virtual void FixedUpdate()
         {
             // Moves
@@ -113,13 +107,24 @@ namespace Playground.Characters
                 controller.SwitchGravity();
                 switchGravity = false;
             }
-            
+
             // Shooting
             if (UsePrimaryWeapon)
             {
                 primaryWeapon.Shoot();
                 UsePrimaryWeapon = false;
             }
+        }
+
+        public void OnBecameInvisible()
+        {
+            // TODO
+            // Restart the scene directly or transfert to an end level menu ?
+        }
+
+        public void OnCollisionEnter(Collision col)
+        {
+            //if(col.gameObject.name))
         }
     }
 }

@@ -3,25 +3,41 @@ using UnityEngine.SceneManagement;
 
 namespace Menus
 {
-
-    public class change_menu : MonoBehaviour
+    public class PauseMenu : MonoBehaviour
     {
         public static bool Gamelaunched;
+        public static bool IsGamePaused = false;
 
-        public GameObject PauseMenu;
+        public GameObject pauseMenu;
         public GameObject MainMenu;
         public GameObject RestartButton;
         public GameObject startButton;
 
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (IsGamePaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
+            }
+        }
+        
+        
         public void Resume()
         {
-            PauseMenu.SetActive(false);
+            pauseMenu.SetActive(false);
             Time.timeScale = 1;
         }
 
         public void Pause()
         {
-            PauseMenu.SetActive(true);
+            pauseMenu.SetActive(true);
             Time.timeScale = 0;
         }
 
@@ -34,7 +50,7 @@ namespace Menus
         {
             //SceneManager.LoadScene("Campain");
             MainMenu.SetActive(false);
-            PauseMenu.SetActive(false);
+            pauseMenu.SetActive(false);
             Gamelaunched = true;
         }
 
