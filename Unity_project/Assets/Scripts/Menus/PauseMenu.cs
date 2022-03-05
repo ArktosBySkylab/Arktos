@@ -5,12 +5,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Pause_Menu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     public static bool IsGamePaused = false;
     public static bool Gamelaunched = false;
 
-    public GameObject PauseMenu;
+    public GameObject pauseMenu;
     public GameObject SettingMenu;
     void Update()
     {
@@ -28,18 +28,14 @@ public class Pause_Menu : MonoBehaviour
     }
     public void Resume()
     {
-        Debug.Log("hello Resume");
-        PauseMenu.SetActive(false);
-        Debug.Log("hello Resume");
+        pauseMenu.SetActive(false);
         Time.timeScale = 1;
-        Debug.Log("hello Resume");
         IsGamePaused = false;
-        Debug.Log("hello Resume");
     }
 
     private void Pause()
     {
-        PauseMenu.SetActive(true);
+        pauseMenu.SetActive(true);
         Time.timeScale = 0;
         IsGamePaused = true;
     }
@@ -50,7 +46,7 @@ public class Pause_Menu : MonoBehaviour
     public void DisplaySettingMenu()
     {
         //SceneManager.LoadScene("Campain");
-        PauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         SettingMenu.SetActive(true);
     }
     public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
