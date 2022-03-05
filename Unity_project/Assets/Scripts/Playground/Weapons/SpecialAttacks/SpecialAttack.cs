@@ -6,7 +6,7 @@ namespace Playground.Weapons.SpecialAttacks
     {
         protected new SpecialAttack name;
 
-        protected SpecialAttack()
+        protected SpecialAttack() : base(10, 30, WeaponsNames.Bow, WeaponsTypes.SpecialAttack)
         {
             type = WeaponsTypes.SpecialAttack;
         }

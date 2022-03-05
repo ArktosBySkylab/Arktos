@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography;
+using Playground.Characters.Heros;
 using Playground.Weapons;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,7 +20,7 @@ namespace Playground.Characters
         /// Variables used for Unity
         /// </summary>
         [SerializeField] protected CharacterController2D controller;
-        [SerializeField] protected float speed = 20f;
+        [SerializeField] protected float runSpeed = 20f;
         /// <summary>
         /// States variables
         /// </summary>
@@ -69,19 +70,20 @@ namespace Playground.Characters
 
         protected Character(int maxPv, int level)
         {
+            //primaryWeapon = primary;
             this.maxPv = maxPv;
-            this.pv = maxPv;
+            pv = maxPv;
             this.level = level;
         }
 
         protected virtual void Awake()
         {
-            this.primaryWeapon = gameObject.AddComponent<Weapon>();
+            primaryWeapon = gameObject.AddComponent<Weapon>();
         }
 
         public virtual void Update()
         {
-            horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
             if (Input.GetButtonDown("Jump"))
             {
@@ -124,7 +126,17 @@ namespace Playground.Characters
 
         public void OnCollisionEnter(Collision col)
         {
-            //if(col.gameObject.name))
+            HerosNames tmp;
+            if (Enum.TryParse(col.gameObject.name, out tmp)) // We can add friendly fire option here
+            {
+            }
+            
+            WeaponsNames tmp2;
+            if (Enum.TryParse(col.gameObject.name, out tmp2))
+            {
+                Weapon weapon = col.gameObject.GetComponent<Weapon>();
+                pv -= weapon.Shooted();
+            }
         }
     }
 }

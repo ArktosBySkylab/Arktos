@@ -2,13 +2,8 @@ namespace Playground.Weapons
 {
     public enum WeaponsTypes
     {
-        Bladed = 0,
-        Firearm, 
+        HandToHand,
         Distance, 
-        Fire, 
-        Ice, 
-        Water, 
-        Ground, 
         SpecialAttack
     }
 }
