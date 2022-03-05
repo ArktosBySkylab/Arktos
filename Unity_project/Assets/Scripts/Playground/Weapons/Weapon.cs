@@ -9,22 +9,24 @@ namespace Playground.Weapons
     {
         protected int damage;
         protected Character owner;
-        protected new WeaponsNames name;
+        protected WeaponsNames weaponName;
         protected WeaponsTypes type;
 
         public int Damage => damage;
 
         public Character Owner => owner;
 
-        public WeaponsNames Name => name;
+        public WeaponsNames WeaponsName => weaponName;
 
         public WeaponsTypes Type => type;
 
         public int NbUse => nbUse;
 
 
+        //protected Weapon(int nbUse, int damage, Character owner, WeaponsNames name, WeaponsTypes type)
         protected Weapon()
         {
+            
         }
         
         /// <summary>
