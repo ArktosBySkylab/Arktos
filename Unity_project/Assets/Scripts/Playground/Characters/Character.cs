@@ -79,11 +79,6 @@ namespace Playground.Characters
             this.primaryWeapon = gameObject.AddComponent<Weapon>();
         }
 
-        public void Attack(Character ennemy)
-        {
-            // TODO
-        }
-
         public virtual void Update()
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
