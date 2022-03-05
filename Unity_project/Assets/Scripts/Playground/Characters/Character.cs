@@ -68,9 +68,9 @@ namespace Playground.Characters
             set => primaryWeapon = value;
         }
 
-        protected Character(int maxPv, int level, Weapon primary)
+        protected Character(int maxPv, int level)
         {
-            primaryWeapon = primary;
+            //primaryWeapon = primary;
             this.maxPv = maxPv;
             pv = maxPv;
             this.level = level;
