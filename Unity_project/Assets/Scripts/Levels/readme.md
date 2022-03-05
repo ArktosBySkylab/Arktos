@@ -4,4 +4,6 @@ Here are all the GameMaster object scripts
 # Structure of the dir
 .
 ├── Levels.csproj   
+├── GameMaster.cs   
+├── TestingScene.cs   
 └── readme.md   

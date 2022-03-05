@@ -8,7 +8,7 @@ namespace Levels
     public class GameMaster : MonoBehaviour
     {
         [SerializeField] protected List<GameObject> players;
-        [SerializeField] protected (int, int) startCoords = (0, 0);
+        protected (int, int) startCoords = (0, 0);
 
         public void Start()
         {
