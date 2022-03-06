@@ -4,7 +4,7 @@ using Playground.Characters.Heros;
 using Playground.Weapons;
 using UnityEngine;
 using UnityEngine.AI;
-using Photon.Pun;
+//using Photon.Pun;
 
 namespace Playground.Characters
 {
@@ -32,7 +32,7 @@ namespace Playground.Characters
         protected bool switchGravity = false;
         protected bool UsePrimaryWeapon = false;
 
-        PhotonView view;//consider which character you're playing
+        //PhotonView view;//consider which character you're playing
         
         // Setters and getters and associated functions
         private void Recover(int amount)
@@ -82,15 +82,16 @@ namespace Playground.Characters
 
         protected virtual void Awake()
         {
-            view = GetComponent<PhotonView>();
+            Debug.Log("TO");
+            //view = GetComponent<PhotonView>();
             primaryWeapon = gameObject.AddComponent<Weapon>();
             animator = gameObject.GetComponent<Animator>();
         }
 
         public virtual void Update()
         {
-            if (view.IsMine)
-            {
+            //if (view.IsMine)
+            //{
                 horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
                 if (Input.GetButtonDown("Jump"))
@@ -103,30 +104,27 @@ namespace Playground.Characters
 
                 if (Input.GetButtonDown("PrimaryWeapon"))
                     UsePrimaryWeapon = true;
-            }
+            //}
         }
 
         public virtual void FixedUpdate()
-        {//trying
-            if (view.IsMine)
+        {
+            // Moves
+            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+            jump = false;
+
+            // Gravity
+            if (switchGravity)
             {
-                // Moves
-                controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-                jump = false;
+                controller.SwitchGravity();
+                switchGravity = false;
+            }
 
-                // Gravity
-                if (switchGravity)
-                {
-                    controller.SwitchGravity();
-                    switchGravity = false;
-                }
-
-                // Shooting
-                if (UsePrimaryWeapon)
-                {
-                    primaryWeapon.Shoot();
-                    UsePrimaryWeapon = false;
-                }
+            // Shooting
+            if (UsePrimaryWeapon)
+            {
+                primaryWeapon.Shoot();
+                UsePrimaryWeapon = false;
             }
         }
 
