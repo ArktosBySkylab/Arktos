@@ -4,6 +4,7 @@ using Playground.Characters.Heros;
 using Playground.Weapons;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 namespace Playground.Characters
 {
@@ -31,7 +32,8 @@ namespace Playground.Characters
         protected bool switchGravity = false;
         protected bool UsePrimaryWeapon = false;
 
-
+        protected PhotonView view;
+        
         // Setters and getters and associated functions
         private void Recover(int amount)
         {
@@ -80,34 +82,38 @@ namespace Playground.Characters
 
         protected virtual void Awake()
         {
+            view = gameObject.GetComponent<PhotonView>();
             primaryWeapon = gameObject.AddComponent<Weapon>();
             animator = gameObject.GetComponent<Animator>();
         }
 
         public virtual void Update()
         {
-            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-            if (horizontalMove != 0)
+            if (view.IsMine)
             {
-                animator.SetBool("IsWalking", true);
-            }
-            else
-            {
-                animator.SetBool("IsWalking", false);
-            }
+                horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                jump = true;
-                animator.SetBool("IsJumping", true);
+                if (horizontalMove != 0)
+                {
+                    animator.SetBool("IsWalking", true);
+                }
+                else
+                {
+                    animator.SetBool("IsWalking", false);
+                }
+
+                if (Input.GetButtonDown("Jump"))
+                {
+                    jump = true;
+                    animator.SetBool("IsJumping", true);
+                }
+
+                if (Input.GetButtonDown("SwitchGravity"))
+                    switchGravity = true;
+
+                if (Input.GetButtonDown("PrimaryWeapon"))
+                    UsePrimaryWeapon = true;
             }
-
-            if (Input.GetButtonDown("SwitchGravity"))
-                switchGravity = true;
-
-            if (Input.GetButtonDown("PrimaryWeapon"))
-                UsePrimaryWeapon = true;
         }
 
         public virtual void FixedUpdate()

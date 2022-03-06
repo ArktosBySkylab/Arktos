@@ -19,8 +19,8 @@ namespace Levels
             //}
             
             // TEMPORARY PART (pour la premiere soutenance uniquement)
-            GameObject character = Resources.Load<GameObject>("Heros/Kitsune");
-            Instantiate(character, new Vector3(startX, startY), Quaternion.identity).SetActive(true);
+            //GameObject character = Resources.Load<GameObject>("Heros/Kitsune");
+            //Instantiate(character, new Vector3(startX, startY), Quaternion.identity).SetActive(true);
         }
     }
 }
