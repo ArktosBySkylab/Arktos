@@ -13,7 +13,6 @@ namespace Levels
 
         public void Start()
         {
-            Debug.Log("COUCOU C'EST MOI TCHOUPI");
             //foreach (GameObject player in players)
             //{
             //    Instantiate(player, new Vector3(startCoords.Item1, startCoords.Item2), Quaternion.identity).SetActive(true);

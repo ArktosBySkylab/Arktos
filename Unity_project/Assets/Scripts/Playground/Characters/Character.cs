@@ -21,7 +21,7 @@ namespace Playground.Characters
         /// </summary>
         [SerializeField] protected CharacterController2D controller;
         [SerializeField] protected float runSpeed = 20f;
-        [SerializeField] protected Animator animator;
+        protected Animator animator;
         
         /// <summary>
         /// States variables
@@ -81,6 +81,7 @@ namespace Playground.Characters
         protected virtual void Awake()
         {
             primaryWeapon = gameObject.AddComponent<Weapon>();
+            animator = gameObject.GetComponent<Animator>();
         }
 
         public virtual void Update()
