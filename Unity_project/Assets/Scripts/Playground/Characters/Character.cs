@@ -21,6 +21,8 @@ namespace Playground.Characters
         /// </summary>
         [SerializeField] protected CharacterController2D controller;
         [SerializeField] protected float runSpeed = 20f;
+        [SerializeField] protected Animator animator;
+        
         /// <summary>
         /// States variables
         /// </summary>
@@ -28,8 +30,8 @@ namespace Playground.Characters
         protected bool jump = false;
         protected bool switchGravity = false;
         protected bool UsePrimaryWeapon = false;
-        
-        
+
+
         // Setters and getters and associated functions
         private void Recover(int amount)
         {
@@ -85,9 +87,19 @@ namespace Playground.Characters
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
+            if (horizontalMove != 0)
+            {
+                animator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
+            }
+
             if (Input.GetButtonDown("Jump"))
             {
                 jump = true;
+                animator.SetBool("IsJumping", true);
             }
 
             if (Input.GetButtonDown("SwitchGravity"))
@@ -137,6 +149,11 @@ namespace Playground.Characters
                 Weapon weapon = col.gameObject.GetComponent<Weapon>();
                 pv -= weapon.Shooted();
             }
+        }
+
+        public void OnLanding()
+        {
+            animator.SetBool("IsJumping", false);
         }
     }
 }

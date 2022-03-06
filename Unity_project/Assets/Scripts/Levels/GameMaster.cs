@@ -8,7 +8,8 @@ namespace Levels
     public class GameMaster : MonoBehaviour
     {
         //[SerializeField] protected List<GameObject> players;
-        protected (int, int) startCoords = (0, 0);
+        [SerializeField] protected int startX = 0;
+        [SerializeField] protected int startY = 0;
 
         public void Start()
         {
@@ -20,7 +21,7 @@ namespace Levels
             
             // TEMPORARY PART (pour la premiere soutenance uniquement)
             GameObject character = Resources.Load<GameObject>("Heros/Kitsune");
-            Instantiate(character, new Vector3(startCoords.Item1, startCoords.Item2), Quaternion.identity).SetActive(true);
+            Instantiate(character, new Vector3(startX, startY), Quaternion.identity).SetActive(true);
         }
     }
 }
