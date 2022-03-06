@@ -4,7 +4,6 @@ using Playground.Characters.Heros;
 using Playground.Weapons;
 using UnityEngine;
 using UnityEngine.AI;
-//using Photon.Pun;
 
 namespace Playground.Characters
 {
@@ -32,8 +31,7 @@ namespace Playground.Characters
         protected bool switchGravity = false;
         protected bool UsePrimaryWeapon = false;
 
-        //PhotonView view;//consider which character you're playing
-        
+
         // Setters and getters and associated functions
         private void Recover(int amount)
         {
@@ -82,29 +80,34 @@ namespace Playground.Characters
 
         protected virtual void Awake()
         {
-            Debug.Log("TO");
-            //view = GetComponent<PhotonView>();
             primaryWeapon = gameObject.AddComponent<Weapon>();
             animator = gameObject.GetComponent<Animator>();
         }
 
         public virtual void Update()
         {
-            //if (view.IsMine)
-            //{
-                horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-                if (Input.GetButtonDown("Jump"))
-                {
-                    jump = true;
-                }
+            if (horizontalMove != 0)
+            {
+                animator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
+            }
 
-                if (Input.GetButtonDown("SwitchGravity"))
-                    switchGravity = true;
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = true;
+                animator.SetBool("IsJumping", true);
+            }
 
-                if (Input.GetButtonDown("PrimaryWeapon"))
-                    UsePrimaryWeapon = true;
-            //}
+            if (Input.GetButtonDown("SwitchGravity"))
+                switchGravity = true;
+
+            if (Input.GetButtonDown("PrimaryWeapon"))
+                UsePrimaryWeapon = true;
         }
 
         public virtual void FixedUpdate()
