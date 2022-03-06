@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 3286649212419007290}
   - component: {fileID: 7098563187286729790}
   - component: {fileID: 7225924735041418370}
+  - component: {fileID: 1585583569404858513}
   m_Layer: 0
   m_Name: Kitsune
   m_TagString: Hero
@@ -284,6 +285,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 7225924735041418370}
+  - {fileID: 1585583569404858513}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -308,7 +310,7 @@ MonoBehaviour:
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 0
     ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateIncludingRoundTripTime: 0
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
     SynchronizeEnabled: 1
@@ -317,6 +319,30 @@ MonoBehaviour:
     InterpolateLerpSpeed: 5
   m_ScaleModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 1
+    InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &1585583569404858513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4719329452322365698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsWalking
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsJumping
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
