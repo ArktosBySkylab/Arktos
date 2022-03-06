@@ -174,7 +174,7 @@ namespace Playground.Characters
 			if (m_Grounded || m_Ceiled)
 			{
 				Physics2D.gravity = -Physics2D.gravity;
-				gameObject.transform.Rotate(0f, 0f, 180f);
+				gameObject.transform.Rotate(0f, 180f, 180f);
 			}
 		}
 
