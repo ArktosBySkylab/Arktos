@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.iOS;
+//using UnityEngine.iOS;
 using UnityEngine.Audio;
 
 public class SettingMenu : MonoBehaviour

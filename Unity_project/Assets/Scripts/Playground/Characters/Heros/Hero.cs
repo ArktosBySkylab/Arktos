@@ -3,6 +3,8 @@ using Playground.Items;
 using Playground.Weapons;
 using Playground.Weapons.SpecialAttacks;
 using UnityEngine;
+//using Photon.Pun;
+//using UnityEditor.SceneManagement;
 
 namespace Playground.Characters.Heros
 {
@@ -14,7 +16,7 @@ namespace Playground.Characters.Heros
         /// <summary>
         /// The name of the hero (all types grouped in <c>HerosNames</c> enum)
         /// </summary>
-        protected new readonly HerosNames heroName;
+        protected readonly HerosNames heroName;
         
         /// <summary>
         /// The secondaryWeapon weapon (the primaryWeapon weappon is setted up in <c>Character</c> class)
@@ -46,6 +48,8 @@ namespace Playground.Characters.Heros
         protected bool UseSecondaryWeapon = false;
         
         
+        //PhotonView view;
+
         /// <summary>
         /// Add an item to the inventory if it's possible
         /// </summary>
@@ -94,6 +98,7 @@ namespace Playground.Characters.Heros
         {
             base.Awake();
             this.name = heroName.ToString();
+            //view = GetComponent<PhotonView>();
             this.secondaryWeapon = gameObject.AddComponent<Weapon>();
             this.specialAttack = gameObject.AddComponent<SpecialAttack>();
         }
@@ -105,6 +110,7 @@ namespace Playground.Characters.Heros
             
             if (Input.GetButtonDown("SecondaryWeapon"))
                 UseSecondaryWeapon = true;
+            
         }
 
 
