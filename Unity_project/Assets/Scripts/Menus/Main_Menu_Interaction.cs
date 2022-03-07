@@ -21,7 +21,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     public void PlayCampain()
     {
         //SceneManager.LoadScene("Campain");
-        SceneManager.LoadScene("testing_scene");
+        SceneManager.LoadScene("testing_scene_tmp");
     }
     public void PlayMulti()
     {

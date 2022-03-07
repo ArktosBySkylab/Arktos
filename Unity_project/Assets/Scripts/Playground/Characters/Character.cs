@@ -89,7 +89,7 @@ namespace Playground.Characters
 
         public virtual void Update()
         {
-            if (view.IsMine)
+            if (view == null || view.IsMine)
             {
                 horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 

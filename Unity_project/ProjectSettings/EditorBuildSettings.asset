@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/menu-principal.unity
     guid: bd7c6755e65b4094e82230c3e83167fe
   - enabled: 0
-    path: Assets/Scenes/Campain.unity
+    path: 
     guid: 179613da43e2353409143896718547d0
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/testing_scene.unity
     guid: 23f0bb4d3bf6a6570826976b8d110331
+  - enabled: 1
+    path: Assets/Scenes/testing_scene_tmp.unity
+    guid: 11d96c1da2ddfcb45942f7bb3b5ee389
   m_configObjects: {}
