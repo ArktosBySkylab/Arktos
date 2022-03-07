@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multiplayer", "Multiplayer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Levels", "Levels\Levels.csproj", "{FA760B86-C876-4C19-B87D-E1C1CE2F5E2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editors", "Editors\Editors.csproj", "{14E35795-2830-4AFF-BCDC-CA715CF2EB89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editors", "Editor\Editors.csproj", "{14E35795-2830-4AFF-BCDC-CA715CF2EB89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
