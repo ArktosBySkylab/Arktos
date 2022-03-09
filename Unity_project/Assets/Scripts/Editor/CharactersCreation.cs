@@ -80,6 +80,9 @@ namespace Editor
                         gameObject.AddComponent<Kitsune>();
                         gameObject.GetComponent<Kitsune>().controller =
                             gameObject.GetComponent<CharacterController2D>();
+
+                        gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(2.868754f, 6.838109f);
+                        gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0.2085109f, 0.5306103f);
                         break;
                     
                     case HerosNames.Mage:
@@ -164,13 +167,16 @@ namespace Editor
             //Debug.Log("RIGIDBODY 2D");
             gameObject.AddComponent<Rigidbody2D>();
             gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
+            gameObject.GetComponent<Rigidbody2D>().mass = 1.5f;
+            Debug.Log(Resources.Load<PhysicsMaterial2D>("Materials/Characters"));
+            gameObject.GetComponent<Rigidbody2D>().sharedMaterial =
+                Resources.Load<PhysicsMaterial2D>("Materials/Characters");
 
             //Debug.Log("CHARACTER CONTROLLER 2D");
             gameObject.AddComponent<CharacterController2D>();
             gameObject.GetComponent<CharacterController2D>().m_FootCheck = footCheck.transform;
             gameObject.GetComponent<CharacterController2D>().m_HeadCheck = headCheck.transform;
             
-            AddRightCharScript(ref gameObject);
 
             //Debug.Log("ANIMATOR");
             gameObject.AddComponent<Animator>();
@@ -219,6 +225,9 @@ namespace Editor
             gameObject.GetComponent<SpriteRenderer>().sprite = Resources.LoadAll<Sprite>($"Animations/SourceImages/{tags[tagNb]}/{_name}/idle/")[0];
 
             gameObject.AddComponent<CapsuleCollider2D>();
+            
+            
+            AddRightCharScript(ref gameObject);
 
             Debug.Log("SAVING...");
             AssetDatabase.DeleteAsset($"Assets/Resources/Prefabs/{tags[tagNb]}/{_name}.prefab");
@@ -270,7 +279,7 @@ namespace Editor
                 
             // Add states
             run.motion = animRun;
-            run.speed = 2;
+            run.speed = 1.5f;
             idle.motion = animIdle;
             jump.motion = animJump;
             GChange.motion = animGChange;

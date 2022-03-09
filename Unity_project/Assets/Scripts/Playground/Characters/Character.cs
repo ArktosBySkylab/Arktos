@@ -91,8 +91,9 @@ namespace Playground.Characters
 
         public virtual void Update()
         {
-            if (view == null || view.IsMine)
+            if (view .Owner == null || view.IsMine)
             {
+                Debug.Log("COUOCU");
                 horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
                 if (horizontalMove != 0)
