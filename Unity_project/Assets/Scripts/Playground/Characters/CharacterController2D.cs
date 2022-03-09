@@ -5,20 +5,20 @@ namespace Playground.Characters
 {
 	public class CharacterController2D : MonoBehaviour
 	{
-		[SerializeField] private float m_JumpForce = 400f; // Amount of force added when the player jumps.
+		[SerializeField] public float m_JumpForce = 800f; // Amount of force added when the player jumps.
 
 		[Range(0, 1)] [SerializeField]
-		private float m_CrouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
+		public float m_CrouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
 
 		[Range(0, .3f)] [SerializeField]
-		private float m_MovementSmoothing = .05f; // How much to smooth out the movement
+		public float m_MovementSmoothing = .05f; // How much to smooth out the movement
 
-		[SerializeField] private bool m_AirControl = true; // Whether or not a player can steer while jumping;
-		[SerializeField] private LayerMask m_WhatIsGround; // A mask determining what is ground to the character
-		[SerializeField] private LayerMask m_WhatIsCeil; // A mask determining what is ceil to the character
-		[SerializeField] private Transform m_FootCheck; // A position marking where to check if the player is grounded.
-		[SerializeField] private Transform m_HeadCheck; // A position marking where to check for ceilings
-		[SerializeField] private Collider2D m_CrouchDisableCollider; // A collider that will be disabled when crouching
+		[SerializeField] public bool m_AirControl = true; // Whether or not a player can steer while jumping;
+		[SerializeField] public LayerMask m_WhatIsGround = LayerMask.GetMask("Floor"); // A mask determining what is ground to the character
+		[SerializeField] public LayerMask m_WhatIsCeil = LayerMask.GetMask("Ceiling"); // A mask determining what is ceil to the character
+		[SerializeField] public Transform m_FootCheck; // A position marking where to check if the player is grounded.
+		[SerializeField] public Transform m_HeadCheck; // A position marking where to check for ceilings
+		[SerializeField] public Collider2D m_CrouchDisableCollider; // A collider that will be disabled when crouching
 
 		const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 		private bool m_Grounded; // Whether or not the player is grounded.
@@ -169,13 +169,16 @@ namespace Playground.Characters
 		}
 
 
-		public void SwitchGravity()
+		public bool SwitchGravity()
 		{
 			if (m_Grounded || m_Ceiled)
 			{
 				Physics2D.gravity = -Physics2D.gravity;
 				gameObject.transform.Rotate(0f, 180f, 180f);
+				return true;
 			}
+
+			return false;
 		}
 
 		private void Flip()

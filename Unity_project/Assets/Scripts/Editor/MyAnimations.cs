@@ -1,24 +1,20 @@
 using System;
 using System.IO;
-using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
+using XDiffGui;
 
-public class MyAnimations : EditorWindow
+public abstract class MyAnimations : EditorWindow
 {
-    [MenuItem("Window/UI Toolkit/MyAnimations")]
-    public static void Init()
-    {
-        MyAnimations wnd = GetWindow<MyAnimations>();
-        wnd.titleContent = new GUIContent("MyAnimations");
-        wnd.Show();
-    }
+
+    protected string _name = "";
     
-    private static void CreateAnimation(string filename, string moveType)
+    protected virtual void CreateAnimation(string output, string moveType, string name)
     {
-        Sprite[] sprites = Resources.LoadAll<Sprite>(filename + "/" + moveType); // load all sprites in "assets/Resources/sprite" folder
+        Debug.Log($"Create Animation {output} ; {name}_{moveType}");
+        Sprite[] sprites = Resources.LoadAll<Sprite>($"SourceImages/{output}/{moveType}"); // load all sprites in "assets/Resources/sprite" folder
         AnimationClip animClip = new AnimationClip();
         AnimationClipSettings clipSettings = new AnimationClipSettings();
         clipSettings.loopTime = true;
@@ -39,38 +35,16 @@ public class MyAnimations : EditorWindow
 
         AnimationUtility.SetObjectReferenceCurve(animClip, spriteBinding, spriteKeyFrames);
         
-        AssetDatabase.CreateAsset(animClip, $"Assets/Animation/{filename}_{moveType}.anim");
+        AssetDatabase.CreateAsset(animClip, $"Assets/Animations/Resources/{output}/{name}_{moveType}.anim");
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
     }
-    
-    
-    public void CreateGUI()
+
+
+   public virtual void OnGUI()
     {
-        // Each editor window contains a root VisualElement object
-        VisualElement root = rootVisualElement;
-
-        // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        VisualElement label = new Label("My animation creator");
-        root.Add(label);
-
-        // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Scripts/Editors/MyAnimations.uxml");
-        VisualElement labelFromUXML = visualTree.Instantiate();
-        root.Add(labelFromUXML);
-
-        // A stylesheet can be added to a VisualElement.
-        // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/Editors/MyAnimations.uss");
-        VisualElement labelWithStyle = new Label("Hello World! With Style");
-        labelWithStyle.styleSheets.Add(styleSheet);
-        root.Add(labelWithStyle);
-    }
-
-    public void OnGUI()
-    {
-        Debug.Log("TEST");
-        string folder = EditorGUILayout.TextField("Folder Name: ");
-        string move = EditorGUILayout.TextField("Move Name: ");
+        GUILayout.Label("Welcome in the custom animations creator !");
+        GUILayout.Label("Take a look to the readme in Animations/Resources/SourceImages to format correclty all the frames ;)");
+        _name = EditorGUILayout.TextField("Name: ", _name);
     }
 }

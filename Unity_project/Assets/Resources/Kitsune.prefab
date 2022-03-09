@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 1585583569404858513}
   m_Layer: 0
   m_Name: Kitsune
-  m_TagString: Hero
+  m_TagString: Heros
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 1
+    InterpolateOption: 0
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
