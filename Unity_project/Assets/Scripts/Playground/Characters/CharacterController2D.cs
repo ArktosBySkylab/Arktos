@@ -14,8 +14,8 @@ namespace Playground.Characters
 		public float m_MovementSmoothing = .05f; // How much to smooth out the movement
 
 		[SerializeField] public bool m_AirControl = true; // Whether or not a player can steer while jumping;
-		[SerializeField] public LayerMask m_WhatIsGround = LayerMask.GetMask("Floor"); // A mask determining what is ground to the character
-		[SerializeField] public LayerMask m_WhatIsCeil = LayerMask.GetMask("Ceiling"); // A mask determining what is ceil to the character
+		[SerializeField] public LayerMask m_WhatIsGround; // A mask determining what is ground to the character
+		[SerializeField] public LayerMask m_WhatIsCeil; // A mask determining what is ceil to the character
 		[SerializeField] public Transform m_FootCheck; // A position marking where to check if the player is grounded.
 		[SerializeField] public Transform m_HeadCheck; // A position marking where to check for ceilings
 		[SerializeField] public Collider2D m_CrouchDisableCollider; // A collider that will be disabled when crouching
@@ -47,6 +47,11 @@ namespace Playground.Characters
 
 			if (OnCrouchEvent == null)
 				OnCrouchEvent = new BoolEvent();
+			
+			OnLandEvent.AddListener(gameObject.GetComponent<Character>().OnLanding);
+			
+			m_WhatIsCeil = LayerMask.GetMask("Ceiling");
+			m_WhatIsGround = LayerMask.GetMask("Floor");
 		}
 
 		private void FixedUpdate()

@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Hero
   - GameMaster
   - Bullet
+  - Heros
   layers:
   - Default
   - TransparentFX
