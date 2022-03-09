@@ -20,20 +20,22 @@ namespace Playground.Characters
         /// <summary>
         /// Variables used for Unity
         /// </summary>
-        [SerializeField] protected CharacterController2D controller;
-        [SerializeField] protected float runSpeed = 20f;
+        [SerializeField] public CharacterController2D controller;
+
+        [SerializeField] public float runSpeed = 50f;
         protected Animator animator;
-        
+
         /// <summary>
         /// States variables
         /// </summary>
         protected float horizontalMove = 0f;
+
         protected bool jump = false;
         protected bool switchGravity = false;
         protected bool UsePrimaryWeapon = false;
 
         protected PhotonView view;
-        
+
         // Setters and getters and associated functions
         private void Recover(int amount)
         {
@@ -52,7 +54,7 @@ namespace Playground.Characters
             get => pv;
             set => this.Recover(value);
         }
-        
+
         public int Portefolio
         {
             get => portefolio;
@@ -95,11 +97,11 @@ namespace Playground.Characters
 
                 if (horizontalMove != 0)
                 {
-                    animator.SetBool("IsWalking", true);
+                    animator.SetBool("IsRunning", true);
                 }
                 else
                 {
-                    animator.SetBool("IsWalking", false);
+                    animator.SetBool("IsRunning", false);
                 }
 
                 if (Input.GetButtonDown("Jump"))
@@ -149,7 +151,7 @@ namespace Playground.Characters
             if (Enum.TryParse(col.gameObject.name, out tmp)) // We can add friendly fire option here
             {
             }
-            
+
             WeaponsNames tmp2;
             if (Enum.TryParse(col.gameObject.name, out tmp2))
             {

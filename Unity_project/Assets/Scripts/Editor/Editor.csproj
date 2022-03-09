@@ -5,8 +5,8 @@
         <ProjectGuid>{14E35795-2830-4AFF-BCDC-CA715CF2EB89}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Playground</RootNamespace>
-        <AssemblyName>Playground</AssemblyName>
+        <RootNamespace>Editor</RootNamespace>
+        <AssemblyName>Editor</AssemblyName>
         <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
         <FileAlignment>512</FileAlignment>
@@ -37,17 +37,18 @@
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml" />
+        <Reference Include="UnityEditor" />
         <Reference Include="UnityEngine">
             <HintPath>/home/greg/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEngine.dll</HintPath>
+            <HintPath>/home/greg/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
         </Reference>
-        <Reference Include="websocket-sharp">
-            <HintPath>/home/greg/epita/Arktos/Unity_project/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\..\..\..\Unity\Hub\Editor\2020.3.26f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
         </Reference>
-        <Reference Include="Photon3Unity3D">
-            <HintPath>/home/greg/epita/Arktos/Unity_project/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll</HintPath>
-        </Reference>
-        <Reference Include="netstandard">
-            <HintPath>/home/greg/Unity/Hub/Editor/2020.3.26f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
-        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Menus\Menus.csproj" />
+      <ProjectReference Include="..\Multiplayer\Multiplayer.csproj" />
+      <ProjectReference Include="..\Playground\Playground.csproj" />
     </ItemGroup>
 </Project>
