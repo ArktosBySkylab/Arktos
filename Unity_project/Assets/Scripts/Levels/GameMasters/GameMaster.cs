@@ -40,10 +40,12 @@ namespace Levels
                 if (infos.multiplayer)
                 {
                     PhotonNetwork.Instantiate($"{pathToCharacters}/Heros/{prefab.name}", new Vector3(startX, startY), Quaternion.identity);
+                    gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
                 }
                 else
                 {
                     Instantiate(prefab, new Vector3(startX, startY), Quaternion.identity);
+                    gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
             }
         }
