@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class SpawnPlayer : MonoBehaviour
 {
@@ -13,8 +12,6 @@ public class SpawnPlayer : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("TA MERE");
         Vector2 SpawnPos = new Vector2(Xpos, Ypos);
-        PhotonNetwork.Instantiate(playerPrefab.name, SpawnPos, Quaternion.identity);
     }
 }

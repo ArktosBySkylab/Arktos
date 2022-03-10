@@ -65,7 +65,7 @@
      <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\CrowCloud.cs" />
-     <Compile Include="Assets\Scripts\Levels\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\Levels\GameMasters\GameMaster.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\Resurgence.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Monsters\Monster.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\WeaponsNames.cs" />
@@ -142,13 +142,14 @@
      <Compile Include="Assets\Scripts\Multiplayer\Lobby\CreateAndJoinRooms.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
-     <Compile Include="Assets\Scripts\Levels\TestingScene.cs" />
+     <Compile Include="Assets\Scripts\Levels\GameMasters\TestingScene.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\Invoker.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Monsters\AMonster.cs" />
      <Compile Include="Assets\Scripts\Menus\Main_Menu_Interaction.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\HerosNames.cs" />
+     <Compile Include="Assets\Scripts\Levels\DataManager\LoadLevelInfos.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

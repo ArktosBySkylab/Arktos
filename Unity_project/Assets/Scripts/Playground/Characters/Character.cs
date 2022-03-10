@@ -29,12 +29,12 @@ namespace Playground.Characters
         /// States variables
         /// </summary>
         protected float horizontalMove = 0f;
-
         protected bool jump = false;
         protected bool switchGravity = false;
         protected bool UsePrimaryWeapon = false;
-
         protected PhotonView view;
+
+        #region Setters & Getters
 
         // Setters and getters and associated functions
         private void Recover(int amount)
@@ -81,6 +81,8 @@ namespace Playground.Characters
             pv = maxPv;
             this.level = level;
         }
+
+        #endregion
 
         protected virtual void Awake()
         {
