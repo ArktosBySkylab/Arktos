@@ -165,7 +165,7 @@ namespace Playground.Characters
 					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				}
 
-				if (m_Grounded && m_NormalGravity)
+				if (m_Grounded && !m_NormalGravity)
 				{
 					// Add an inverted vertical force to the player.
 					m_Grounded = false;
@@ -181,6 +181,7 @@ namespace Playground.Characters
 			{
 				Physics2D.gravity = -Physics2D.gravity;
 				gameObject.transform.Rotate(0f, 180f, 180f);
+				m_NormalGravity ^= true; // Switch the boolean
 				return true;
 			}
 
