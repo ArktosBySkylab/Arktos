@@ -22,6 +22,7 @@ namespace Playground.Characters
 
 		const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 		private bool m_Grounded; // Whether or not the player is grounded.
+		private bool m_NormalGravity = true; // Whether or not the gravity has been switched
 		private bool m_Ceiled; // Whether or not the player is ceiled
 		const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 		private Rigidbody2D m_Rigidbody2D;
@@ -157,14 +158,14 @@ namespace Playground.Characters
 			// If the player should jump...
 			if (jump)
 			{
-				if (m_Grounded)
+				if (m_Grounded && m_NormalGravity)
 				{
 					// Add a vertical force to the player.
 					m_Grounded = false;
 					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				}
 
-				if (m_Ceiled)
+				if (m_Grounded && m_NormalGravity)
 				{
 					// Add an inverted vertical force to the player.
 					m_Grounded = false;
