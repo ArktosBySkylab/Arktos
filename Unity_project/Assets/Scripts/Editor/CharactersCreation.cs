@@ -264,7 +264,7 @@ namespace Editor
             controller.AddParameter("IsRunning", AnimatorControllerParameterType.Bool);
             controller.AddParameter("IsJumping", AnimatorControllerParameterType.Bool);
             controller.AddParameter("IsGChanging", AnimatorControllerParameterType.Bool);
-            controller.AddParameter("IsDead", AnimatorControllerParameterType.Bool);
+            controller.AddParameter("IsDying", AnimatorControllerParameterType.Bool);
 
             // Create all the states
             AnimatorStateMachine stateMachine = controller.layers[0].stateMachine; // Always use only 1 layer for characters

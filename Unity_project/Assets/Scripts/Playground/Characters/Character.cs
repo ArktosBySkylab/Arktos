@@ -113,7 +113,9 @@ namespace Playground.Characters
                 }
 
                 if (Input.GetButtonDown("SwitchGravity"))
+                {
                     switchGravity = true;
+                }
 
                 //if (Input.GetButtonDown("PrimaryWeapon"))
                 //    UsePrimaryWeapon = true;
