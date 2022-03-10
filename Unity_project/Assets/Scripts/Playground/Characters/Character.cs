@@ -131,7 +131,10 @@ namespace Playground.Characters
             // Gravity
             if (switchGravity)
             {
-                controller.SwitchGravity();
+                if (controller.SwitchGravity())
+                {
+                    animator.SetBool("IsGChanging", true);
+                }
                 switchGravity = false;
             }
 
@@ -167,6 +170,7 @@ namespace Playground.Characters
         public void OnLanding()
         {
             animator.SetBool("IsJumping", false);
+            animator.SetBool("IsGChanging", false);
         }
     }
 }
