@@ -308,7 +308,7 @@ namespace Editor
             AnimatorStateTransition any2GChange = stateMachine.AddAnyStateTransition(GChange);
             any2GChange.duration = 0;
             any2GChange.hasExitTime = false;
-            any2Jump.canTransitionToSelf = false;
+            any2GChange.canTransitionToSelf = false;
             any2GChange.AddCondition(AnimatorConditionMode.If, 0, "IsGChanging");
             
             AnimatorStateTransition GChange2Idle = GChange.AddTransition(idle);
