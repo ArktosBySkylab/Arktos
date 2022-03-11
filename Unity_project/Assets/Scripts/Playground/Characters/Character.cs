@@ -91,36 +91,7 @@ namespace Playground.Characters
             animator = gameObject.GetComponent<Animator>();
         }
 
-        public virtual void Update()
-        {
-            if (view.Owner == null || view.IsMine)
-            {
-                horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-                if (horizontalMove != 0)
-                {
-                    animator.SetBool("IsRunning", true);
-                }
-                else
-                {
-                    animator.SetBool("IsRunning", false);
-                }
-
-                if (Input.GetButtonDown("Jump"))
-                {
-                    jump = true;
-                    animator.SetBool("IsJumping", true);
-                }
-
-                if (Input.GetButtonDown("SwitchGravity"))
-                {
-                    switchGravity = true;
-                }
-
-                //if (Input.GetButtonDown("PrimaryWeapon"))
-                //    UsePrimaryWeapon = true;
-            }
-        }
+        public abstract void Update();
 
         public virtual void FixedUpdate()
         {

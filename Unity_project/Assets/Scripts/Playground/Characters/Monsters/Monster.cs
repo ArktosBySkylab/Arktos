@@ -9,6 +9,10 @@ namespace Playground.Characters.Monsters
         {
             this.name = name;
         }
+
+        public override void Update()
+        {
+        }
     }
 
 }

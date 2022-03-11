@@ -29,9 +29,5 @@ namespace Levels.DataManager
             DontDestroyOnLoad(gameObject);
         }
 
-        public void PersonnalDebug(string message)
-        {
-            Debug.Log($"<color=orange>DEBUG LOG MESSAGE:</color> {message}");
-        }
     }
 }

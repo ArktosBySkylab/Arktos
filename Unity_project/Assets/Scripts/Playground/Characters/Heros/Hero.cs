@@ -106,7 +106,33 @@ namespace Playground.Characters.Heros
 
         public override void Update()
         {
-            base.Update();
+            if (view.Owner == null || view.IsMine)
+            {
+                horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+                if (horizontalMove != 0)
+                {
+                    animator.SetBool("IsRunning", true);
+                }
+                else
+                {
+                    animator.SetBool("IsRunning", false);
+                }
+
+                if (Input.GetButtonDown("Jump"))
+                {
+                    jump = true;
+                    animator.SetBool("IsJumping", true);
+                }
+
+                if (Input.GetButtonDown("SwitchGravity"))
+                {
+                    switchGravity = true;
+                }
+
+                //if (Input.GetButtonDown("PrimaryWeapon"))
+                //    UsePrimaryWeapon = true;
+            }
             
             if (Input.GetButtonDown("SecondaryWeapon"))
                 UseSecondaryWeapon = true;
