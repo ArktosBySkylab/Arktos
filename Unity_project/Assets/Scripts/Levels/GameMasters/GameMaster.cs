@@ -32,7 +32,7 @@ namespace Levels
                 // DEBUG OPTION
                 if (infos.debug && prefab is null)
                 {
-                    infos.PersonnalDebug("Default character chosen: Kitsune");
+                    PersonnalDebug("Default character chosen: Kitsune");
                     prefab = Resources.Load<GameObject>($"{pathToCharacters}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
                 }
                 
@@ -48,6 +48,11 @@ namespace Levels
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
             }
+        }
+        
+        public static void PersonnalDebug(string message)
+        {
+            Debug.Log($"<color=orange>DEBUG LOG MESSAGE:</color> {message}");
         }
     }
 }

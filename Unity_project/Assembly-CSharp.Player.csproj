@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\Resurgence.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Monsters\Monster.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\WeaponsNames.cs" />
+     <Compile Include="Assets\Scripts\Levels\GameMasters\SpawnPoints.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\Ninja.cs" />
