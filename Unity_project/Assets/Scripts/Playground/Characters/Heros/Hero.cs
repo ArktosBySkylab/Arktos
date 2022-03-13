@@ -48,8 +48,6 @@ namespace Playground.Characters.Heros
         protected bool UseSecondaryWeapon = false;
         
         
-        //PhotonView view;
-
         /// <summary>
         /// Add an item to the inventory if it's possible
         /// </summary>
@@ -94,13 +92,12 @@ namespace Playground.Characters.Heros
             }
         }
 
-        public new virtual void Awake()
+        public new virtual void Awake() // Not override bc the mother function is not the same scope
         {
             base.Awake();
-            this.name = heroName.ToString();
-            //view = GetComponent<PhotonView>();
-            this.secondaryWeapon = gameObject.AddComponent<Weapon>();
-            this.specialAttack = gameObject.AddComponent<SpecialAttack>();
+            name = heroName.ToString();
+            secondaryWeapon = gameObject.AddComponent<Weapon>();
+            specialAttack = gameObject.AddComponent<SpecialAttack>();
         }
 
 

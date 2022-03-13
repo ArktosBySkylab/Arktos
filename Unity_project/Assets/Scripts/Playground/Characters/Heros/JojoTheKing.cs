@@ -14,9 +14,5 @@ namespace Playground.Characters.Heros
             HerosNames.JojoTheKing, WeaponsNames.Stick, SpecialAttacksNames.Plouf)
         {
         }
-
-        public override void Awake()
-        {
-        }
     }
 }
