@@ -82,7 +82,7 @@ namespace Playground.Characters.Heros
             SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(maxPv, level)
         {
             this.heroName = heroName;
-            this.inventory = new List<Item>();
+            inventory = new List<Item>();
             if (defaultItems != null)
             {
                 foreach (Item defaultItem in defaultItems)
@@ -96,8 +96,8 @@ namespace Playground.Characters.Heros
         {
             base.Awake();
             name = heroName.ToString();
-            secondaryWeapon = gameObject.AddComponent<Weapon>();
-            specialAttack = gameObject.AddComponent<SpecialAttack>();
+            //secondaryWeapon = gameObject.AddComponent<Weapon>();
+            //specialAttack = gameObject.AddComponent<SpecialAttack>();
         }
 
 

@@ -1,23 +1,22 @@
-# Here are all resources that can be needed by all the scripts 
-.
-├── Animations
-│   ├── Heros
-│   │   ├── JojoTheKing
-│   │   └── Kitsune
-│   └── SourceImages
-│       └── Heros
-│           ├── JojoTheKing
-│           └── Kitsune
-│               ├── armed
-│               │   ├── idle
-│               │   └── run
-│               ├── death
-│               ├── GChange
-│               ├── idle
-│               ├── jump
-│               └── run
-└── Prefabs
-    ├── Heros
-    ├── Monsters
-    └── Weapons
+# Why ?
+Here are store evrything that can be needed by any script in the whole game
 
+# Tree
+
+./
+├── Animations/
+│   ├── Heros/
+│   ├── Monsters/
+│   ├── readme.md
+│   └── SourceImages/
+├── Materials/
+│   └── Characters.physicsMaterial2D
+├── Prefabs/
+│   ├── Heros/
+│   ├── Monsters/
+│   ├── readme.md
+│   ├── Scenes/
+│   └── Weapons/
+└── readme.md
+
+10 directories, 4 files

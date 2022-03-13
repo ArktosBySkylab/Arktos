@@ -9,21 +9,13 @@ namespace Levels
 
     public class GameMaster : MonoBehaviour
     {
-        private string pathToCharacters = "Prefabs";
-        //[SerializeField] protected List<GameObject> players;
+        private string pathToCharacters = "Prefabs"; // The path to init prefabs
         [SerializeField] protected int startX = 0;
         [SerializeField] protected int startY = 0;
 
         public void Start()
         {
-            //foreach (GameObject player in players)
-            //{
-            //    Instantiate(player, new Vector3(startCoords.Item1, startCoords.Item2), Quaternion.identity).SetActive(true);
-            //}
-            
-            // TEMPORARY PART (pour la premiere soutenance uniquement)
-            //GameObject character = Resources.Load<GameObject>("Prefabs/Heros/Kitsune");
-            //Instantiate(character, new Vector3(startX, startY), Quaternion.identity).SetActive(true);
+            // Load all infos of the level for this player
             LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
             if (infos != null)
             {
@@ -47,6 +39,10 @@ namespace Levels
                     Instantiate(prefab, new Vector3(startX, startY), Quaternion.identity);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
+            }
+            else
+            {
+                Debug.LogError("Datamanager object not found, can't initialize the level");
             }
         }
         
