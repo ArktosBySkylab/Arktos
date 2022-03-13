@@ -1930,6 +1930,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580018794}
   m_CullTransparentMesh: 1
+--- !u!114 &602589176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9116063583059077071, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+  m_PrefabInstance: {fileID: 1760368542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &644475108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,7 +4719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9116063584366017746, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 585.02
+      value: 619.26
       objectReference: {fileID: 0}
     - target: {fileID: 9116063584366017746, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4744,7 +4755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9116063584366017746, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -907
+      value: -889.88
       objectReference: {fileID: 0}
     - target: {fileID: 9116063584366017746, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4761,6 +4772,42 @@ PrefabInstance:
     - target: {fileID: 9116063584366017746, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Text
+      value: JojoTheKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 167040350}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: getCharactaireName
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Main_Menu_Interaction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 602589176}
+    - target: {fileID: 9116063584366017747, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
       objectReference: {fileID: 0}
     - target: {fileID: 9116063584366017749, guid: 9b2ff0e359b4ad8468f49e217026dd8d, type: 3}
       propertyPath: m_Name
