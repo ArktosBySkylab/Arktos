@@ -119,6 +119,9 @@ namespace Editor
                         gameObject.AddComponent<JojoTheKing>();
                         gameObject.GetComponent<JojoTheKing>().controller =
                             gameObject.GetComponent<CharacterController2D>();
+                        
+                        gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(3.039265f, 5.564585f);
+                        gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0.3695583f, 0);
                         break;
                 }
             }
