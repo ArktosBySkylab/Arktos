@@ -105,6 +105,7 @@ namespace Playground.Characters.Heros
         {
             if (view.Owner == null || view.IsMine)
             {
+                base.Update();
                 horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
                 if (horizontalMove != 0)

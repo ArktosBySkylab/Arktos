@@ -91,7 +91,28 @@ namespace Playground.Characters
             animator = gameObject.GetComponent<Animator>();
         }
 
-        public abstract void Update();
+        public virtual void Update()
+        {
+            if (GetComponent<Rigidbody2D>().velocity.y > 0 && Physics2D.gravity.y < 0)
+            {
+                animator.SetBool("BeginJump", true);
+            }
+            
+            else if (GetComponent<Rigidbody2D>().velocity.y < 0 && Physics2D.gravity.y < 0)
+            {
+                animator.SetBool("BeginJump", false);
+            }
+            
+            else if (GetComponent<Rigidbody2D>().velocity.y > 0 && Physics2D.gravity.y > 0)
+            {
+                animator.SetBool("BeginJump", false);
+            }
+            
+            else if (GetComponent<Rigidbody2D>().velocity.y < 0 && Physics2D.gravity.y > 0)
+            {
+                animator.SetBool("BeginJump", true);
+            }
+        }
 
         public virtual void FixedUpdate()
         {

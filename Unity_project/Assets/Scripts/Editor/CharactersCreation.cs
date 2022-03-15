@@ -239,7 +239,8 @@ namespace Editor
         {
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "run", _name);
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "idle", _name);
-            base.CreateAnimation($"{tags[tagNb]}/{_name}", "jump", _name);
+            base.CreateAnimation($"{tags[tagNb]}/{_name}", "beginJump", _name);
+            base.CreateAnimation($"{tags[tagNb]}/{_name}", "endJump", _name);
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "GChange", _name);
             //base.CreateAnimation($"{tags[tagNb]}/{name}", "death", name);
         }
@@ -252,7 +253,8 @@ namespace Editor
         {
             // Load the four moves available for all characters
             AnimationClip animRun = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_run");
-            AnimationClip animJump = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_jump");
+            AnimationClip animBeginJump = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_beginJump");
+            AnimationClip animEndJump = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_endJump");
             AnimationClip animIdle = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_idle");
             AnimationClip animGChange = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_GChange");
             //AnimationClip animDeath = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_death");
@@ -263,6 +265,7 @@ namespace Editor
             // Adding parameters of the controller
             controller.AddParameter("IsRunning", AnimatorControllerParameterType.Bool);
             controller.AddParameter("IsJumping", AnimatorControllerParameterType.Bool);
+            controller.AddParameter("BeginJump", AnimatorControllerParameterType.Bool);
             controller.AddParameter("IsGChanging", AnimatorControllerParameterType.Bool);
             controller.AddParameter("IsDying", AnimatorControllerParameterType.Bool);
 
@@ -270,7 +273,8 @@ namespace Editor
             AnimatorStateMachine stateMachine = controller.layers[0].stateMachine; // Always use only 1 layer for characters
             // Adding stateMachines
             AnimatorState run = stateMachine.AddState($"{_name}_run");
-            AnimatorState jump = stateMachine.AddState($"{_name}_jump");
+            AnimatorState beginJump = stateMachine.AddState($"{_name}_beginJump");
+            AnimatorState endJump = stateMachine.AddState($"{_name}_endJump");
             AnimatorState idle = stateMachine.AddState($"{_name}_idle");
             AnimatorState GChange = stateMachine.AddState($"{_name}_GChange");
             //AnimatorState death = stateMachine.AddState($"{_name}_death");
@@ -281,23 +285,31 @@ namespace Editor
             run.motion = animRun;
             run.speed = 1.5f;
             idle.motion = animIdle;
-            jump.motion = animJump;
+            beginJump.motion = animBeginJump;
+            endJump.motion = animEndJump;
             GChange.motion = animGChange;
             //death.motion = animDeath;
 
             // Create transitions between states
             //AnimatorTransition entry2Idle = stateMachine.AddEntryTransition(idle); // Theorically already done by `stateMachine.defaultState` command
             
-            AnimatorStateTransition any2Jump = stateMachine.AddAnyStateTransition(jump);
-            any2Jump.duration = 0;
-            any2Jump.hasExitTime = false;
-            any2Jump.canTransitionToSelf = false;
-            any2Jump.AddCondition(AnimatorConditionMode.If, 0, "IsJumping");
+            AnimatorStateTransition any2BeginJump = stateMachine.AddAnyStateTransition(beginJump);
+            any2BeginJump.duration = 0;
+            any2BeginJump.hasExitTime = false;
+            any2BeginJump.canTransitionToSelf = false;
+            any2BeginJump.AddCondition(AnimatorConditionMode.If, 0, "IsJumping");
+            any2BeginJump.AddCondition(AnimatorConditionMode.If, 0, "BeginJump");
 
-            AnimatorStateTransition jump2Idle = jump.AddTransition(idle); //run.AddExitTransition();
-            jump2Idle.duration = 0;
-            jump2Idle.hasExitTime = false;
-            jump2Idle.AddCondition(AnimatorConditionMode.IfNot, 0, "IsJumping");
+            AnimatorStateTransition endJump2Idle = endJump.AddTransition(idle); //run.AddExitTransition();
+            endJump2Idle.duration = 0;
+            endJump2Idle.hasExitTime = false;
+            endJump2Idle.AddCondition(AnimatorConditionMode.IfNot, 0, "IsJumping");
+
+            AnimatorStateTransition beginJump2EndJump = beginJump.AddTransition(endJump);
+            beginJump2EndJump.duration = 0;
+            beginJump2EndJump.hasExitTime = false;
+            beginJump2EndJump.AddCondition(AnimatorConditionMode.If, 0, "IsJumping");
+            beginJump2EndJump.AddCondition(AnimatorConditionMode.IfNot, 0, "BeginJump");
             
             //AnimatorStateTransition any2Death = stateMachine.AddAnyStateTransition(death);
             //any2Death.duration = 0;
