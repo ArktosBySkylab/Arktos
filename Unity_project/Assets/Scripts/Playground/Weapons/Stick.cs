@@ -4,11 +4,6 @@ namespace Playground.Weapons
     {
         public Stick() : base(10, 30, WeaponsNames.Stick, WeaponsTypes.HandToHand) {}
         
-        public override bool Shoot()
-        {
-            return false;
-        }
-        
         public override int Shooted ()
         {
             nbUse--;

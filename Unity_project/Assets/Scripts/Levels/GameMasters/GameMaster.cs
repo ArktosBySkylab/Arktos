@@ -22,10 +22,10 @@ namespace Levels
                 GameObject prefab = Resources.Load<GameObject>($"{pathToCharacters}/Heros/{infos.hero.ToString()}");
                 
                 // DEBUG OPTION
-                if (infos.debug && prefab is null)
+                if (infos.debug)
                 {
                     PersonnalDebug("Default character chosen: Kitsune");
-                    prefab = Resources.Load<GameObject>($"{pathToCharacters}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
+                    prefab = Resources.Load<GameObject>($"{pathToCharacters}/Heros/Kitsune_weap"); // Load Kitsune by default (because it's my favorite one)
                 }
                 
 

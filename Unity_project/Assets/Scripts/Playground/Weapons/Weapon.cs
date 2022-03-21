@@ -1,4 +1,5 @@
 using System;
+using Levels;
 using Playground.Characters;
 using Playground.Characters.Heros;
 using Playground.Items;
@@ -32,17 +33,23 @@ namespace Playground.Weapons
             this.type = type;
         }
 
-        public void Awake()
+        public void Awake() 
         {
             this.name = _name.ToString();
         }
-
+        
+        /// <summary>
+        /// Start the animation only if it is possible
+        /// </summary>
+        public virtual bool TryShoot()
+        {
+            return true;
+        }
+        
         /// <summary>
         /// Try to shoot something
         /// </summary>
-        /// <returns>true if the shot have been done, false otherwise</returns>
-        public abstract bool Shoot();
-
+        /// <returns>Return the damage value</returns>
         public virtual int Shooted()
         {
             return damage;

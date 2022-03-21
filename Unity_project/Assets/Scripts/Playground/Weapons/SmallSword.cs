@@ -3,12 +3,7 @@ namespace Playground.Weapons
     public class SmallSword : Weapon
     {
         public SmallSword() : base(10, 30, WeaponsNames.SmallSword, WeaponsTypes.HandToHand) {}
-        
-        public override bool Shoot()
-        {
-            return false;
-        }
-        
+
         public override int Shooted ()
         {
             nbUse--;

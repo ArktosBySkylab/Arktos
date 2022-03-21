@@ -12,6 +12,7 @@ namespace Playground.Characters.Monsters
 
         public override void Update()
         {
+            //UsePrimaryWeapon = true;
         }
     }
 

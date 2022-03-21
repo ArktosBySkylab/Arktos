@@ -4,11 +4,6 @@ namespace Playground.Weapons
     {
         public MagicWand() : base(10, 30, WeaponsNames.MagicWand, WeaponsTypes.HandToHand) {}
         
-        public override bool Shoot()
-        {
-            return false;
-        }
-        
         public override int Shooted ()
         {
             nbUse--;

@@ -144,7 +144,7 @@ namespace Playground.Characters.Heros
             // Shooting with secondaryWeapon
             if (UseSecondaryWeapon)
             {
-                secondaryWeapon.Shoot();
+                secondaryWeapon.Shooted();
                 UseSecondaryWeapon = false;
             }
         }

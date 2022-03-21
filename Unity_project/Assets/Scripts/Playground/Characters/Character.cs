@@ -1,10 +1,12 @@
 using System;
 using System.Security.Cryptography;
+using Levels;
 using Playground.Characters.Heros;
 using Playground.Weapons;
 using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 namespace Playground.Characters
 {
@@ -37,22 +39,13 @@ namespace Playground.Characters
         #region Setters & Getters
 
         // Setters and getters and associated functions
-        private void Recover(int amount)
-        {
-            if (this.pv + amount <= this.maxPv)
-            {
-                this.pv += amount;
-            }
-            else
-            {
-                this.pv = this.maxPv;
-            }
-        }
 
         public int Pv
         {
             get => pv;
-            set => this.Recover(value);
+            // The first condition is used to see if the result is out of bound
+            // The second one return 0 if the player loose pv, max weither
+            set => pv = pv + value < 0 || pv + value > maxPv ? (value < 0 ? 0 : maxPv) : pv + value;
         }
 
         public int Portefolio
@@ -84,14 +77,21 @@ namespace Playground.Characters
 
         #endregion
 
-        protected virtual void Awake()
+        protected void Awake()
         {
             view = gameObject.GetComponent<PhotonView>();
-            primaryWeapon = gameObject.AddComponent<Weapon>();
             animator = gameObject.GetComponent<Animator>();
         }
 
-        public virtual void Update()
+        protected virtual void Start() // Start and not awake bc there is an awake in the weapon
+        {
+            primaryWeapon = gameObject.GetComponentInChildren<SmallSword>(); // gameObject.AddComponent<Weapon>();
+        }
+
+        /// <summary>
+        /// Setup the right jump animation
+        /// </summary>
+        protected void JumpAnimation()
         {
             if (GetComponent<Rigidbody2D>().velocity.y > 0 && Physics2D.gravity.y < 0)
             {
@@ -114,6 +114,11 @@ namespace Playground.Characters
             }
         }
 
+        public virtual void Update()
+        {
+            JumpAnimation();
+        }
+
         public virtual void FixedUpdate()
         {
             // Moves
@@ -133,29 +138,25 @@ namespace Playground.Characters
             // Shooting
             if (UsePrimaryWeapon)
             {
-                primaryWeapon.Shoot();
+                primaryWeapon.TryShoot();
                 UsePrimaryWeapon = false;
             }
         }
 
         public void OnBecameInvisible()
         {
-            // TODO
-            // Restart the scene directly or transfert to an end level menu ?
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void OnCollisionEnter(Collision col)
+        public void OnTriggerEnter2D(Collider2D col)
         {
-            HerosNames tmp;
-            if (Enum.TryParse(col.gameObject.name, out tmp)) // We can add friendly fire option here
-            {
-            }
+            GameMaster.PersonnalDebug("Trigger");
 
-            WeaponsNames tmp2;
-            if (Enum.TryParse(col.gameObject.name, out tmp2))
+            if (Enum.TryParse(col.gameObject.name, out WeaponsNames _))
             {
+                Debug.Log(name + ": LOST PV -> " + pv);
                 Weapon weapon = col.gameObject.GetComponent<Weapon>();
-                pv -= weapon.Shooted();
+                Pv -= weapon.Shooted();
             }
         }
 

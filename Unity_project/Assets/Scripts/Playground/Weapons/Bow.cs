@@ -6,10 +6,5 @@ namespace Playground.Weapons
     {
         public Bow() : base(10, 30, WeaponsNames.Bow, WeaponsTypes.Distance)
         {}
-
-        public override bool Shoot()
-        {
-            return false;
-        }
     }
 }
