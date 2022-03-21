@@ -208,7 +208,7 @@ namespace Editor
                     PhotonAnimatorView.ParameterType.Bool, PhotonAnimatorView.SynchronizeType.Continuous);
             }
 
-            Debug.Log("PHOTON TRANSFORM VIEW CLASSIC");
+            //Debug.Log("PHOTON TRANSFORM VIEW CLASSIC");
             gameObject.AddComponent<PhotonTransformViewClassic>();
             gameObject.GetComponent<PhotonTransformViewClassic>();
             gameObject.GetComponent<PhotonTransformViewClassic>().m_PositionModel =
@@ -243,10 +243,10 @@ namespace Editor
             
             AddRightCharScript(ref gameObject);
 
-            Debug.Log("SAVING...");
+            //Debug.Log("SAVING...");
             AssetDatabase.DeleteAsset($"Assets/Resources/Prefabs/{tags[tagNb]}/{_name}.prefab");
             PrefabUtility.SaveAsPrefabAsset(gameObject, $"Assets/Resources/Prefabs/{tags[tagNb]}/{_name}.prefab");
-            Debug.Log("DONE");
+            Debug.Log("Done without error");
         }
 
         private void CreateAnimation()
