@@ -42,10 +42,23 @@ namespace Editor
             characterNb = GUILayout.SelectionGrid(characterNb, characters[tagNb], characters[tagNb].Length);
             GUILayout.EndVertical();
             
-            if (GUILayout.Button("Generer"))
+            if (GUILayout.Button("Generer (regeneration des animations)"))
+            {
+                if (EditorUtility.DisplayDialog("Are you sure ?",
+                        "This action will erase the old animations and animator (including collider animations that you will have to redo)",
+                        "Yes !", "Absolutely not, you crazy !"))
+                {
+                    _name = characters[tagNb][characterNb];
+                    CreateFolders($"Assets/Resources/Animations/{tags[tagNb]}", _name);
+                    CreateAnimation();
+                    CreateObject(CreateAnimator());
+                }
+            }
+            
+            if (GUILayout.Button("Generer (pas de regeneration des animations)"))
             {
                 _name = characters[tagNb][characterNb];
-                CreateObject();
+                CreateObject(Resources.Load<AnimatorController>($"Animations{tags[tagNb]}/{name}/{name}"));
             }
         }
 
@@ -145,13 +158,8 @@ namespace Editor
             }
         }
 
-        private void CreateObject()
+        private void CreateObject(AnimatorController controller)
         {
-            CreateFolders($"Assets/Resources/Animations/{tags[tagNb]}", _name);
-
-            CreateAnimation();
-
-            AnimatorController controller = CreateAnimator();
             
             //Debug.Log("Create gameObject");
             GameObject gameObject = new GameObject();
