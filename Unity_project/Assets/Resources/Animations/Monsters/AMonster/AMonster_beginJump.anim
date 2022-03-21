@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AMonster_jump
+  m_Name: AMonster_beginJump
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -18,38 +18,19 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - curve:
-    - time: 0
-      value: {fileID: 21300000, guid: e09f4576bc7a00054989375046ffdbc0, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: 47be1ecccd33a89918ba0a00e623503e, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: 13fdc70213c10a8e78c5b5de0c597072, type: 3}
-    - time: 0.75
-      value: {fileID: 21300000, guid: 6434441ebca8de90596536e3c4d61d52, type: 3}
+  - curve: []
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 4
+  m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings:
-    - serializedVersion: 2
-      path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    pptrCurveMapping:
-    - {fileID: 21300000, guid: e09f4576bc7a00054989375046ffdbc0, type: 3}
-    - {fileID: 21300000, guid: 47be1ecccd33a89918ba0a00e623503e, type: 3}
-    - {fileID: 21300000, guid: 13fdc70213c10a8e78c5b5de0c597072, type: 3}
-    - {fileID: 21300000, guid: 6434441ebca8de90596536e3c4d61d52, type: 3}
+    genericBindings: []
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
