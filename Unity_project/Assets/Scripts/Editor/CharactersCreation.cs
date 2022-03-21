@@ -165,14 +165,17 @@ namespace Editor
             GameObject gameObject = new GameObject();
             GameObject footCheck = new GameObject();
             GameObject headCheck = new GameObject();
+            GameObject handPos = new GameObject();
 
             gameObject.name = _name;
             gameObject.tag = "Heros";
             gameObject.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             footCheck.name = "FootCheck";
             headCheck.name = "HeadCheck";
+            handPos.name = "HandPosition";
             footCheck.transform.parent = gameObject.transform;
             headCheck.transform.parent = gameObject.transform;
+            handPos.transform.parent = gameObject.transform;
 
 
             //Debug.Log("RIGIDBODY 2D");
