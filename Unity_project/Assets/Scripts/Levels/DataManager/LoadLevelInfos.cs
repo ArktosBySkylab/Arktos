@@ -1,6 +1,7 @@
 using System;
 using System.Linq.Expressions;
 using Playground.Characters.Heros;
+using Playground.Weapons;
 using UnityEngine;
 
 namespace Levels.DataManager
@@ -16,6 +17,9 @@ namespace Levels.DataManager
         /// Store here the name of the chosen hero to play
         /// </summary>
         public HerosNames hero;
+
+        public WeaponsNames firstHand;
+        public WeaponsNames secondHand;
 
         /// <summary>
         /// If true, debug options will be activated in different scripts

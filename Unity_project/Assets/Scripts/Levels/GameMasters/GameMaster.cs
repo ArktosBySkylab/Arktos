@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Levels.DataManager;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Levels
 
     public class GameMaster : MonoBehaviour
     {
-        private string pathToCharacters = "Prefabs"; // The path to init prefabs
+        private string pathToPrefabs = "Prefabs"; // The path to init prefabs
         [SerializeField] protected int startX = 0;
         [SerializeField] protected int startY = 0;
 
@@ -19,24 +20,38 @@ namespace Levels
             LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
             if (infos != null)
             {
-                GameObject prefab = Resources.Load<GameObject>($"{pathToCharacters}/Heros/{infos.hero.ToString()}");
+                GameObject hero = Resources.Load<GameObject>($"{pathToPrefabs}/Heros/{infos.hero.ToString()}");
+                GameObject firstHand =
+                    Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.firstHand.ToString()}");
+                GameObject secondHand =
+                    Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.secondHand.ToString()}");
+
                 
+                firstHand.transform.parent = hero.transform.Find("HandPosition");
+                secondHand.transform.parent = hero.transform.Find("HandPosition");
+
                 // DEBUG OPTION
                 if (infos.debug)
                 {
                     PersonnalDebug("Default character chosen: Kitsune");
-                    prefab = Resources.Load<GameObject>($"{pathToCharacters}/Heros/Kitsune_weap"); // Load Kitsune by default (because it's my favorite one)
+                    hero = Resources.Load<GameObject>($"{pathToPrefabs}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
+                    firstHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.firstHand.ToString()}");
+                    secondHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.secondHand.ToString()}");
+
+                    
+                    firstHand.transform.parent = hero.transform.Find("HandPosition");
+                    secondHand.transform.parent = hero.transform.Find("HandPosition");
                 }
                 
 
                 if (infos.multiplayer)
                 {
-                    PhotonNetwork.Instantiate($"{pathToCharacters}/Heros/{prefab.name}", new Vector3(startX, startY), Quaternion.identity);
+                    PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY), Quaternion.identity);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
                 }
                 else
                 {
-                    Instantiate(prefab, new Vector3(startX, startY), Quaternion.identity);
+                    Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
             }
