@@ -1470,6 +1470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplayer: 0
   hero: 2
+  firstHand: 1
+  secondHand: 1
   debugOption: 1
 --- !u!4 &1685339499
 Transform:

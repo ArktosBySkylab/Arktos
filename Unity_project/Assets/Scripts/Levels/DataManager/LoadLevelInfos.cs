@@ -24,6 +24,8 @@ namespace Levels.DataManager
         /// <summary>
         /// If true, debug options will be activated in different scripts
         /// </summary>
+        [Header("See GameMaster.cs for further informations")]
+        [Header("The debug option will override every options of the data manager")]
         [SerializeField] public bool debugOption = false;
 
         public bool debug => debugOption;

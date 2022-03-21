@@ -45,7 +45,7 @@ namespace Playground.Characters
             get => pv;
             // The first condition is used to see if the result is out of bound
             // The second one return 0 if the player loose pv, max weither
-            set => pv = pv + value < 0 || pv + value > maxPv ? (value < 0 ? 0 : maxPv) : pv + value;
+            set => pv = value < 0 || value > maxPv ? value < 0 ? 0 : maxPv : value;
         }
 
         public int Portefolio
@@ -150,12 +150,13 @@ namespace Playground.Characters
 
         public void OnTriggerEnter2D(Collider2D col)
         {
-            GameMaster.PersonnalDebug("Trigger");
+            //GameMaster.PersonnalDebug("Trigger");
 
             if (Enum.TryParse(col.gameObject.name, out WeaponsNames _))
             {
-                Debug.Log(name + ": LOST PV -> " + pv);
+                //Debug.Log(name + ": LOST PV -> " + pv);
                 Weapon weapon = col.gameObject.GetComponent<Weapon>();
+                //Debug.LogWarning(weapon.Shooted());
                 Pv -= weapon.Shooted();
             }
         }

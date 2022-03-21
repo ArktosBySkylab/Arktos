@@ -21,39 +21,38 @@ namespace Levels
             if (infos != null)
             {
                 GameObject hero = Resources.Load<GameObject>($"{pathToPrefabs}/Heros/{infos.hero.ToString()}");
+                PersonnalDebug(infos.firstHand.ToString());
                 GameObject firstHand =
                     Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.firstHand.ToString()}");
                 GameObject secondHand =
                     Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.secondHand.ToString()}");
 
-                
-                firstHand.transform.parent = hero.transform.Find("HandPosition");
-                secondHand.transform.parent = hero.transform.Find("HandPosition");
 
-                // DEBUG OPTION
+                // DEBUG OPTION THAT OVERRIDE THE DATAMANAGER
                 if (infos.debug)
                 {
                     PersonnalDebug("Default character chosen: Kitsune");
-                    hero = Resources.Load<GameObject>($"{pathToPrefabs}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
+                    hero = Resources.Load<GameObject>(
+                        $"{pathToPrefabs}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
                     firstHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.firstHand.ToString()}");
                     secondHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.secondHand.ToString()}");
-
-                    
-                    firstHand.transform.parent = hero.transform.Find("HandPosition");
-                    secondHand.transform.parent = hero.transform.Find("HandPosition");
                 }
-                
+
 
                 if (infos.multiplayer)
                 {
-                    PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY), Quaternion.identity);
+                    PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
+                        Quaternion.identity);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
                 }
                 else
                 {
-                    Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
+                    hero = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
+
+                //firstHand.transform.parent = GameObject.Find($"{hero.name}/HandPosition").transform; // The / will go search in the children
+                Instantiate(secondHand, hero.transform.Find("HandPosition"));
             }
             else
             {
