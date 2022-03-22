@@ -34,8 +34,8 @@ namespace Levels
                     PersonnalDebug("Default character chosen: Kitsune");
                     hero = Resources.Load<GameObject>(
                         $"{pathToPrefabs}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
-                    firstHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.firstHand.ToString()}");
-                    secondHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.secondHand.ToString()}");
+                    firstHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/SmallSword");
+                    secondHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/SmallSword");
                 }
 
 
