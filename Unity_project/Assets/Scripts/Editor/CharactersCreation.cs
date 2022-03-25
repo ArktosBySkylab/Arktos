@@ -255,7 +255,7 @@ namespace Editor
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "beginJump", _name);
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "endJump", _name);
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "GChange", _name);
-            base.CreateAnimation($"{tags[tagNb]}/{name}", "death", name);
+            base.CreateAnimation($"{tags[tagNb]}/{_name}", "death", _name);
         }
 
         
