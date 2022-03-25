@@ -16,7 +16,7 @@ namespace Editor
 {
     public class CharactersCreation : MyAnimations
     {
-        private string[] AnimatorParameters = {"IsJumping", "IsRunning", "IsGChanging", "IsDead"};
+        private string[] AnimatorParameters = {"IsJumping", "IsRunning", "IsGChanging", "IsDying", "BeginJump"};
         private string[] tags = new[] {"Heros", "Monsters"};
         private int tagNb = 0;
         private int characterNb = 0;
@@ -58,7 +58,7 @@ namespace Editor
             if (GUILayout.Button("Generer (pas de regeneration des animations)"))
             {
                 _name = characters[tagNb][characterNb];
-                CreateObject(Resources.Load<AnimatorController>($"Animations{tags[tagNb]}/{name}/{name}"));
+                CreateObject(Resources.Load<AnimatorController>($"Animations/{tags[tagNb]}/{_name}/{_name}"));
             }
         }
 
@@ -160,6 +160,7 @@ namespace Editor
 
         private void CreateObject(AnimatorController controller)
         {
+            Debug.Log(controller);
             
             //Debug.Log("Create gameObject");
             GameObject gameObject = new GameObject();
@@ -326,7 +327,7 @@ namespace Editor
             any2Death.duration = 0;
             any2Death.hasExitTime = false;
             any2Death.canTransitionToSelf = false;
-            any2Death.AddCondition(AnimatorConditionMode.If, 0, "IsDead");
+            any2Death.AddCondition(AnimatorConditionMode.If, 0, "IsDying");
             
             AnimatorStateTransition any2GChange = stateMachine.AddAnyStateTransition(GChange);
             any2GChange.duration = 0;

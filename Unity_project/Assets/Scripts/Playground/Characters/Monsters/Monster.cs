@@ -14,6 +14,11 @@ namespace Playground.Characters.Monsters
         {
             //UsePrimaryWeapon = true;
         }
+
+        protected override void TheDeathIsComing()
+        {
+            base.TheDeathIsComing();
+        }
     }
 
 }

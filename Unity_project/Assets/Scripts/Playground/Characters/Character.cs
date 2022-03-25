@@ -39,13 +39,21 @@ namespace Playground.Characters
         #region Setters & Getters
 
         // Setters and getters and associated functions
+        private void PvSetter(int value)
+        {
+            // The first condition is used to see if the result is out of bound
+            // The second one return 0 if the player loose pv, max weither
+            pv = value < 0 || value > maxPv ? value < 0 ? 0 : maxPv : value;
+            if (pv == 0)
+            {
+                TheDeathIsComing();
+            }
+        }
 
         public int Pv
         {
             get => pv;
-            // The first condition is used to see if the result is out of bound
-            // The second one return 0 if the player loose pv, max weither
-            set => pv = value < 0 || value > maxPv ? value < 0 ? 0 : maxPv : value;
+            set => PvSetter(value);
         }
 
         public int Portefolio
@@ -154,11 +162,16 @@ namespace Playground.Characters
 
             if (Enum.TryParse(col.gameObject.name, out WeaponsNames _))
             {
-                //Debug.Log(name + ": LOST PV -> " + pv);
+                Debug.Log(name + ": LOST PV -> " + pv);
                 Weapon weapon = col.gameObject.GetComponent<Weapon>();
                 //Debug.LogWarning(weapon.Shooted());
                 Pv -= weapon.Shooted();
             }
+        }
+
+        protected virtual void TheDeathIsComing()
+        {
+            animator.SetBool("IsDying", true);
         }
 
         public void OnLanding()

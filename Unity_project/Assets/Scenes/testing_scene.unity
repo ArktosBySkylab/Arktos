@@ -1786,7 +1786,7 @@ PrefabInstance:
     - target: {fileID: 6780180208644714133, guid: 267319ae61034e944993480d3d11f93a, type: 3}
       propertyPath: _monsters.Array.data[0]
       value: 
-      objectReference: {fileID: 2199610451726913706, guid: 777a99a46354940e3af2fd12ad116c64, type: 3}
+      objectReference: {fileID: 6138585187260428735, guid: 777a99a46354940e3af2fd12ad116c64, type: 3}
     - target: {fileID: 6780180208658006818, guid: 267319ae61034e944993480d3d11f93a, type: 3}
       propertyPath: m_Name
       value: SpawnPoints

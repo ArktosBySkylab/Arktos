@@ -4,7 +4,7 @@ namespace Playground.Characters.Monsters
 {
     public class AMonster : Monster
     {
-        public AMonster() : base(MonstersNames.AMonster, WeaponsNames.Stick, 1000, 1)
+        public AMonster() : base(MonstersNames.AMonster, WeaponsNames.Stick, 100, 1)
         {
         }
     }
