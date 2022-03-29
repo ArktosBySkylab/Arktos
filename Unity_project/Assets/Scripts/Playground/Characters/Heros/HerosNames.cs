@@ -13,6 +13,7 @@ namespace Playground.Characters.Heros
         Drow,
         Kenku,
         Invoker,
-        JojoTheKing
+        JojoTheKing,
+        Ian
     }
 }

@@ -13,7 +13,6 @@ See above with `Kitsune` for an example
 ├── Heros/
 │   ├── JojoTheKing/
 │   └── Kitsune/
-│       ├── armed/
 │       ├── death/
 │       ├── GChange/
 │       ├── idle/

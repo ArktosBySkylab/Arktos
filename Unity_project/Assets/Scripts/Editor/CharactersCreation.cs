@@ -88,7 +88,6 @@ namespace Editor
                             gameObject.GetComponent<CharacterController2D>();
                         break;
                     
-                    
                     case HerosNames.Kitsune:
                         gameObject.AddComponent<Kitsune>();
                         gameObject.GetComponent<Kitsune>().controller =
@@ -128,6 +127,7 @@ namespace Editor
                             gameObject.GetComponent<CharacterController2D>();
                         break;
                     
+                    case HerosNames.Ian:
                     case HerosNames.JojoTheKing:
                         gameObject.AddComponent<JojoTheKing>();
                         gameObject.GetComponent<JojoTheKing>().controller =
