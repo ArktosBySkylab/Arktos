@@ -17,7 +17,7 @@ namespace Editor
 {
     public class CharactersCreation : MyAnimations
     {
-        private string[] AnimatorParameters = {"IsJumping", "IsRunning", "IsGChanging", "IsDying", "BeginJump"};
+        private string[] AnimatorParameters = {"IsJumping", "IsRunning", "IsGChanging", "IsDying", "BeginJump", "IsFighting"};
         private string[] tags = new[] {"Heros", "Monsters"};
         private int tagNb = 0;
         private int characterNb = 0;
@@ -187,7 +187,7 @@ namespace Editor
             handPos.transform.parent = gameObject.transform;
 
 
-            //Debug.Log("RIGIDBODY 2D");
+            //Debug.Log("RIGIDBODY 2D")
             gameObject.AddComponent<Rigidbody2D>();
             gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
             gameObject.GetComponent<Rigidbody2D>().mass = 1.5f;

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Playground.Items;
 using Playground.Weapons;
-using Playground.Weapons.SpecialAttacks;
 using UnityEngine;
 //using Photon.Pun;
 //using UnityEditor.SceneManagement;
@@ -22,11 +21,6 @@ namespace Playground.Characters.Heros
         /// The secondaryWeapon weapon (the primaryWeapon weappon is setted up in <c>Character</c> class)
         /// </summary>
         protected Weapon secondaryWeapon;
-        
-        /// <summary>
-        /// The special attack of the hero
-        /// </summary>
-        protected SpecialAttack specialAttack;
         
         /// <summary>
         /// Inventory of the hero during the game
@@ -64,8 +58,6 @@ namespace Playground.Characters.Heros
             return true;
         }
 
-        public Weapon SpecialAttack => specialAttack;
-
         public Weapon SecondHand
         {
             get => secondaryWeapon;
@@ -79,7 +71,7 @@ namespace Playground.Characters.Heros
         }
 
         protected Hero(WeaponsNames primaryWeapon, int maxPv, int level, HerosNames heroName, WeaponsNames secondaryWeapon,
-            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(maxPv, level)
+            List<Item> defaultItems = null) : base(maxPv, level)
         {
             this.heroName = heroName;
             inventory = new List<Item>();
