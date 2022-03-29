@@ -41,6 +41,7 @@ namespace Playground.Weapons
         /// <summary>
         /// Start the animation only if it is possible
         /// </summary>
+        /// <remarks>Have to activate the animations</remarks>
         public virtual bool TryShoot()
         {
             return true;

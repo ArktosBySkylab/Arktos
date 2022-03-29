@@ -27,6 +27,8 @@ namespace Playground.Characters
         [SerializeField] public float runSpeed = 50f;
         protected Animator animator;
 
+        public Animator Animator => animator;
+
         /// <summary>
         /// States variables
         /// </summary>
@@ -172,6 +174,11 @@ namespace Playground.Characters
         protected virtual void TheDeathIsComing()
         {
             animator.SetBool("IsDying", true);
+        }
+
+        protected virtual void FirstHandAttack()
+        {
+            primaryWeapon.TryShoot();
         }
 
         public void OnLanding()

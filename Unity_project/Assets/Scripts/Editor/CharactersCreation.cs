@@ -9,6 +9,7 @@ using UnityEditor.Animations;
 using UnityEngine;
 using Photon.Pun;
 using Playground.Characters.Monsters;
+using Playground.Weapons;
 using UnityEditor.VersionControl;
 using UnityEngine.Events;
 
@@ -42,7 +43,7 @@ namespace Editor
             characterNb = GUILayout.SelectionGrid(characterNb, characters[tagNb], characters[tagNb].Length);
             GUILayout.EndVertical();
             
-            if (GUILayout.Button("Generer (regeneration des animations)"))
+            if (GUILayout.Button("Generer tout (regeneration des animations)"))
             {
                 if (EditorUtility.DisplayDialog("Are you sure ?",
                         "This action will erase the old animations and animator (including collider animations that you will have to redo)",
@@ -55,17 +56,24 @@ namespace Editor
                 }
             }
             
-            if (GUILayout.Button("Generer (pas de regeneration des animations)"))
+            if (GUILayout.Button("Generer uniquement les components (pas de regeneration des animations)"))
             {
                 _name = characters[tagNb][characterNb];
                 CreateObject(Resources.Load<AnimatorController>($"Animations/{tags[tagNb]}/{_name}/{_name}"));
             }
+            
+            //if (GUILayout.Button("Generer uniquement les animations d'attaques (pas de regeneration des autres animations, adaptation du controller)"))
+            //{
+            //    _name = characters[tagNb][characterNb];
+                //CreateObject(AttacksLayer(Resources.Load<AnimatorController>($"Animations/{tags[tagNb]}/{_name}/{_name}")));
+            //}
         }
 
         private static void CreateFolders(string parentFolder, string name)
         {
             AssetDatabase.DeleteAsset($"{parentFolder}/{name}");
             AssetDatabase.CreateFolder(parentFolder, name);
+            AssetDatabase.CreateFolder($"{parentFolder}/{name}", "Attacks");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
@@ -257,13 +265,53 @@ namespace Editor
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "endJump", _name);
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "GChange", _name);
             base.CreateAnimation($"{tags[tagNb]}/{_name}", "death", _name);
+            base.CreateAnimation($"{tags[tagNb]}/{_name}/Attacks", "slash", _name);
+            base.CreateAnimation($"{tags[tagNb]}/{_name}/Attacks", "direct", _name);
         }
 
-        
-        /// <summary>
-        /// Assuming that `output` is a valid name of a character and that each anim is correctly formated
-        /// </summary>
-        private AnimatorController CreateAnimator()
+
+        private AnimatorController AttacksLayer(ref AnimatorController controller)
+        {
+            AnimationClip animSlach = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/Attacks/{_name}_slash");
+            AnimationClip animDirect = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/Attacks/{_name}_direct");
+            
+            AnimatorStateMachine attacks = controller.layers[0].stateMachine;
+            AnimatorState slash = attacks.AddState($"{_name}_slash");
+            AnimatorState direct = attacks.AddState($"{_name}_direct");
+
+            slash.motion = animSlach;
+            slash.AddStateMachineBehaviour<WeaponsAnimations>();
+            direct.motion = animDirect;
+            direct.AddStateMachineBehaviour<WeaponsAnimations>();
+            
+            AnimatorStateTransition any2Slach = attacks.AddAnyStateTransition(slash);
+            any2Slach.duration = 0;
+            any2Slach.hasExitTime = false;
+            any2Slach.canTransitionToSelf = false;
+            any2Slach.AddCondition(AnimatorConditionMode.Equals, 1, "IsFighting");
+
+            AnimatorStateTransition slash2Idle = slash.AddTransition(attacks.defaultState);
+            slash2Idle.duration = 0;
+            slash2Idle.hasExitTime = false;
+            slash2Idle.canTransitionToSelf = false;
+            slash2Idle.AddCondition(AnimatorConditionMode.Equals, 0, "IsFighting");
+            
+            AnimatorStateTransition any2Direct = attacks.AddAnyStateTransition(direct);
+            any2Direct.duration = 0;
+            any2Direct.hasExitTime = false;
+            any2Direct.canTransitionToSelf = false;
+            any2Direct.AddCondition(AnimatorConditionMode.Equals, 2, "IsFighting");
+
+            AnimatorStateTransition direct2Idle = direct.AddTransition(controller.layers[0].stateMachine.defaultState);
+            direct2Idle.duration = 0;
+            direct2Idle.hasExitTime = false;
+            direct2Idle.canTransitionToSelf = false;
+            direct2Idle.AddCondition(AnimatorConditionMode.Equals, 0, "IsFighting");
+
+            return controller;
+        }
+
+        private AnimatorController MainLayer(ref AnimatorController controller)
         {
             // Load the four moves available for all characters
             AnimationClip animRun = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_run");
@@ -273,18 +321,10 @@ namespace Editor
             AnimationClip animGChange = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_GChange");
             AnimationClip animDeath = Resources.Load<AnimationClip>($"Animations/{tags[tagNb]}/{_name}/{_name}_death");
 
-            // Create the controller and add the four movments
-            AnimatorController controller = AnimatorController.CreateAnimatorControllerAtPath($"Assets/Resources/Animations/{tags[tagNb]}/{_name}/{_name}.controller");
-            
-            // Adding parameters of the controller
-            controller.AddParameter("IsRunning", AnimatorControllerParameterType.Bool);
-            controller.AddParameter("IsJumping", AnimatorControllerParameterType.Bool);
-            controller.AddParameter("BeginJump", AnimatorControllerParameterType.Bool);
-            controller.AddParameter("IsGChanging", AnimatorControllerParameterType.Bool);
-            controller.AddParameter("IsDying", AnimatorControllerParameterType.Bool);
 
             // Create all the states
             AnimatorStateMachine stateMachine = controller.layers[0].stateMachine; // Always use only 1 layer for characters
+            
             // Adding stateMachines
             AnimatorState run = stateMachine.AddState($"{_name}_run");
             AnimatorState beginJump = stateMachine.AddState($"{_name}_beginJump");
@@ -349,6 +389,28 @@ namespace Editor
             run2Idle.duration = 0;
             run2Idle.hasExitTime = false;
             run2Idle.AddCondition(AnimatorConditionMode.IfNot, 0, "IsRunning");
+
+            return controller;
+        }
+        
+        /// <summary>
+        /// Assuming that `output` is a valid name of a character and that each anim is correctly formated
+        /// </summary>
+        private AnimatorController CreateAnimator()
+        {
+            // Create the controller and add the four movments
+            AnimatorController controller = AnimatorController.CreateAnimatorControllerAtPath($"Assets/Resources/Animations/{tags[tagNb]}/{_name}/{_name}.controller");
+            
+            // Adding parameters of the controller
+            controller.AddParameter("IsRunning", AnimatorControllerParameterType.Bool);
+            controller.AddParameter("IsJumping", AnimatorControllerParameterType.Bool);
+            controller.AddParameter("BeginJump", AnimatorControllerParameterType.Bool);
+            controller.AddParameter("IsGChanging", AnimatorControllerParameterType.Bool);
+            controller.AddParameter("IsDying", AnimatorControllerParameterType.Bool);
+            controller.AddParameter("IsFighting", AnimatorControllerParameterType.Int);
+            
+            MainLayer(ref controller);
+            AttacksLayer(ref controller);
             
             return controller;
         }
