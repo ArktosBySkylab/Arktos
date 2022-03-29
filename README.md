@@ -9,3 +9,8 @@ Our best video game
 
 # Notes
 TechMesh Pro c'est pour des polices d'ecritures jolies
+
+# Fight animations numerotation
+0 -> Does not attack
+1 -> Slash
+2 -> Direct
