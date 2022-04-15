@@ -14,3 +14,8 @@ TechMesh Pro c'est pour des polices d'ecritures jolies
 0 -> Does not attack
 1 -> Slash
 2 -> Direct
+
+# How to create animations
+## A character
+Animate colliders + foot/head/hand checks
+Make sure that curves are segment and not curves
