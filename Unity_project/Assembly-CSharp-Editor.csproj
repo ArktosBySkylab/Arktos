@@ -52,9 +52,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Editor\WeaponCreation.cs" />
      <Compile Include="Assets\Scripts\Editor\CharactersCreation.cs" />
      <Compile Include="Assets\Scripts\Editor\MyAnimations.cs" />
-     <Compile Include="Assets\Scripts\Editor\WeaponCreation.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/home/greg/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

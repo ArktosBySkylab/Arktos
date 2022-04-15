@@ -293,7 +293,8 @@ namespace Editor
 
             AnimatorStateTransition slash2Idle = slash.AddTransition(attacks.defaultState);
             slash2Idle.duration = 0;
-            slash2Idle.hasExitTime = false;
+            slash2Idle.hasExitTime = true;
+            slash2Idle.exitTime = 1;
             slash2Idle.canTransitionToSelf = false;
             slash2Idle.AddCondition(AnimatorConditionMode.Equals, 0, "IsFighting");
             
@@ -305,7 +306,8 @@ namespace Editor
 
             AnimatorStateTransition direct2Idle = direct.AddTransition(controller.layers[0].stateMachine.defaultState);
             direct2Idle.duration = 0;
-            direct2Idle.hasExitTime = false;
+            direct2Idle.hasExitTime = true;
+            direct2Idle.exitTime = 1;
             direct2Idle.canTransitionToSelf = false;
             direct2Idle.AddCondition(AnimatorConditionMode.Equals, 0, "IsFighting");
 

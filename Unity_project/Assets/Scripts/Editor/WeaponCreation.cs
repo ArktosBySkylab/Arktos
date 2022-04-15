@@ -93,15 +93,18 @@ namespace Editor.bin
             AnimationClip animSlash = Resources.Load<AnimationClip>($"Animations/Weapons/{_name}/{_name}_slash");
             AnimationClip animDirect = Resources.Load<AnimationClip>($"Animations/Weapons/{_name}/{_name}_direct");
 
-            AnimatorStateMachine stateMachine = controller.layers[0].stateMachine; // Always use only 1 layer for characters
+            AnimatorStateMachine stateMachine = controller.layers[0].stateMachine;
 
-            stateMachine.AddStateMachineBehaviour<WeaponsAnimations>();
             
             AnimatorState slash = stateMachine.AddState($"{_name}_slash");
             AnimatorState direct = stateMachine.AddState($"{_name}_direct");
+            AnimatorState @default = stateMachine.AddState("Default");
+            
+            stateMachine.defaultState = @default;
 
             slash.motion = animSlash;
             slash.speed = 1.5f;
+            slash.AddStateMachineBehaviour<WeaponsAnimations>();
             direct.motion = animDirect;
 
             AnimatorStateTransition any2Slash = stateMachine.AddAnyStateTransition(slash);
@@ -110,14 +113,26 @@ namespace Editor.bin
             any2Slash.canTransitionToSelf = false;
             any2Slash.AddCondition(AnimatorConditionMode.Equals, 1, "IsFighting");
 
+            AnimatorStateTransition slash2Default = slash.AddTransition(stateMachine.defaultState);
+            slash2Default.duration = 0;
+            slash2Default.hasExitTime = true;
+            slash2Default.exitTime = 1;
+            slash2Default.canTransitionToSelf = false;
+            slash2Default.AddCondition(AnimatorConditionMode.Equals, 0, "IsFighting");
+
             AnimatorStateTransition any2Direct = stateMachine.AddAnyStateTransition(direct);
             any2Direct.duration = 0;
             any2Direct.hasExitTime = false;
             any2Direct.canTransitionToSelf = false;
             any2Direct.AddCondition(AnimatorConditionMode.Equals, 2, "IsFighting");
             
-            
-            
+            AnimatorStateTransition direct2Default = direct.AddTransition(stateMachine.defaultState);
+            direct2Default.duration = 0;
+            direct2Default.hasExitTime = true;
+            direct2Default.exitTime = 1;
+            direct2Default.canTransitionToSelf = false;
+            direct2Default.AddCondition(AnimatorConditionMode.Equals, 0, "IsFighting");
+
             return controller;
         }
 
