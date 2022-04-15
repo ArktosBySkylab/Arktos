@@ -101,6 +101,7 @@ namespace Editor.bin
             AnimatorState direct = stateMachine.AddState($"{_name}_direct");
 
             slash.motion = animSlash;
+            slash.speed = 1.5f;
             direct.motion = animDirect;
 
             AnimatorStateTransition any2Slash = stateMachine.AddAnyStateTransition(slash);
