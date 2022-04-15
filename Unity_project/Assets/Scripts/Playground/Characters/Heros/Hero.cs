@@ -101,13 +101,10 @@ namespace Playground.Characters.Heros
                 horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
                 if (horizontalMove != 0)
-                {
                     animator.SetBool("IsRunning", true);
-                }
+                
                 else
-                {
                     animator.SetBool("IsRunning", false);
-                }
 
                 if (Input.GetButtonDown("Jump"))
                 {
@@ -116,17 +113,14 @@ namespace Playground.Characters.Heros
                 }
 
                 if (Input.GetButtonDown("SwitchGravity"))
-                {
                     switchGravity = true;
-                }
 
-                //if (Input.GetButtonDown("PrimaryWeapon"))
-                //    UsePrimaryWeapon = true;
+                if (Input.GetButtonDown("PrimaryWeapon"))
+                    UsePrimaryWeapon = true;
+                
+                if (Input.GetButtonDown("SecondaryWeapon"))
+                    UseSecondaryWeapon = true;
             }
-            
-            if (Input.GetButtonDown("SecondaryWeapon"))
-                UseSecondaryWeapon = true;
-            
         }
 
 
@@ -136,7 +130,7 @@ namespace Playground.Characters.Heros
             // Shooting with secondaryWeapon
             if (UseSecondaryWeapon)
             {
-                secondaryWeapon.Shooted();
+                secondaryWeapon.TryShoot();
                 UseSecondaryWeapon = false;
             }
         }

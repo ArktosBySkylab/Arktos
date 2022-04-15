@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Levels;
 using Playground.Characters;
 using Playground.Characters.Heros;
@@ -15,7 +16,13 @@ namespace Playground.Weapons
         protected WeaponsTypes type;
         protected int nbUse;
         protected Character owner;
-        protected Animator animator;
+        public Animator animator;
+
+        public Character Owner
+        {
+            get => owner;
+            set => owner = owner ? owner : value;
+        }
 
         public int Damage => damage;
 
@@ -49,11 +56,14 @@ namespace Playground.Weapons
         /// <remarks>Have to activate the animations</remarks>
         public virtual bool TryShoot()
         {
-            if(nbUse == 0 || owner.Animator.GetInteger("IsFighting") != 0)
-                return false;
-            
-            owner.Animator.SetInteger("IsFighting", 1);
+            // if(nbUse == 0 || owner.Animator.GetInteger("IsFighting") != 0)
+            //     return false;
+
+            Debug.Log($"TryShoot {this}");
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
             animator.SetInteger("IsFighting", 1);
+            Debug.Log(animator.name);
+            owner.Animator.SetInteger("IsFighting", 1);
             return true;
         }
         

@@ -17,7 +17,8 @@ namespace Playground.Characters
         protected int maxLevel = 10; // Arbitrary value
         protected int pv;
         protected int maxPv;
-        protected Weapon primaryWeapon; // The weapon in the first hand
+        protected GameObject primaryWeapon; // The weapon in the first hand
+        protected Weapon primaryWeaponScript;
 
         /// <summary>
         /// Variables used for Unity
@@ -71,12 +72,6 @@ namespace Playground.Characters
             this.level += 1;
         }
 
-        public Weapon FirstHand
-        {
-            get => primaryWeapon;
-            set => primaryWeapon = value;
-        }
-
         protected Character(int maxPv, int level)
         {
             //primaryWeapon = primary;
@@ -95,7 +90,14 @@ namespace Playground.Characters
 
         protected virtual void Start() // Start and not awake bc there is an awake in the weapon
         {
-            primaryWeapon = gameObject.GetComponentInChildren<SmallSword>(); // gameObject.AddComponent<Weapon>();
+        }
+
+        public void SetupPrimatyWeapon(GameObject gameObject)
+        {
+            primaryWeapon = gameObject;
+            primaryWeapon.GetComponent<SpriteRenderer>().enabled = false;
+            primaryWeaponScript = gameObject.GetComponent<Weapon>();
+            primaryWeaponScript.Owner = this;
         }
 
         /// <summary>
@@ -148,8 +150,8 @@ namespace Playground.Characters
             // Shooting
             if (UsePrimaryWeapon)
             {
-                primaryWeapon.TryShoot();
                 UsePrimaryWeapon = false;
+                primaryWeaponScript.TryShoot(); 
             }
         }
 
@@ -174,11 +176,6 @@ namespace Playground.Characters
         protected virtual void TheDeathIsComing()
         {
             animator.SetBool("IsDying", true);
-        }
-
-        protected virtual void FirstHandAttack()
-        {
-            primaryWeapon.TryShoot();
         }
 
         public void OnLanding()
