@@ -4,6 +4,7 @@ using Levels.DataManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Playground.Characters.Heros;
 
 namespace Levels
 {
@@ -35,7 +36,6 @@ namespace Levels
                     hero = Resources.Load<GameObject>(
                         $"{pathToPrefabs}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
                     firstHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/SmallSword");
-                    secondHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/SmallSword");
                 }
 
 
@@ -48,11 +48,10 @@ namespace Levels
                 else
                 {
                     hero = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
+                    firstHand = Instantiate(firstHand, hero.transform.Find("HandPosition"));
+                    hero.GetComponent<Hero>().SetupPrimatyWeapon(firstHand);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
-
-                //firstHand.transform.parent = GameObject.Find($"{hero.name}/HandPosition").transform; // The / will go search in the children
-                Instantiate(secondHand, hero.transform.Find("HandPosition"));
             }
             else
             {

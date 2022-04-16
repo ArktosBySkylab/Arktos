@@ -52,6 +52,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Editor\WeaponCreation.cs" />
      <Compile Include="Assets\Scripts\Editor\CharactersCreation.cs" />
      <Compile Include="Assets\Scripts\Editor\MyAnimations.cs" />
  <Reference Include="UnityEngine">

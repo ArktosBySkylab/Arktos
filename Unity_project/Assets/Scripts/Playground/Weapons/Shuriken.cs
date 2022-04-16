@@ -1,3 +1,6 @@
+using System;
+using Playground.Characters;
+
 namespace Playground.Weapons
 {
     public class Shuriken : Weapon

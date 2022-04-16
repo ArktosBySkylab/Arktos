@@ -64,9 +64,8 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
      <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\CrowCloud.cs" />
      <Compile Include="Assets\Scripts\Levels\GameMasters\GameMaster.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\Resurgence.cs" />
+     <Compile Include="Assets\Scripts\Playground\Weapons\WeaponsAnimations.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Monsters\Monster.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\WeaponsNames.cs" />
      <Compile Include="Assets\Scripts\Levels\GameMasters\SpawnPoints.cs" />
@@ -78,11 +77,9 @@
      <Compile Include="Assets\Scripts\Multiplayer\Loading\ConnectToServer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\Shuriken.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\LifeStealer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\WeaponsTypes.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\HouseOfCards.cs" />
      <Compile Include="Assets\Scripts\Menus\SettingMenu.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\SmallSword.cs" />
@@ -90,14 +87,11 @@
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\Alchemist.cs" />
      <Compile Include="Assets\Scripts\Playground\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\Weapon.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\Plouf.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\ShurikenMaster.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\Rogue.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\Invisibility.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
@@ -106,7 +100,6 @@
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\Hero.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Monsters\AnotherMonster.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\Dagger.cs" />
      <Compile Include="Assets\Scripts\Menus\GameInformations.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\JojoTheKing.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
@@ -122,12 +115,8 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Character.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\CharacterController2D.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\GlodenBomb.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\SwapMonster.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\SpecialAttacksNames.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\Bow.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\Stick.cs" />
@@ -139,7 +128,6 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
      <Compile Include="Assets\Scripts\AudioScript\AudioManagerScript.cs" />
-     <Compile Include="Assets\Scripts\Playground\Weapons\SpecialAttacks\SpecialAttack.cs" />
      <Compile Include="Assets\Scripts\Multiplayer\Lobby\CreateAndJoinRooms.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />

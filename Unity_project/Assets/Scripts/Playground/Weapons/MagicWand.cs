@@ -1,3 +1,5 @@
+using Playground.Characters;
+
 namespace Playground.Weapons
 {
     public class MagicWand : Weapon

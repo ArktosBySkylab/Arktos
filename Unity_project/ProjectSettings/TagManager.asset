@@ -8,7 +8,7 @@ TagManager:
   - Bullet
   - Heros
   - Monsters
-  - Weapon
+  - Weapons
   layers:
   - Default
   - TransparentFX

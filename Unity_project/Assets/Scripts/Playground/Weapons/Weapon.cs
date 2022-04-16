@@ -1,4 +1,6 @@
 using System;
+using System.Threading;
+using ExitGames.Client.Photon.StructWrapping;
 using Levels;
 using Playground.Characters;
 using Playground.Characters.Heros;
@@ -7,12 +9,21 @@ using UnityEngine;
 
 namespace Playground.Weapons
 {
-    public abstract class Weapon : Item
+    public abstract class Weapon : MonoBehaviour
     {
         protected int damage;
         //protected Character owner;
         protected WeaponsNames _name;
         protected WeaponsTypes type;
+        protected int nbUse;
+        protected Character owner;
+        public Animator animator;
+
+        public Character Owner
+        {
+            get => owner;
+            set => owner = owner ? owner : value;
+        }
 
         public int Damage => damage;
 
@@ -35,14 +46,31 @@ namespace Playground.Weapons
 
         public void Awake() 
         {
-            this.name = _name.ToString();
+            name = _name.ToString();
+            animator = gameObject.GetComponent<Animator>();
+            gameObject.GetComponentInParent<Character>().SetupPrimatyWeapon(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        }
+
+        public void ToogleActivation()
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled ^= true;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled ^= true;
         }
         
         /// <summary>
         /// Start the animation only if it is possible
         /// </summary>
+        /// <remarks>Have to activate the animations</remarks>
         public virtual bool TryShoot()
         {
+            if(nbUse == 0 || owner.Animator.GetInteger("IsFighting") != 0)
+                return false;
+
+            ToogleActivation();
+            animator.SetInteger("IsFighting", 1);
+            owner.Animator.SetInteger("IsFighting", 1);
             return true;
         }
         
