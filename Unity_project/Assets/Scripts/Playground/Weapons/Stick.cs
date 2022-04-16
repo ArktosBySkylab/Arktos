@@ -4,7 +4,7 @@ namespace Playground.Weapons
 {
     public class Stick : Weapon
     {
-        public Stick(Character owner) : base(10, 30, WeaponsNames.Stick, WeaponsTypes.HandToHand, owner) {}
+        public Stick() : base(10, 30, WeaponsNames.Stick, WeaponsTypes.HandToHand) {}
         
         public override int Shooted ()
         {

@@ -5,7 +5,7 @@ namespace Playground.Weapons
 {
     public class HugeSword : Weapon
     {
-        public HugeSword(Character owner) : base(10, 30, WeaponsNames.HugeSword, WeaponsTypes.HandToHand, owner) {}
+        public HugeSword() : base(10, 30, WeaponsNames.HugeSword, WeaponsTypes.HandToHand) {}
 
         public override int Shooted ()
         {

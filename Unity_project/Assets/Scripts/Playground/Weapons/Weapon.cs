@@ -36,9 +36,8 @@ namespace Playground.Weapons
         public int NbUse => nbUse;
 
 
-        protected Weapon(int nbUse, int damage, WeaponsNames name, WeaponsTypes type, Character owner)
+        protected Weapon(int nbUse, int damage, WeaponsNames name, WeaponsTypes type)
         {
-            this.owner = owner;
             _name = name;
             this.nbUse = nbUse;
             this.damage = damage;
@@ -47,8 +46,11 @@ namespace Playground.Weapons
 
         public void Awake() 
         {
-            this.name = _name.ToString();
-            this.animator = gameObject.GetComponent<Animator>();
+            name = _name.ToString();
+            animator = gameObject.GetComponent<Animator>();
+            gameObject.GetComponentInParent<Character>().SetupPrimatyWeapon(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         }
 
         public void ToogleActivation()
@@ -63,8 +65,8 @@ namespace Playground.Weapons
         /// <remarks>Have to activate the animations</remarks>
         public virtual bool TryShoot()
         {
-            // if(nbUse == 0 || owner.Animator.GetInteger("IsFighting") != 0)
-            //     return false;
+            if(nbUse == 0 || owner.Animator.GetInteger("IsFighting") != 0)
+                return false;
 
             ToogleActivation();
             animator.SetInteger("IsFighting", 1);

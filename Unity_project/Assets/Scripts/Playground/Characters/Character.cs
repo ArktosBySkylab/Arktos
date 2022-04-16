@@ -95,7 +95,6 @@ namespace Playground.Characters
         public void SetupPrimatyWeapon(GameObject gameObject)
         {
             primaryWeapon = gameObject;
-            primaryWeapon.GetComponent<SpriteRenderer>().enabled = false;
             primaryWeaponScript = gameObject.GetComponent<Weapon>();
             primaryWeaponScript.Owner = this;
         }
@@ -162,14 +161,13 @@ namespace Playground.Characters
 
         public void OnTriggerEnter2D(Collider2D col)
         {
-            //GameMaster.PersonnalDebug("Trigger");
-
+            GameMaster.PersonnalDebug($"{name} triggered by {col.gameObject.name}");
             if (Enum.TryParse(col.gameObject.name, out WeaponsNames _))
             {
-                Debug.Log(name + ": LOST PV -> " + pv);
                 Weapon weapon = col.gameObject.GetComponent<Weapon>();
-                //Debug.LogWarning(weapon.Shooted());
+                Debug.LogWarning(weapon.Shooted());
                 Pv -= weapon.Shooted();
+                Debug.Log(name + ": LOST PV -> " + pv);
             }
         }
 
