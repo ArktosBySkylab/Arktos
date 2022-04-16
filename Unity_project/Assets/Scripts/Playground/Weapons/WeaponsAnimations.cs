@@ -7,7 +7,6 @@ namespace Playground.Weapons
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo,
             int layerIndex)
         {
-            Debug.Log("LOULO" + animator.gameObject);
             animator.SetInteger("IsFighting", 0);
         }
 
@@ -15,7 +14,7 @@ namespace Playground.Weapons
             int layerIndex)
         {
             if (animator.gameObject.CompareTag("Weapons"))
-                animator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                animator.gameObject.GetComponent<Weapon>().ToogleActivation();
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo,

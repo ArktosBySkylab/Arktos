@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using ExitGames.Client.Photon.StructWrapping;
 using Levels;
 using Playground.Characters;
 using Playground.Characters.Heros;
@@ -49,6 +50,12 @@ namespace Playground.Weapons
             this.name = _name.ToString();
             this.animator = gameObject.GetComponent<Animator>();
         }
+
+        public void ToogleActivation()
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled ^= true;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled ^= true;
+        }
         
         /// <summary>
         /// Start the animation only if it is possible
@@ -59,10 +66,8 @@ namespace Playground.Weapons
             // if(nbUse == 0 || owner.Animator.GetInteger("IsFighting") != 0)
             //     return false;
 
-            Debug.Log($"TryShoot {this}");
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            ToogleActivation();
             animator.SetInteger("IsFighting", 1);
-            Debug.Log(animator.name);
             owner.Animator.SetInteger("IsFighting", 1);
             return true;
         }
