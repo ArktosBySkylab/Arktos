@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Playground.Weapons;
 
 namespace Playground.Characters.Monsters
@@ -15,9 +17,9 @@ namespace Playground.Characters.Monsters
             //UsePrimaryWeapon = true;
         }
 
-        protected override void TheDeathIsComing()
+        protected override IEnumerator TheDeathIsComing()
         {
-            base.TheDeathIsComing();
+            yield return base.TheDeathIsComing();
         }
     }
 
