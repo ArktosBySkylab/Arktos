@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using Playground.Items;
 using Playground.Weapons;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 //using Photon.Pun;
 //using UnityEditor.SceneManagement;
 
@@ -133,6 +136,22 @@ namespace Playground.Characters.Heros
                 secondaryWeapon.TryShoot();
                 UseSecondaryWeapon = false;
             }
+        }
+
+        protected override IEnumerator TheDeathIsComing()
+        {
+            yield return base.TheDeathIsComing();
+            if (Physics2D.gravity.y > 0)
+            {
+                Debug.Log("cocuou");
+                Physics2D.gravity *= -1;
+            }
+        }
+
+        public IEnumerator OnBecameInvisible()
+        {
+            yield return TheDeathIsComing();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

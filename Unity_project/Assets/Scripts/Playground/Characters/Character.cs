@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using Levels;
 using Playground.Characters.Heros;
@@ -154,11 +156,6 @@ namespace Playground.Characters
             }
         }
 
-        public void OnBecameInvisible()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
         public void OnTriggerEnter2D(Collider2D col)
         {
             GameMaster.PersonnalDebug($"{name} triggered by {col.gameObject.name}");
@@ -171,9 +168,10 @@ namespace Playground.Characters
             }
         }
 
-        protected virtual void TheDeathIsComing()
+        protected virtual IEnumerator TheDeathIsComing()
         {
             animator.SetBool("IsDying", true);
+            yield return new WaitForSeconds(1);
         }
 
         public void OnLanding()
