@@ -13,12 +13,14 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject SettingMenu;
-    private bool multiplaying;
+    private bool NotMulti;
 
-    void start()
+    void Awake()
     {
+        // Load all infos of the level for this player
         LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
-        multiplaying = infos.multiplayer;
+        NotMulti = !infos.multiplayer;
+        Time.timeScale = 1;
     }
     void Update()
     {
@@ -26,25 +28,29 @@ public class PauseMenu : MonoBehaviour
         {
             if (IsGamePaused)
             {
-                Resume();
+                Resume(NotMulti);
             }
             else
             {
-                Pause(multiplaying);
+                Pause(NotMulti);
             }
         }
     }
-    public void Resume()
+    public void Resume(bool NotMulti)
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        SettingMenu.SetActive(false);
+        if (NotMulti)
+        {
+            Time.timeScale = 1;
+        }
         IsGamePaused = false;
     }
 
-    private void Pause(bool is_mulptiplaying)
+    private void Pause(bool NotMulti)
     {
         pauseMenu.SetActive(true);
-        if (is_mulptiplaying)
+        if (NotMulti)
         {
             Time.timeScale = 0;
         }
@@ -56,7 +62,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void DisplaySettingMenu()
     {
-        //SceneManager.LoadScene("Campain");
         pauseMenu.SetActive(false);
         SettingMenu.SetActive(true);
     }
