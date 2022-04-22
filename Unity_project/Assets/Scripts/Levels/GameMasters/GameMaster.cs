@@ -33,9 +33,6 @@ namespace Levels
                 // DEBUG OPTION THAT OVERRIDE THE DATAMANAGER
                 if (infos.debug)
                 {
-                    Debug.Log(infos.debug);
-                    Debug.Log(infos.hero.ToString());
-                    Debug.Log(hero);
                     PersonnalDebug("Default character chosen: Kitsune");
                     hero = Resources.Load<GameObject>(
                         $"{pathToPrefabs}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
@@ -46,14 +43,12 @@ namespace Levels
                 {
                     PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
                         Quaternion.identity);
-                    gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
                 }
                 else
                 {
                     hero = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
                     firstHand = Instantiate(firstHand, hero.transform.Find("HandPosition"));
                     hero.GetComponent<Hero>().SetupPrimatyWeapon(firstHand);
-                    gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
             }
             else

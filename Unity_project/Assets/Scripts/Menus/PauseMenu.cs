@@ -21,7 +21,9 @@ public class PauseMenu : MonoBehaviour
         LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
         NotMulti = !infos.multiplayer;
         Time.timeScale = 1;
+
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -36,7 +38,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-    public void Resume(bool NotMulti)
+    public void Resume(bool NotMulti)//desactive les menu + enlève la pause si en campagne
     {
         pauseMenu.SetActive(false);
         SettingMenu.SetActive(false);
@@ -47,7 +49,7 @@ public class PauseMenu : MonoBehaviour
         IsGamePaused = false;
     }
 
-    private void Pause(bool NotMulti)
+    private void Pause(bool NotMulti)//active les menu + met en pause si en campagne
     {
         pauseMenu.SetActive(true);
         if (NotMulti)
