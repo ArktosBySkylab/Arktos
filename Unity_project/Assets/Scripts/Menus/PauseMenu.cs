@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Levels.DataManager;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject SettingMenu;
+    private bool multiplaying;
+
+    void start()
+    {
+        LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+        multiplaying = infos.multiplayer;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -22,7 +30,7 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                Pause();
+                Pause(multiplaying);
             }
         }
     }
@@ -33,10 +41,13 @@ public class PauseMenu : MonoBehaviour
         IsGamePaused = false;
     }
 
-    private void Pause()
+    private void Pause(bool is_mulptiplaying)
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 0;
+        if (is_mulptiplaying)
+        {
+            Time.timeScale = 0;
+        }
         IsGamePaused = true;
     }
     public void RestartLevel() //Restarts the level
@@ -52,5 +63,10 @@ public class PauseMenu : MonoBehaviour
     public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
     {
         Application.Quit();
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("menu-principal");
     }
 }
