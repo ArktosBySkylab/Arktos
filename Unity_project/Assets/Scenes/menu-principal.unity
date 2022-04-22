@@ -7173,7 +7173,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 167040350}
         m_TargetAssemblyTypeName: Main_Menu_Interaction, Assembly-CSharp
-        m_MethodName: getCharactaireName
+        m_MethodName: getHerosName
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 718660474}
@@ -7773,7 +7773,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 167040350}
         m_TargetAssemblyTypeName: Main_Menu_Interaction, Assembly-CSharp
-        m_MethodName: getCharactaireName
+        m_MethodName: getHerosName
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 996503903}
@@ -7866,7 +7866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4309921146120377798, guid: cd42409904ba1d14bb21161588b68a62, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: getCharactaireName
+      value: getHerosName
       objectReference: {fileID: 0}
     - target: {fileID: 4309921146120377799, guid: cd42409904ba1d14bb21161588b68a62, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8014,7 +8014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4309921146938472299, guid: cd42409904ba1d14bb21161588b68a62, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: getCharactaireName
+      value: getHerosName
       objectReference: {fileID: 0}
     - target: {fileID: 4309921146938472300, guid: cd42409904ba1d14bb21161588b68a62, type: 3}
       propertyPath: m_AnchorMax.y
