@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Levels.DataManager;
@@ -32,12 +33,14 @@ namespace Levels
                 // DEBUG OPTION THAT OVERRIDE THE DATAMANAGER
                 if (infos.debug)
                 {
+                    Debug.Log(infos.debug);
+                    Debug.Log(infos.hero.ToString());
+                    Debug.Log(hero);
                     PersonnalDebug("Default character chosen: Kitsune");
                     hero = Resources.Load<GameObject>(
                         $"{pathToPrefabs}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
                     firstHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/SmallSword");
                 }
-
 
                 if (infos.multiplayer)
                 {

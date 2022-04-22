@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Levels.DataManager;
 using Playground.Characters.Heros;
+using Playground.Weapons;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,8 @@ using TMPro;
 public class Main_Menu_Interaction : MonoBehaviour
 {
     protected LoadLevelInfos dataManager;
-    protected string name = "kitsune";// our default choise
+    protected string HerosName = "kitsune";// our default choise
+    protected string WeaponsName = "SmallSword";// default (and only) choise
     void Start()
     {
         dataManager = FindObjectOfType<LoadLevelInfos>();
@@ -24,34 +26,43 @@ public class Main_Menu_Interaction : MonoBehaviour
     
     public void PlayCampain()
     {
-        //SceneManager.LoadScene("Campain");
         dataManager.multiplayer = false;
-        dataManager.hero = getCharactaireTypeHerosNames();
-        SceneManager.LoadScene("testing_scene");
     }
     public void PlayMulti()
     {
         dataManager.multiplayer = true;
+    }
+
+    public void StartGame()
+    {
         dataManager.hero = getCharactaireTypeHerosNames();
-        SceneManager.LoadScene("Loading");
+        dataManager.firstHand = getWeaponTypeWeponNames();
+        if (dataManager.multiplayer)
+        {
+            SceneManager.LoadScene("Loading");
+        }
+        else
+        {
+            SceneManager.LoadScene("testing_scene");
+        }
     }
     public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
     {
         Application.Quit();
     }
-    public void getCharactaireName(TextMeshProUGUI herosname)//stoke dans name le nom du personnage selectionné à chaque nouveau choix
+    public void getHerosName(TextMeshProUGUI herosname)//stoke dans name le nom du personnage selectionné à chaque nouveau choix
     {
-         
-        Debug.Log("dropdown start");
-        name = herosname.text;
-        Debug.Log(name);
-        Debug.Log("dropdown end");
+        HerosName = herosname.text;
+    }
+    public void getWeaponsName(TextMeshProUGUI weaponsname)//stoke dans name le nom du personnage selectionné à chaque nouveau choix
+    {
+        WeaponsName = weaponsname.text;
     }
     
     public HerosNames getCharactaireTypeHerosNames()//permet d'obtenir le type Herosname du personnage selectionné
         //j'ai pas trouvé mieux qu'un switch case 
     {
-        switch (name)// permet de covertir le string en type HerosNames
+        switch (HerosName)// permet de covertir le string en type HerosNames
         {
             case "kitsune":
                 Debug.Log("getCharactaireTypeHerosNames kitsune");
@@ -62,6 +73,19 @@ public class Main_Menu_Interaction : MonoBehaviour
             default:
                 Debug.Log("getCharactaireTypeHerosNames default : kitsune");
                 return HerosNames.Kitsune;
+        }
+        
+    }public WeaponsNames getWeaponTypeWeponNames()//permet d'obtenir le type Herosname du personnage selectionné
+        //j'ai pas trouvé mieux qu'un switch case 
+    {
+        switch (WeaponsName)// permet de covertir le string en type HerosNames
+        {
+            case "SmallSword":
+                Debug.Log("getWeaponTypeWeponNames : SmallSword");
+                return WeaponsNames.SmallSword;
+            default:
+                Debug.Log("getWeaponTypeWeponNames default : SmallSword");
+                return WeaponsNames.SmallSword;
         }
         
     }
