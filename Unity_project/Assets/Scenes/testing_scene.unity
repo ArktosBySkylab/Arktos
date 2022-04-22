@@ -741,6 +741,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1872132130958347905, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1872132130958347905, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_ReferenceResolution.x
       value: 1920
       objectReference: {fileID: 0}
@@ -803,6 +807,10 @@ PrefabInstance:
     - target: {fileID: 4918607906603273214, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918607906819731190, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8375019230739244338, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_IsActive
