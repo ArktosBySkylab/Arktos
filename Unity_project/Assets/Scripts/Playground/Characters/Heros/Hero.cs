@@ -115,7 +115,6 @@ namespace Playground.Characters.Heros
                 {
                     jump = true;
                     animator.SetBool("IsJumping", true);
-                    GameOver.SetActive(true);
                 }
 
                 if (Input.GetButtonDown("SwitchGravity"))
