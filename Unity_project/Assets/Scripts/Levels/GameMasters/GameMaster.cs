@@ -11,11 +11,12 @@ namespace Levels
     public class GameMaster : MonoBehaviour
     {
         private string pathToPrefabs = "Prefabs"; // The path to init prefabs
-        [SerializeField] protected int startX = 0;
-        [SerializeField] protected int startY = 0;
+        [SerializeField] protected int startX =0;
+        [SerializeField] protected int startY =0;
 
         public void Start()
         {
+
             // Load all infos of the level for this player
             LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
             if (infos != null)
@@ -31,6 +32,7 @@ namespace Levels
                 // DEBUG OPTION THAT OVERRIDE THE DATAMANAGER
                 if (infos.debug)
                 {
+                    
                     PersonnalDebug("Default character chosen: Kitsune");
                     hero = Resources.Load<GameObject>(
                         $"{pathToPrefabs}/Heros/Kitsune"); // Load Kitsune by default (because it's my favorite one)
