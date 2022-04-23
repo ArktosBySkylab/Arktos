@@ -15,6 +15,8 @@ namespace Playground.Characters.Heros
     /// </summary>
     public abstract class Hero : Character
     {
+        
+        protected GameObject GameOver;//active when the player die
         /// <summary>
         /// The name of the hero (all types grouped in <c>HerosNames</c> enum)
         /// </summary>
@@ -91,10 +93,10 @@ namespace Playground.Characters.Heros
         {
             base.Awake();
             name = heroName.ToString();
+            GameOver = GameObject.Find("GameMaster/MenuCanvas/GameOverScreen");//permet de pointer vers l'écran gameover
             //secondaryWeapon = gameObject.AddComponent<Weapon>();
             //specialAttack = gameObject.AddComponent<SpecialAttack>();
         }
-
 
         public override void Update()
         {
@@ -113,6 +115,7 @@ namespace Playground.Characters.Heros
                 {
                     jump = true;
                     animator.SetBool("IsJumping", true);
+                    GameOver.SetActive(true);
                 }
 
                 if (Input.GetButtonDown("SwitchGravity"))
@@ -146,6 +149,7 @@ namespace Playground.Characters.Heros
                 Debug.Log("cocuou");
                 Physics2D.gravity *= -1;
             }
+            GameOver.SetActive(true);
         }
 
         public IEnumerator OnBecameInvisible()
