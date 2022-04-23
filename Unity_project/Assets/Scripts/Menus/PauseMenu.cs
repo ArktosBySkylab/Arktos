@@ -18,8 +18,7 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         // Load all infos of the level for this player
-        LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
-        NotMulti = !infos.multiplayer;
+        NotMulti = !FindObjectOfType<LoadLevelInfos>().multiplayer;
         Time.timeScale = 1;
 
     }
@@ -30,15 +29,15 @@ public class PauseMenu : MonoBehaviour
         {
             if (IsGamePaused)
             {
-                Resume(NotMulti);
+                Resume();
             }
             else
             {
-                Pause(NotMulti);
+                Pause();
             }
         }
     }
-    public void Resume(bool NotMulti)//desactive les menu + enlève la pause si en campagne
+    public void Resume()//desactive les menu + enlève la pause si en campagne
     {
         pauseMenu.SetActive(false);
         SettingMenu.SetActive(false);
@@ -49,7 +48,7 @@ public class PauseMenu : MonoBehaviour
         IsGamePaused = false;
     }
 
-    private void Pause(bool NotMulti)//active les menu + met en pause si en campagne
+    private void Pause()//active les menu + met en pause si en campagne
     {
         pauseMenu.SetActive(true);
         if (NotMulti)
