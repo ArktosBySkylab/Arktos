@@ -15,7 +15,6 @@ namespace Levels
         private string pathToPrefabs = "Prefabs"; // The path to init prefabs
         [SerializeField] protected int startX = 0;
         [SerializeField] protected int startY = 0;
-
         public void Start()
         {
             // Load all infos of the level for this player
@@ -28,7 +27,7 @@ namespace Levels
                     Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.firstHand.ToString()}");
                 GameObject secondHand =
                     Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/{infos.secondHand.ToString()}");
-
+                
 
                 // DEBUG OPTION THAT OVERRIDE THE DATAMANAGER
                 if (infos.debug)
@@ -56,7 +55,7 @@ namespace Levels
                 Debug.LogError("Datamanager object not found, can't initialize the level");
             }
         }
-        
+
         public static void PersonnalDebug(string message)
         {
             Debug.Log($"<color=orange>DEBUG LOG MESSAGE:</color> {message}");
