@@ -21,6 +21,7 @@ namespace Playground.Characters
         protected int maxPv;
         protected GameObject primaryWeapon; // The weapon in the first hand
         protected Weapon primaryWeaponScript;
+        protected float CountDown = 1f;
 
         /// <summary>
         /// Variables used for Unity
@@ -130,6 +131,11 @@ namespace Playground.Characters
         public virtual void Update()
         {
             JumpAnimation();
+            if (pv <= 0)
+            {
+                TheDeathIsComing();
+                Debug.Log("Kitsune dead");
+            }
         }
 
         public virtual void FixedUpdate()
@@ -164,8 +170,19 @@ namespace Playground.Characters
                 Weapon weapon = col.gameObject.GetComponent<Weapon>();
                 Debug.LogWarning(weapon.Shooted());
                 Pv -= weapon.Shooted();
+                
                 Debug.Log(name + ": LOST PV -> " + pv);
+                if (Pv <= 0)
+                {
+                    TheDeathIsComing();
+                }
             }
+        }
+        
+        public void TakeDamage(int damage)
+        {
+            pv -= damage;
+            Debug.Log(pv);
         }
 
         protected virtual IEnumerator TheDeathIsComing()

@@ -42,14 +42,20 @@ namespace Levels
 
                 if (infos.multiplayer)
                 {
-                    PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
+                    hero = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
                         Quaternion.identity);
+                    firstHand = Instantiate(firstHand, hero.transform.Find("HandPosition"));
+                    hero.GetComponent<Hero>().SetupPrimatyWeapon(firstHand);
+                    gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
+
                 }
                 else
                 {
                     hero = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
                     firstHand = Instantiate(firstHand, hero.transform.Find("HandPosition"));
                     hero.GetComponent<Hero>().SetupPrimatyWeapon(firstHand);
+                    gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
+
                 }
             }
             else

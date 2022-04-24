@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 3594506291636906210}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1610886807750653519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5433911794207420853}
+  m_Layer: 0
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5433911794207420853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610886807750653519}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.69, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_Children: []
+  m_Father: {fileID: 3594506291636906210}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3951317981338464719
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +138,8 @@ GameObject:
   - component: {fileID: 3700205650943015782}
   - component: {fileID: 352181050442479713}
   - component: {fileID: 6138585187260428735}
+  - component: {fileID: 7141427438754530912}
+  - component: {fileID: 6565179673672200240}
   m_Layer: 0
   m_Name: AMonster
   m_TagString: Heros
@@ -129,6 +161,7 @@ Transform:
   - {fileID: 6346556176543957379}
   - {fileID: 9035393622764754518}
   - {fileID: 4370732770448530472}
+  - {fileID: 5433911794207420853}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,7 +178,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1.5
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 8658562db2953da97973f11c43c743e0, type: 2}
@@ -160,7 +193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7155594802245520071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29cd89b3f2276acee965fb76bad95974, type: 3}
   m_Name: 
@@ -251,6 +284,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: IsGChanging
+  - Type: 4
+    SynchronizeType: 0
+    Name: BeginJump
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsDying
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -367,4 +406,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1710089755809182783}
-  runSpeed: 50
+  runSpeed: 100
+  speed: 5
+  target: {fileID: 1374398808491168007, guid: a96063400a7ff384bac044775efef2f0, type: 3}
+  minimumDistance: 0.05
+  initial_time: 0.3
+  damage: 20
+  attackPos: {fileID: 5433911794207420853}
+  attackRange: 0.5
+--- !u!114 &7141427438754530912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7155594802245520071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62127af1c70338449b1d7cab7939bd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  activateDistance: 50
+  pathUpdateSeconds: 0.5
+  speed: 1000
+  jumpforce: 2500
+  nextWaypointDistance: 3
+  jumpNodeHeightRequirement: 0.9
+  jumpCheckOffset: 0.1
+  followEnabled: 1
+  jumpEnabled: 1
+  directionLookEnabled: 1
+--- !u!114 &6565179673672200240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7155594802245520071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 0
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

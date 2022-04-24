@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monsters:
-  - {fileID: 1039585380095191951, guid: 777a99a46354940e3af2fd12ad116c64, type: 3}
+  - {fileID: 6138585187260428735, guid: 777a99a46354940e3af2fd12ad116c64, type: 3}
   _number:
   - 2
   gapSpawn: 1

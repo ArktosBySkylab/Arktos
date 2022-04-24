@@ -43,7 +43,7 @@ public class Main_Menu_Interaction : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("testing_scene");
+            SceneManager.LoadScene("Assets/Scenes/city.unity");
         }
     }
     public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
