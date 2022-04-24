@@ -6,13 +6,11 @@ namespace Levels
 {
     public class NextScene : MonoBehaviour
     {
-        public int index;
+        public string scene;
 
         void OnTriggerEnter2D(Collider2D obj)
         {
-
-            SceneManager.LoadSceneAsync(index);
-            
+            SceneManager.LoadScene(scene);
         }
 
     }
