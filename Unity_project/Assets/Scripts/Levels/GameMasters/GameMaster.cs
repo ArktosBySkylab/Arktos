@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Playground.Characters.Heros;
+using Playground.Weapons;
 
 namespace Levels
 {
@@ -42,20 +43,22 @@ namespace Levels
 
                 if (infos.multiplayer)
                 {
-                    hero = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
+
+                    var heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
                         Quaternion.identity);
-                    firstHand = Instantiate(firstHand, hero.transform.Find("HandPosition"));
-                    hero.GetComponent<Hero>().SetupPrimatyWeapon(firstHand);
+                    var weapon = PhotonNetwork.Instantiate($"{pathToPrefabs}/Weapons/{firstHand.name}",
+                        new Vector3(startX, startY), Quaternion.identity);
+                    weapon.transform.parent = heros.transform.Find("HandPosition");
+                    heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
 
                 }
                 else
                 {
-                    hero = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
-                    firstHand = Instantiate(firstHand, hero.transform.Find("HandPosition"));
-                    hero.GetComponent<Hero>().SetupPrimatyWeapon(firstHand);
+                    var heros = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
+                    var weapon = Instantiate(firstHand, heros.transform.Find("HandPosition"));
+                    heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
-
                 }
             }
             else

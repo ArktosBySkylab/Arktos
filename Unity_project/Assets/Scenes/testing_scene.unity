@@ -1717,10 +1717,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplayer: 0
-  hero: 2
+  hero: 9
   firstHand: 1
   secondHand: 1
-  debugOption: 1
+  debugOption: 0
 --- !u!4 &1685339499
 Transform:
   m_ObjectHideFlags: 0
@@ -1735,6 +1735,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1775322488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4918607906603273208, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+  m_PrefabInstance: {fileID: 763082499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1775322490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775322488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fa956041faff1e5993bd815f0063c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startX: 0
+  startY: 0
 --- !u!1 &1946996008
 GameObject:
   m_ObjectHideFlags: 0

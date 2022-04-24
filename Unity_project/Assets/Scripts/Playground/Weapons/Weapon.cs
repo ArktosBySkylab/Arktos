@@ -48,7 +48,6 @@ namespace Playground.Weapons
         {
             name = _name.ToString();
             animator = gameObject.GetComponent<Animator>();
-            gameObject.GetComponentInParent<Character>().SetupPrimatyWeapon(gameObject);
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         }
