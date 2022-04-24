@@ -49,10 +49,10 @@ namespace Playground.Characters
         {
             // The first condition is used to see if the result is out of bound
             // The second one return 0 if the player loose pv, max weither
-            pv = value < 0 || value > maxPv ? value < 0 ? 0 : maxPv : value;
+            pv = value < 0 ? 0 : value > maxPv ? maxPv : value;
             if (pv == 0)
             {
-                TheDeathIsComing();
+                StartCoroutine(TheDeathIsComing());
             }
         }
 
@@ -131,11 +131,11 @@ namespace Playground.Characters
         public virtual void Update()
         {
             JumpAnimation();
-            if (pv <= 0)
-            {
-                TheDeathIsComing();
-                Debug.Log("Kitsune dead");
-            }
+            // if (pv <= 0)
+            // {
+            //     TheDeathIsComing();
+            //     Debug.Log("Kitsune dead");
+            // }
         }
 
         public virtual void FixedUpdate()
@@ -187,6 +187,7 @@ namespace Playground.Characters
 
         protected virtual IEnumerator TheDeathIsComing()
         {
+            Debug.LogWarning("The death");
             animator.SetBool("IsDying", true);
             yield return new WaitForSeconds(1);
         }

@@ -142,12 +142,14 @@ namespace Playground.Characters.Heros
 
         protected override IEnumerator TheDeathIsComing()
         {
+            Time.timeScale = 0;
             yield return base.TheDeathIsComing();
             if (Physics2D.gravity.y > 0)
             {
                 Debug.Log("cocuou");
                 Physics2D.gravity *= -1;
             }
+
             GameOver.SetActive(true);
         }
 

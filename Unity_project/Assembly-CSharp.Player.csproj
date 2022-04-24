@@ -80,9 +80,11 @@
      <Compile Include="Assets\Scripts\Multiplayer\Loading\ConnectToServer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\Shuriken.cs" />
+     <Compile Include="Assets\Scripts\Playground\Characters\Heros\Ian.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\WeaponsTypes.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+     <Compile Include="Assets\Scripts\Playground\Characters\Heros\Max.cs" />
      <Compile Include="Assets\Scripts\Menus\SettingMenu.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\SmallSword.cs" />
@@ -141,8 +143,7 @@
      <Compile Include="Assets\Scripts\Menus\Main_Menu_Interaction.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\HerosNames.cs" />
-     <Compile Include="Assets\Scripts\Playground\Characters\Heros\Ian.cs" />
-     <Compile Include="Assets\Scripts\Playground\Characters\Heros\Max.cs" />
+     <Compile Include="Assets\Scripts\Playground\Characters\Monsters\EnemyAI.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -445,6 +446,9 @@
  </Reference>
  <Reference Include="Photon3Unity3D">
  <HintPath>/home/greg/epita/Arktos/Unity_project/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>/home/greg/epita/Arktos/Unity_project/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/home/greg/Unity/Hub/Editor/2020.3.26f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -845,6 +849,10 @@
     <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
       <Project>{8dc83eff-aa15-e63f-6cb7-dc20c9e4917b}</Project>
       <Name>PhotonUnityNetworking.Demos</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{029afef3-0377-91ad-bdfe-09b34651c36f}</Project>
+      <Name>AstarPathfindingProject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
