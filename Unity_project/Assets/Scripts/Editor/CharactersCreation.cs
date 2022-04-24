@@ -12,6 +12,8 @@ using Playground.Characters.Monsters;
 using Playground.Weapons;
 using UnityEditor.VersionControl;
 using UnityEngine.Events;
+using UnityEngine.Experimental.GlobalIllumination;
+using LightType = UnityEngine.LightType;
 
 namespace Editor
 {
@@ -52,14 +54,14 @@ namespace Editor
                     _name = characters[tagNb][characterNb];
                     CreateFolders($"Assets/Resources/Animations/{tags[tagNb]}", _name);
                     CreateAnimation();
-                    CreateObject(CreateAnimator());
+                    CreateObject(CreateAnimator(), tagNb);
                 }
             }
             
             if (GUILayout.Button("Generer uniquement les components (pas de regeneration des animations)"))
             {
                 _name = characters[tagNb][characterNb];
-                CreateObject(Resources.Load<AnimatorController>($"Animations/{tags[tagNb]}/{_name}/{_name}"));
+                CreateObject(Resources.Load<AnimatorController>($"Animations/{tags[tagNb]}/{_name}/{_name}"), tagNb);
             }
             
             //if (GUILayout.Button("Generer uniquement les animations d'attaques (pas de regeneration des autres animations, adaptation du controller)"))
@@ -166,7 +168,43 @@ namespace Editor
             }
         }
 
-        private void CreateObject(AnimatorController controller)
+        private void HerosThings(ref GameObject go)
+        {
+            GameObject pointLight = new GameObject
+            {
+                transform =
+                {
+                    parent = go.transform,
+                    position = new Vector3(0, 0, -3)
+                },
+                name = "Point Light"
+            };
+
+            Light light = pointLight.AddComponent<Light>();
+            light.type = LightType.Point;
+            light.range = 25;
+            light.color = new Color(255, 206, 184, 255);
+            light.intensity = 3;
+            
+            
+            GameObject pointLightG = new GameObject
+            {
+                transform =
+                {
+                    parent = go.transform,
+                    position = new Vector3(0, 0, 3)
+                },
+                name = "Point Light G"
+            };
+
+            Light lightG = pointLightG.AddComponent<Light>();
+            lightG.type = LightType.Point;
+            lightG.range = 25;
+            lightG.color = new Color(255, 206, 184, 255);
+            lightG.intensity = 3;
+        }
+
+        private void CreateObject(AnimatorController controller, int tag)
         {
             Debug.Log(controller);
             
@@ -247,9 +285,13 @@ namespace Editor
             gameObject.GetComponent<SpriteRenderer>().sprite = Resources.LoadAll<Sprite>($"Animations/SourceImages/{tags[tagNb]}/{_name}/idle/")[0];
 
             gameObject.AddComponent<CapsuleCollider2D>();
-            
-            
+
             AddRightCharScript(ref gameObject);
+
+            if (tag == 0)
+            {
+                HerosThings(ref gameObject);
+            }
 
             //Debug.Log("SAVING...");
             AssetDatabase.DeleteAsset($"Assets/Resources/Prefabs/{tags[tagNb]}/{_name}.prefab");
