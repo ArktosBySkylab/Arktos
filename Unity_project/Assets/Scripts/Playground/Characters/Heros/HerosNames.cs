@@ -14,6 +14,7 @@ namespace Playground.Characters.Heros
         Kenku,
         Invoker,
         JojoTheKing,
-        Ian
+        Ian,
+        Max
     }
 }
