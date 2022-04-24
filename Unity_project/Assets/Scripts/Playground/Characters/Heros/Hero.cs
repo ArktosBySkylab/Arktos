@@ -154,7 +154,6 @@ namespace Playground.Characters.Heros
         public IEnumerator OnBecameInvisible()
         {
             yield return TheDeathIsComing();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
