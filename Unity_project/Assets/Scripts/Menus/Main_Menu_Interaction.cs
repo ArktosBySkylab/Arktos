@@ -20,7 +20,11 @@ public class Main_Menu_Interaction : MonoBehaviour
         dataManager = FindObjectOfType<LoadLevelInfos>();
         if (dataManager is null)
         {
-            Debug.LogError("MainMenu: Data manager not found");
+            var data = Resources.Load<GameObject>("Prefabs/Scenes/Reference/DataManager");
+            dataManager = Instantiate(data).GetComponent<LoadLevelInfos>();
+            
+            if (dataManager is null)
+                Debug.LogError("DataManager not found");
         }
     }
     
