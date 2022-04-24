@@ -322,7 +322,7 @@ namespace Editor
             AnimatorState direct = attacks.AddState($"{_name}_direct");
 
             slash.motion = animSlach;
-            slash.speed = 1.5f;
+            slash.speed = 1;
             slash.AddStateMachineBehaviour<WeaponsAnimations>();
             direct.motion = animDirect;
             direct.AddStateMachineBehaviour<WeaponsAnimations>();
