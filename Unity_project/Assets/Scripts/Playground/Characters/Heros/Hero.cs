@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using Playground.Items;
 using Playground.Weapons;
-using Playground.Weapons.SpecialAttacks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 //using Photon.Pun;
 //using UnityEditor.SceneManagement;
 
@@ -13,6 +15,8 @@ namespace Playground.Characters.Heros
     /// </summary>
     public abstract class Hero : Character
     {
+        
+        protected GameObject GameOver;//active when the player die
         /// <summary>
         /// The name of the hero (all types grouped in <c>HerosNames</c> enum)
         /// </summary>
@@ -22,11 +26,6 @@ namespace Playground.Characters.Heros
         /// The secondaryWeapon weapon (the primaryWeapon weappon is setted up in <c>Character</c> class)
         /// </summary>
         protected Weapon secondaryWeapon;
-        
-        /// <summary>
-        /// The special attack of the hero
-        /// </summary>
-        protected SpecialAttack specialAttack;
         
         /// <summary>
         /// Inventory of the hero during the game
@@ -64,8 +63,6 @@ namespace Playground.Characters.Heros
             return true;
         }
 
-        public Weapon SpecialAttack => specialAttack;
-
         public Weapon SecondHand
         {
             get => secondaryWeapon;
@@ -79,7 +76,7 @@ namespace Playground.Characters.Heros
         }
 
         protected Hero(WeaponsNames primaryWeapon, int maxPv, int level, HerosNames heroName, WeaponsNames secondaryWeapon,
-            SpecialAttacksNames specialAttack, List<Item> defaultItems = null) : base(maxPv, level)
+            List<Item> defaultItems = null) : base(maxPv, level)
         {
             this.heroName = heroName;
             inventory = new List<Item>();
@@ -96,10 +93,10 @@ namespace Playground.Characters.Heros
         {
             base.Awake();
             name = heroName.ToString();
+            GameOver = GameObject.Find("GameMaster/MenuCanvas/GameOverScreen");//permet de pointer vers l'écran gameover
             //secondaryWeapon = gameObject.AddComponent<Weapon>();
             //specialAttack = gameObject.AddComponent<SpecialAttack>();
         }
-
 
         public override void Update()
         {
@@ -109,13 +106,10 @@ namespace Playground.Characters.Heros
                 horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
                 if (horizontalMove != 0)
-                {
                     animator.SetBool("IsRunning", true);
-                }
+                
                 else
-                {
                     animator.SetBool("IsRunning", false);
-                }
 
                 if (Input.GetButtonDown("Jump"))
                 {
@@ -124,17 +118,14 @@ namespace Playground.Characters.Heros
                 }
 
                 if (Input.GetButtonDown("SwitchGravity"))
-                {
                     switchGravity = true;
-                }
 
-                //if (Input.GetButtonDown("PrimaryWeapon"))
-                //    UsePrimaryWeapon = true;
+                if (Input.GetButtonDown("PrimaryWeapon"))
+                    UsePrimaryWeapon = true;
+                
+                if (Input.GetButtonDown("SecondaryWeapon"))
+                    UseSecondaryWeapon = true;
             }
-            
-            if (Input.GetButtonDown("SecondaryWeapon"))
-                UseSecondaryWeapon = true;
-            
         }
 
 
@@ -144,9 +135,26 @@ namespace Playground.Characters.Heros
             // Shooting with secondaryWeapon
             if (UseSecondaryWeapon)
             {
-                secondaryWeapon.Shooted();
+                secondaryWeapon.TryShoot();
                 UseSecondaryWeapon = false;
             }
+        }
+
+        protected override IEnumerator TheDeathIsComing()
+        {
+            yield return base.TheDeathIsComing();
+            if (Physics2D.gravity.y > 0)
+            {
+                Debug.Log("cocuou");
+                Physics2D.gravity *= -1;
+            }
+            GameOver.SetActive(true);
+        }
+
+        public IEnumerator OnBecameInvisible()
+        {
+            yield return TheDeathIsComing();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

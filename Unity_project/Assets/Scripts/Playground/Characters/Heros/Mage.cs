@@ -1,5 +1,4 @@
 using Playground.Weapons;
-using Playground.Weapons.SpecialAttacks;
 
 namespace Playground.Characters.Heros
 {
@@ -9,7 +8,7 @@ namespace Playground.Characters.Heros
     public class Mage : Hero
     {
         public Mage() : base(WeaponsNames.Stick, 1300, 1,
-            HerosNames.Mage, WeaponsNames.Stick, SpecialAttacksNames.LifeStealer)
+            HerosNames.Mage, WeaponsNames.Stick)
         {
         }
     }

@@ -1,5 +1,4 @@
 using Playground.Weapons;
-using Playground.Weapons.SpecialAttacks;
 
 namespace Playground.Characters.Heros
 {
@@ -9,7 +8,7 @@ namespace Playground.Characters.Heros
     public class Kitsune : Hero
     {
         public Kitsune() : base(WeaponsNames.Stick, 1500, 1,
-            HerosNames.Kitsune, WeaponsNames.Stick, SpecialAttacksNames.Resurgence)
+            HerosNames.Kitsune, WeaponsNames.Stick)
         {
         }
     }

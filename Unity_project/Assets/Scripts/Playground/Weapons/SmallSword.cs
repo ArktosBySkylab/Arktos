@@ -1,3 +1,5 @@
+using Playground.Characters;
+
 namespace Playground.Weapons
 {
     public class SmallSword : Weapon
@@ -6,7 +8,7 @@ namespace Playground.Weapons
 
         public override int Shooted ()
         {
-            nbUse--;
+            //nbUse--;
             return base.Shooted();
         }
     }

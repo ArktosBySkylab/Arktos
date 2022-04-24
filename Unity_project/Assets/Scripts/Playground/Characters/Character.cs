@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using Levels;
 using Playground.Characters.Heros;
@@ -17,7 +19,8 @@ namespace Playground.Characters
         protected int maxLevel = 10; // Arbitrary value
         protected int pv;
         protected int maxPv;
-        protected Weapon primaryWeapon; // The weapon in the first hand
+        protected GameObject primaryWeapon; // The weapon in the first hand
+        protected Weapon primaryWeaponScript;
 
         /// <summary>
         /// Variables used for Unity
@@ -26,6 +29,8 @@ namespace Playground.Characters
 
         [SerializeField] public float runSpeed = 50f;
         protected Animator animator;
+
+        public Animator Animator => animator;
 
         /// <summary>
         /// States variables
@@ -39,13 +44,21 @@ namespace Playground.Characters
         #region Setters & Getters
 
         // Setters and getters and associated functions
+        private void PvSetter(int value)
+        {
+            // The first condition is used to see if the result is out of bound
+            // The second one return 0 if the player loose pv, max weither
+            pv = value < 0 || value > maxPv ? value < 0 ? 0 : maxPv : value;
+            if (pv == 0)
+            {
+                TheDeathIsComing();
+            }
+        }
 
         public int Pv
         {
             get => pv;
-            // The first condition is used to see if the result is out of bound
-            // The second one return 0 if the player loose pv, max weither
-            set => pv = value < 0 || value > maxPv ? value < 0 ? 0 : maxPv : value;
+            set => PvSetter(value);
         }
 
         public int Portefolio
@@ -59,12 +72,6 @@ namespace Playground.Characters
         public void LevelUp()
         {
             this.level += 1;
-        }
-
-        public Weapon FirstHand
-        {
-            get => primaryWeapon;
-            set => primaryWeapon = value;
         }
 
         protected Character(int maxPv, int level)
@@ -85,7 +92,13 @@ namespace Playground.Characters
 
         protected virtual void Start() // Start and not awake bc there is an awake in the weapon
         {
-            primaryWeapon = gameObject.GetComponentInChildren<SmallSword>(); // gameObject.AddComponent<Weapon>();
+        }
+
+        public void SetupPrimatyWeapon(GameObject gameObject)
+        {
+            primaryWeapon = gameObject;
+            primaryWeaponScript = gameObject.GetComponent<Weapon>();
+            primaryWeaponScript.Owner = this;
         }
 
         /// <summary>
@@ -138,27 +151,27 @@ namespace Playground.Characters
             // Shooting
             if (UsePrimaryWeapon)
             {
-                primaryWeapon.TryShoot();
                 UsePrimaryWeapon = false;
+                primaryWeaponScript.TryShoot(); 
             }
-        }
-
-        public void OnBecameInvisible()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void OnTriggerEnter2D(Collider2D col)
         {
-            //GameMaster.PersonnalDebug("Trigger");
-
+            GameMaster.PersonnalDebug($"{name} triggered by {col.gameObject.name}");
             if (Enum.TryParse(col.gameObject.name, out WeaponsNames _))
             {
-                //Debug.Log(name + ": LOST PV -> " + pv);
                 Weapon weapon = col.gameObject.GetComponent<Weapon>();
-                //Debug.LogWarning(weapon.Shooted());
+                Debug.LogWarning(weapon.Shooted());
                 Pv -= weapon.Shooted();
+                Debug.Log(name + ": LOST PV -> " + pv);
             }
+        }
+
+        protected virtual IEnumerator TheDeathIsComing()
+        {
+            animator.SetBool("IsDying", true);
+            yield return new WaitForSeconds(1);
         }
 
         public void OnLanding()

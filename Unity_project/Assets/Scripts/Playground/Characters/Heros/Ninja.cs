@@ -1,5 +1,4 @@
 using Playground.Weapons;
-using Playground.Weapons.SpecialAttacks;
 
 namespace Playground.Characters.Heros
 {
@@ -9,7 +8,7 @@ namespace Playground.Characters.Heros
     public class Ninja : Hero
     {
         public Ninja() : base(WeaponsNames.Stick, 2000, 1,
-            HerosNames.Ninja, WeaponsNames.Stick, SpecialAttacksNames.ShurikenMaster)
+            HerosNames.Ninja, WeaponsNames.Stick)
         {
         }
     }
