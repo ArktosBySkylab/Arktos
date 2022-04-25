@@ -413,7 +413,7 @@ MonoBehaviour:
   initial_time: 0.3
   damage: 20
   attackPos: {fileID: 5433911794207420853}
-  attackRange: 0.5
+  attackRange: 1
 --- !u!114 &7141427438754530912
 MonoBehaviour:
   m_ObjectHideFlags: 0

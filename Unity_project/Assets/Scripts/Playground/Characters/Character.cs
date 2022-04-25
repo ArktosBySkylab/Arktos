@@ -189,7 +189,7 @@ namespace Playground.Characters
         {
             Debug.LogWarning("The death");
             animator.SetBool("IsDying", true);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSecondsRealtime(1);
         }
 
         public void OnLanding()
