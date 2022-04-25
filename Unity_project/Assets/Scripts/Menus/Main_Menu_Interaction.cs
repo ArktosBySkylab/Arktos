@@ -68,12 +68,15 @@ public class Main_Menu_Interaction : MonoBehaviour
     {
         switch (HerosName)// permet de covertir le string en type HerosNames
         {
-            case "kitsune":
-                Debug.Log("getCharactaireTypeHerosNames kitsune");
+            case "Kitsune":
+                Debug.Log("getCharactaireTypeHerosNames Kitsune");
                 return HerosNames.Kitsune;
             case "JojoTheKing":
                 Debug.Log("getCharactaireTypeHerosNames JojoTheKing");
                 return HerosNames.JojoTheKing;
+            case "Ian":
+                Debug.Log("getCharactaireTypeHerosNames Ian");
+                return HerosNames.Ian;
             default:
                 Debug.Log("getCharactaireTypeHerosNames default : kitsune");
                 return HerosNames.Kitsune;

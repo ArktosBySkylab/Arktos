@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: 
     guid: ccbfd81535ece57438b93cadb36c7048
   - enabled: 1
-    path: Assets/Scenes/mirza.unity
+    path: Assets/Scenes/mizar.unity
     guid: 98aac77e7596e83c288bbb671962143f
   m_configObjects: {}
