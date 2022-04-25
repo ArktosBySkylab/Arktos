@@ -155,7 +155,8 @@ namespace Playground.Characters.Heros
 
         public IEnumerator OnBecameInvisible()
         {
-            yield return TheDeathIsComing();
+            if (view.Owner == null || view.IsMine)
+                yield return TheDeathIsComing();
         }
     }
 }
