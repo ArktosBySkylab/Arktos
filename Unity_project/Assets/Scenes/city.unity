@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78084cb677af4b0ba30555917ae28eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: mirza
+  scene: mizar
 --- !u!58 &161814355
 CircleCollider2D:
   m_ObjectHideFlags: 0

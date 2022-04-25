@@ -298,11 +298,11 @@
  <Reference Include="Photon3Unity3D">
  <HintPath>/home/greg/epita/Arktos/Unity_project/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll</HintPath>
  </Reference>
- <Reference Include="log4netPlastic">
- <HintPath>/home/greg/epita/Arktos/Unity_project/Library/PackageCache/com.unity.collab-proxy@1.15.13/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
- </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
  <HintPath>/home/greg/epita/Arktos/Unity_project/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ </Reference>
+ <Reference Include="log4netPlastic">
+ <HintPath>/home/greg/epita/Arktos/Unity_project/Library/PackageCache/com.unity.collab-proxy@1.15.13/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/home/greg/epita/Arktos/Unity_project/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -764,6 +764,10 @@
       <Project>{f5c875c0-68ee-c970-56fb-be9b1fa32449}</Project>
       <Name>PhotonChat</Name>
     </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{fa8b786c-d3d5-1b15-ca60-37dad97dcd89}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
       <Project>{5caa56cd-dd6c-877c-d141-0519d262dcc0}</Project>
       <Name>PhotonUnityNetworking.Editor</Name>
@@ -788,9 +792,17 @@
       <Project>{381a1d63-8169-b961-41a1-ffce03ef9587}</Project>
       <Name>PhotonUnityNetworking</Name>
     </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{029afef3-0377-91ad-bdfe-09b34651c36f}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
       <Project>{8dc83eff-aa15-e63f-6cb7-dc20c9e4917b}</Project>
       <Name>PhotonUnityNetworking.Demos</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{d824fedd-f381-69ca-ce78-773c71eb134d}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
     <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
       <Project>{95419219-8f4e-2f5d-cd12-b5713dafcc1a}</Project>
@@ -799,18 +811,6 @@
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
       <Project>{bad82805-5397-f933-ab1a-d721bfe08cb1}</Project>
       <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{d824fedd-f381-69ca-ce78-773c71eb134d}</Project>
-      <Name>AstarPathfindingProjectEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="AstarPathfindingProject.csproj">
-      <Project>{029afef3-0377-91ad-bdfe-09b34651c36f}</Project>
-      <Name>AstarPathfindingProject</Name>
-    </ProjectReference>
-    <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{fa8b786c-d3d5-1b15-ca60-37dad97dcd89}</Project>
-      <Name>PackageToolsEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

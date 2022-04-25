@@ -124,6 +124,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
+     <Compile Include="Assets\Scripts\Playground\Characters\Monsters\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\Stick.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
@@ -143,7 +144,6 @@
      <Compile Include="Assets\Scripts\Menus\Main_Menu_Interaction.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\HerosNames.cs" />
-     <Compile Include="Assets\Scripts\Playground\Characters\Monsters\EnemyAI.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -381,6 +381,9 @@
  <Reference Include="Unity.Sysroot.Linux_x86_64">
  <HintPath>/home/greg/epita/Arktos/Unity_project/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
  </Reference>
+ <Reference Include="PackageToolsEditor">
+ <HintPath>/home/greg/epita/Arktos/Unity_project/Library/ScriptAssemblies/PackageToolsEditor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.IK.Editor">
  <HintPath>/home/greg/epita/Arktos/Unity_project/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
  </Reference>
@@ -425,6 +428,9 @@
  </Reference>
  <Reference Include="Unity.Mathematics.Editor">
  <HintPath>/home/greg/epita/Arktos/Unity_project/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="AstarPathfindingProjectEditor">
+ <HintPath>/home/greg/epita/Arktos/Unity_project/Library/ScriptAssemblies/AstarPathfindingProjectEditor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.SpriteShape.Editor">
  <HintPath>/home/greg/epita/Arktos/Unity_project/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
@@ -846,13 +852,13 @@
       <Project>{381a1d63-8169-b961-41a1-ffce03ef9587}</Project>
       <Name>PhotonUnityNetworking</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{8dc83eff-aa15-e63f-6cb7-dc20c9e4917b}</Project>
-      <Name>PhotonUnityNetworking.Demos</Name>
-    </ProjectReference>
     <ProjectReference Include="AstarPathfindingProject.csproj">
       <Project>{029afef3-0377-91ad-bdfe-09b34651c36f}</Project>
       <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
+      <Project>{8dc83eff-aa15-e63f-6cb7-dc20c9e4917b}</Project>
+      <Name>PhotonUnityNetworking.Demos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
