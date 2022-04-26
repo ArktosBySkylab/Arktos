@@ -20,6 +20,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     protected string HerosName = "kitsune";// our default choise
     protected string WeaponsName = "SmallSword";// default (and only) choise
     private Image lastImage;
+    private Image lastWeaponImage;
     void Start()
     {
         dataManager = FindObjectOfType<LoadLevelInfos>();
@@ -66,12 +67,9 @@ public class Main_Menu_Interaction : MonoBehaviour
 
     public void markSelectedHero(Image image)
     {
-        Debug.Log(lastImage);
         if (lastImage != null)
         {
-            Debug.Log("hello");
             lastImage.enabled = false;
-            Debug.Log(lastImage.enabled);
         }
         image.enabled = true;
         lastImage = image;
@@ -81,7 +79,15 @@ public class Main_Menu_Interaction : MonoBehaviour
     {
         WeaponsName = weaponsname.text;
     }
-    
+    public void markSelectedWeapon(Image Weaponimage)
+        {
+            if (lastWeaponImage != null)
+            {
+                lastWeaponImage.enabled = false;
+            }
+            Weaponimage.enabled = true;
+            lastImage = Weaponimage;
+        }
     public HerosNames getCharactaireTypeHerosNames()//permet d'obtenir le type Herosname du personnage selectionné
     {
         switch (HerosName)// permet de covertir le string en type HerosNames
