@@ -1,20 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using System.Runtime.CompilerServices;
 using Levels.DataManager;
 using Playground.Characters.Heros;
 using Playground.Weapons;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class Main_Menu_Interaction : MonoBehaviour
 {
     protected LoadLevelInfos dataManager;
     protected string HerosName = "kitsune";// our default choise
     protected string WeaponsName = "SmallSword";// default (and only) choise
+    private Image lastImage;
     void Start()
     {
         dataManager = FindObjectOfType<LoadLevelInfos>();
@@ -58,13 +63,26 @@ public class Main_Menu_Interaction : MonoBehaviour
     {
         HerosName = herosname.text;
     }
+
+    public void markSelectedHero(Image image)
+    {
+        Debug.Log(lastImage);
+        if (lastImage != null)
+        {
+            Debug.Log("hello");
+            lastImage.enabled = false;
+            Debug.Log(lastImage.enabled);
+        }
+        image.enabled = true;
+        lastImage = image;
+    }
+    
     public void getWeaponsName(TextMeshProUGUI weaponsname)//stoke dans name le nom du personnage selectionné à chaque nouveau choix
     {
         WeaponsName = weaponsname.text;
     }
     
     public HerosNames getCharactaireTypeHerosNames()//permet d'obtenir le type Herosname du personnage selectionné
-        //j'ai pas trouvé mieux qu'un switch case 
     {
         switch (HerosName)// permet de covertir le string en type HerosNames
         {
