@@ -19,7 +19,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     protected LoadLevelInfos dataManager;
     protected string HerosName = "kitsune";// our default choise
     protected string WeaponsName = "SmallSword";// default (and only) choise
-    private Image lastImage;
+    private Image lastHeroImage;
     private Image lastWeaponImage;
     void Start()
     {
@@ -31,6 +31,16 @@ public class Main_Menu_Interaction : MonoBehaviour
             
             if (dataManager is null)
                 Debug.LogError("DataManager not found");
+            else
+            {
+                Debug.Log("before save");
+                Debug.Log(HerosName);
+                Debug.Log(WeaponsName);
+                GetSavedInformation();
+                Debug.Log("after save");
+                Debug.Log(HerosName);
+                Debug.Log(WeaponsName);
+            }
         }
     }
     
@@ -47,6 +57,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     {
         dataManager.hero = getCharactaireTypeHerosNames();
         dataManager.firstHand = getWeaponTypeWeponNames();
+        saveInformation(HerosName,WeaponsName);
         if (dataManager.multiplayer)
         {
             SceneManager.LoadScene("Loading");
@@ -55,6 +66,20 @@ public class Main_Menu_Interaction : MonoBehaviour
         {
             SceneManager.LoadScene("Assets/Scenes/city.unity");
         }
+    }
+
+    public void saveInformation(string herosName, string weaponsName)
+    {
+        Debug.Log("have been saved");
+        Debug.Log(herosName);
+        Debug.Log(weaponsName);
+        PlayerPrefs.SetString("Character",herosName);
+        PlayerPrefs.SetString("Weapon",weaponsName);
+    }
+    public void GetSavedInformation()
+    {
+        HerosName = PlayerPrefs.GetString("Character");
+        WeaponsName = PlayerPrefs.GetString("Weapon");
     }
     public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
     {
@@ -67,12 +92,12 @@ public class Main_Menu_Interaction : MonoBehaviour
 
     public void markSelectedHero(Image image)
     {
-        if (lastImage != null)
+        if (lastHeroImage != null)
         {
-            lastImage.enabled = false;
+            lastHeroImage.enabled = false;
         }
         image.enabled = true;
-        lastImage = image;
+        lastHeroImage = image;
     }
     
     public void getWeaponsName(TextMeshProUGUI weaponsname)//stoke dans name le nom du personnage selectionné à chaque nouveau choix
@@ -86,7 +111,7 @@ public class Main_Menu_Interaction : MonoBehaviour
                 lastWeaponImage.enabled = false;
             }
             Weaponimage.enabled = true;
-            lastImage = Weaponimage;
+            lastWeaponImage = Weaponimage;
         }
     public HerosNames getCharactaireTypeHerosNames()//permet d'obtenir le type Herosname du personnage selectionné
     {
