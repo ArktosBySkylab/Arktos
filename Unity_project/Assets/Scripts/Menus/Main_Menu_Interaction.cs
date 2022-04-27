@@ -17,10 +17,14 @@ using Image = UnityEngine.UI.Image;
 public class Main_Menu_Interaction : MonoBehaviour
 {
     protected LoadLevelInfos dataManager;
-    protected string HerosName = "kitsune";// our default choise
-    protected string WeaponsName = "SmallSword";// default (and only) choise
-    private Image lastHeroImage;
-    private Image lastWeaponImage;
+    //information to save
+    protected string HerosName;
+    protected string WeaponsName;
+    protected string LevelsName;
+    protected float SoundsLevel; 
+    private Image lastHeroImage;// use for character selection
+    private Image lastWeaponImage;// use for weapon selection
+    
     void Start()
     {
         dataManager = FindObjectOfType<LoadLevelInfos>();
@@ -33,13 +37,7 @@ public class Main_Menu_Interaction : MonoBehaviour
                 Debug.LogError("DataManager not found");
             else
             {
-                Debug.Log("before save");
-                Debug.Log(HerosName);
-                Debug.Log(WeaponsName);
                 GetSavedInformation();
-                Debug.Log("after save");
-                Debug.Log(HerosName);
-                Debug.Log(WeaponsName);
             }
         }
     }
@@ -55,35 +53,46 @@ public class Main_Menu_Interaction : MonoBehaviour
 
     public void StartGame()
     {
+        dataManager.LevelsName = LevelsName;
         dataManager.hero = getCharactaireTypeHerosNames();
         dataManager.firstHand = getWeaponTypeWeponNames();
-        saveInformation(HerosName,WeaponsName);
+        saveInformation();
         if (dataManager.multiplayer)
         {
             SceneManager.LoadScene("Loading");
         }
         else
         {
-            SceneManager.LoadScene("Assets/Scenes/city.unity");
+            SceneManager.LoadScene("Assets/Scenes/"+LevelsName+".unity");
         }
     }
 
-    public void saveInformation(string herosName, string weaponsName)
+    public void saveInformation()
     {
-        Debug.Log("have been saved");
-        Debug.Log(herosName);
-        Debug.Log(weaponsName);
-        PlayerPrefs.SetString("Character",herosName);
-        PlayerPrefs.SetString("Weapon",weaponsName);
+        PlayerPrefs.SetString("Character",HerosName);
+        PlayerPrefs.SetString("Weapon",WeaponsName);
+        PlayerPrefs.SetString("level",LevelsName);
+        PlayerPrefs.SetFloat("sound",SoundsLevel);
     }
     public void GetSavedInformation()
     {
-        HerosName = PlayerPrefs.GetString("Character");
-        WeaponsName = PlayerPrefs.GetString("Weapon");
+        HerosName = PlayerPrefs.GetString("Character","Kitsune");
+        WeaponsName = PlayerPrefs.GetString("Weapon","SmallSword");
+        LevelsName = PlayerPrefs.GetString("level","test");
+        SoundsLevel = PlayerPrefs.GetFloat("sound",0.0f);
+    }
+    public void resetSavedInformation()
+    {
+        PlayerPrefs.DeleteAll();
     }
     public void closegame()//ne marche pas sur Unity (uniquement quand le jeu et lancé)
     {
+        saveInformation();
         Application.Quit();
+    }
+    public void getLevelsName(TextMeshProUGUI levelsname)//stoke dans name le nom du personnage selectionné à chaque nouveau choix
+    {
+        LevelsName = levelsname.text;
     }
     public void getHerosName(TextMeshProUGUI herosname)//stoke dans name le nom du personnage selectionné à chaque nouveau choix
     {
@@ -131,8 +140,8 @@ public class Main_Menu_Interaction : MonoBehaviour
                 return HerosNames.Kitsune;
         }
         
-    }public WeaponsNames getWeaponTypeWeponNames()//permet d'obtenir le type Herosname du personnage selectionné
-        //j'ai pas trouvé mieux qu'un switch case 
+    }
+    public WeaponsNames getWeaponTypeWeponNames()//permet d'obtenir le type Herosname du personnage selectionné
     {
         switch (WeaponsName)// permet de covertir le string en type HerosNames
         {
