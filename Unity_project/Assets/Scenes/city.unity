@@ -2668,10 +2668,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplayer: 0
-  hero: 2
+  hero: 9
   firstHand: 1
   secondHand: 1
-  debugOption: 1
+  debugOption: 0
 --- !u!4 &1804417359
 Transform:
   m_ObjectHideFlags: 0
