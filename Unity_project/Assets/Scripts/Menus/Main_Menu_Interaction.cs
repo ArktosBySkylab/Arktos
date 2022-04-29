@@ -24,9 +24,16 @@ public class Main_Menu_Interaction : MonoBehaviour
     protected float SoundsLevel; 
     private Image lastHeroImage;// use for character selection
     private Image lastWeaponImage;// use for weapon selection
-    
+    void Awake()//peremt d'afficher au lancement du jeu le personnage choisit et son arme
+        {
+            GetSavedInformation();
+            markSelectedHero(GameObject.Find("CharacterSelection/CharacterScroll/ButtonListViewPort/ButtonListContent/" + HerosName).GetComponent<Image>());
+            markSelectedWeapon(GameObject.Find("CharacterSelection/WeaponScroll/ButtonListViewPort/ButtonListContent/" + WeaponsName).GetComponent<Image>());
+            GameObject.Find("CharacterSelection").SetActive(false);
+        }
     void Start()
     {
+        
         dataManager = FindObjectOfType<LoadLevelInfos>();
         if (dataManager is null)
         {
@@ -35,10 +42,6 @@ public class Main_Menu_Interaction : MonoBehaviour
             
             if (dataManager is null)
                 Debug.LogError("DataManager not found");
-            else
-            {
-                GetSavedInformation();
-            }
         }
     }
     
