@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 553585251808983918}
   - component: {fileID: 925195675810267961}
   - component: {fileID: 5110467399399794685}
-  - component: {fileID: 4771984056051225218}
+  - component: {fileID: 4386283928493146756}
   m_Layer: 0
   m_Name: Ian
   m_TagString: Heros
@@ -338,7 +338,19 @@ MonoBehaviour:
   m_CrouchDisableCollider: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4386283928493146756}
+        m_TargetAssemblyTypeName: Playground.Characters.Character, Assembly-CSharp
+        m_MethodName: OnLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -521,7 +533,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.29583812, y: 0.00000023841858}
   m_Size: {x: 2.8918247, y: 5.564585}
   m_Direction: 0
---- !u!114 &4771984056051225218
+--- !u!114 &4386283928493146756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -530,7 +542,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2556458881450238240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ac41d23d38833d1ca41159de3140e7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cd62d231053422d94e4e930e4faf37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6408456786733220884}
@@ -559,7 +571,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931076591879843076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.86, z: 0}
+  m_LocalPosition: {x: 0, y: -2.72, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 7614514637497785889}
