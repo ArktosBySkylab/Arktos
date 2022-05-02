@@ -408,6 +408,11 @@ namespace Editor
             beginJump2EndJump.AddCondition(AnimatorConditionMode.If, 0, "IsJumping");
             beginJump2EndJump.AddCondition(AnimatorConditionMode.IfNot, 0, "BeginJump");
             
+            AnimatorStateTransition beginJump2Idle = beginJump.AddTransition(idle); //run.AddExitTransition();
+            beginJump2Idle.duration = 0;
+            beginJump2Idle.hasExitTime = false;
+            beginJump2Idle.AddCondition(AnimatorConditionMode.IfNot, 0, "IsJumping");
+
             AnimatorStateTransition any2Death = stateMachine.AddAnyStateTransition(death);
             any2Death.duration = 0;
             any2Death.hasExitTime = false;
