@@ -16,6 +16,7 @@ namespace Levels.DataManager
         /// <summary>
         /// Store here the name of the chosen hero to play
         /// </summary>
+        public string LevelsName;
         public HerosNames hero;
 
         public WeaponsNames firstHand;

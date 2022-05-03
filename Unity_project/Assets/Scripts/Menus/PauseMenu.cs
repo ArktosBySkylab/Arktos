@@ -9,7 +9,6 @@ using Levels.DataManager;
 public class PauseMenu : MonoBehaviour
 {
     public static bool IsGamePaused = false;
-    public static bool Gamelaunched = false;
 
     public GameObject pauseMenu;
     public GameObject SettingMenu;
@@ -17,10 +16,10 @@ public class PauseMenu : MonoBehaviour
 
     void Awake()
     {
-        // Load all infos of the level for this player
-        NotMulti = !FindObjectOfType<LoadLevelInfos>().multiplayer;
+        // Load if this players is only or not
+        LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+        NotMulti = !infos.multiplayer;
         Time.timeScale = 1;
-
     }
 
     void Update()
