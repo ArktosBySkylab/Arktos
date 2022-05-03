@@ -18,11 +18,12 @@ namespace Playground.Weapons
         protected int nbUse;
         protected Character owner;
         public Animator animator;
+        protected bool activated;
 
         public Character Owner
         {
             get => owner;
-            set => owner = owner ? owner : value;
+            set => owner = owner ?? value;
         }
 
         public int Damage => damage;
@@ -44,8 +45,9 @@ namespace Playground.Weapons
             this.type = type;
         }
 
-        public void Awake() 
+        public void Awake()
         {
+            activated = false;
             name = _name.ToString();
             animator = gameObject.GetComponent<Animator>();
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -54,6 +56,7 @@ namespace Playground.Weapons
 
         public void ToogleActivation()
         {
+            activated ^= true;
             gameObject.GetComponent<SpriteRenderer>().enabled ^= true;
             gameObject.GetComponent<CapsuleCollider2D>().enabled ^= true;
         }
@@ -64,9 +67,10 @@ namespace Playground.Weapons
         /// <remarks>Have to activate the animations</remarks>
         public virtual bool TryShoot()
         {
-            if(nbUse == 0 || owner.Animator.GetInteger("IsFighting") != 0)
+            if(nbUse == 0 || activated)
                 return false;
 
+            Debug.Log("Not Fighting");
             ToogleActivation();
             animator.SetInteger("IsFighting", 1);
             owner.Animator.SetInteger("IsFighting", 1);
