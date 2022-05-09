@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.UIElements;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -12,11 +14,9 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Physics")]
     public float speed = 200f;
-    public float jumpforce = 1250f;
-    public float nextWaypointDistance = 3f;
-    public float jumpNodeHeightRequirement = 0.8f;
-    //public float jumpModifier = 0.3f;
+    public float nextWaypointDistance = 3f; 
     public float jumpCheckOffset = 0.1f;
+    private int waitJump = 0;
 
     [Header("Custom Behavior")]
     public bool followEnabled = true;
@@ -34,6 +34,7 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Heros").transform;
+        
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
 
@@ -77,11 +78,29 @@ public class EnemyAI : MonoBehaviour
         // Jump
         if (jumpEnabled && isGrounded)
         {
-            if ((int)transform.localPosition.y < (int) target.position.y)
+            if (transform.position.y +0.2f< target.position.y  && waitJump <=0)
             {
-  //              Debug.Log(transform.localPosition.y);
-//                Debug.Log(target.position.y);
-                rb.AddForce(Vector2.up * jumpforce );
+                if (transform.position.x < target.position.x)
+                {
+                   
+                    Task task = Task.Delay(1);
+                    rb.AddForce(Vector2.up * speed );
+                    task.Wait(1);
+                    rb.AddForce(Vector2.left*100);
+                    waitJump = 50;
+                }
+                else
+                {
+                    Task task = Task.Delay(1);
+                    rb.AddForce(Vector2.up * speed );
+                    task.Wait(1);
+                    rb.AddForce(Vector2.right*100);
+                    waitJump = 50;
+                }
+            }
+            else
+            {
+                waitJump--;
             }
         }
 
