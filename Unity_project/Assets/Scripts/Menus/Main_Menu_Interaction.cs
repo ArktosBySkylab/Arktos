@@ -138,6 +138,12 @@ public class Main_Menu_Interaction : MonoBehaviour
             case "Ian":
                 Debug.Log("getCharactaireTypeHerosNames Ian");
                 return HerosNames.Ian;
+            case "Drow":
+                Debug.Log("getCharactaireTypeHerosNames Drow");
+                return HerosNames.Drow;
+            case "Max":
+                Debug.Log("getCharactaireTypeHerosNames Max");
+                return HerosNames.Max;
             default:
                 Debug.Log("getCharactaireTypeHerosNames default : kitsune");
                 return HerosNames.Kitsune;
