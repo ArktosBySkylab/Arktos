@@ -93,6 +93,7 @@ public class Main_Menu_Interaction : MonoBehaviour
         saveInformation();
         Application.Quit();
     }
+    
     public void getLevelsName(TextMeshProUGUI levelsname)//stoke dans name le nom du personnage selectionné à chaque nouveau choix
     {
         LevelsName = levelsname.text;
