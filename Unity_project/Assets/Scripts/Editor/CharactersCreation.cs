@@ -138,6 +138,15 @@ namespace Editor
                         break;
                     
                     case HerosNames.Ian:
+                        gameObject.AddComponent<Ian>();
+                        gameObject.GetComponent<Ian>().controller = gameObject.GetComponent<CharacterController2D>();
+                        break;
+                    
+                    case HerosNames.Max:
+                        gameObject.AddComponent<Max>();
+                        gameObject.GetComponent<Max>().controller = gameObject.GetComponent<CharacterController2D>();
+                        break;
+                    
                     case HerosNames.JojoTheKing:
                         gameObject.AddComponent<JojoTheKing>();
                         gameObject.GetComponent<JojoTheKing>().controller =
