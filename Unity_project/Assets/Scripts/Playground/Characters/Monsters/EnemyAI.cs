@@ -7,6 +7,15 @@ using UnityEngine.UIElements;
 
 public class EnemyAI : MonoBehaviour
 {
+    //TODO 
+    //rendre les deplacements fluides 
+    //mettre une logique dans la physique utilise car la je comprend pas 
+    //faire monter les monstres sur les plateformes 
+    // update les conditions d'attaques 
+
+    //MULTI ONLY 
+    // faire switch la cible du monstre en fonction de la postion du joueur le +proche
+
     [Header("Pathfinding")]
     public Transform target;
     public float activateDistance = 50f;
@@ -19,7 +28,6 @@ public class EnemyAI : MonoBehaviour
     private int waitJump = 0;
 
     [Header("Custom Behavior")]
-    public bool followEnabled = true;
     public bool jumpEnabled = true;
     public bool directionLookEnabled = true;
 
@@ -31,16 +39,38 @@ public class EnemyAI : MonoBehaviour
 
     public void Start()
     {
+        // le seeker c'est un composante du package A* 
         seeker = GetComponent<Seeker>();
+        // j'ai pas reussi a reutiliser le CC2D ducoup je recupere le rigidbody pour faire 
+        // faire bouger le monstre 
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Heros").transform;
         
+        target = GameObject.FindGameObjectWithTag("Heros").transform;
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
-
+    
+    
+    
+    // bool pour activer/desactiver le monstre en fonction de la distance avec le joueur 
+    private bool TargetInDistance()
+    {
+        return Vector2.Distance(transform.position, target.transform.position) < activateDistance;
+    }
+    
+    
+    //verification du path 
+    private void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
+        }
+    }
+    
     private void FixedUpdate()
     {
-        if (TargetInDistance() && followEnabled)
+        if (TargetInDistance())
         {
             PathFollow();
         }
@@ -48,8 +78,10 @@ public class EnemyAI : MonoBehaviour
 
     private void UpdatePath()
     {
-        if (followEnabled && TargetInDistance() && seeker.IsDone())
+        if (TargetInDistance() && seeker.IsDone())
         {
+            //calcule du path entre les positions du monstres 
+            // on passe la methode OnPathComplete en parametre pour verifier l'existance d'un path,
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
     }
@@ -61,17 +93,20 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        // Reached end of path
+        // condition pour l'arret du monstre qd il est a proximite du joueur 
         if (currentWaypoint >= path.vectorPath.Count)
         {
             return;
         }
 
-        // See if colliding with anything
+        // verfication de si le joueur est bien sur le soleuh 
         Vector3 startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset);
         isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);
+        //
         
-        // Direction Calculation
+        
+        
+        // calcul de la direction // very useful comme changement xd 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
@@ -107,14 +142,15 @@ public class EnemyAI : MonoBehaviour
         // Movement
         rb.AddForce(force);
 
-        // Next Waypoint
+        // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max 
+        // -> a modifier avec le calcule de la distance directement prcq sert a rien 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
 
-        // Direction Graphics Handling
+        // flip le monstre pour qu'il regarde du bon cote 
         if (directionLookEnabled)
         {
             if (rb.velocity.x > 0.05f)
@@ -125,20 +161,6 @@ public class EnemyAI : MonoBehaviour
             {
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
-        }
-    }
-
-    private bool TargetInDistance()
-    {
-        return Vector2.Distance(transform.position, target.transform.position) < activateDistance;
-    }
-
-    private void OnPathComplete(Path p)
-    {
-        if (!p.error)
-        {
-            path = p;
-            currentWaypoint = 0;
         }
     }
 }
