@@ -10,7 +10,13 @@ namespace Levels
 
         void OnTriggerEnter2D(Collider2D obj)
         {
-            SceneManager.LoadScene(scene);
+            if (obj.CompareTag("Heros"))
+            {
+                if (Physics2D.gravity.y > 0)
+                    Physics2D.gravity = -Physics2D.gravity;
+
+                SceneManager.LoadScene(scene);
+            }
         }
 
     }
