@@ -138,6 +138,15 @@ namespace Editor
                         break;
                     
                     case HerosNames.Ian:
+                        gameObject.AddComponent<Ian>();
+                        gameObject.GetComponent<Ian>().controller = gameObject.GetComponent<CharacterController2D>();
+                        break;
+                    
+                    case HerosNames.Max:
+                        gameObject.AddComponent<Max>();
+                        gameObject.GetComponent<Max>().controller = gameObject.GetComponent<CharacterController2D>();
+                        break;
+                    
                     case HerosNames.JojoTheKing:
                         gameObject.AddComponent<JojoTheKing>();
                         gameObject.GetComponent<JojoTheKing>().controller =
@@ -408,6 +417,11 @@ namespace Editor
             beginJump2EndJump.AddCondition(AnimatorConditionMode.If, 0, "IsJumping");
             beginJump2EndJump.AddCondition(AnimatorConditionMode.IfNot, 0, "BeginJump");
             
+            AnimatorStateTransition beginJump2Idle = beginJump.AddTransition(idle); //run.AddExitTransition();
+            beginJump2Idle.duration = 0;
+            beginJump2Idle.hasExitTime = false;
+            beginJump2Idle.AddCondition(AnimatorConditionMode.IfNot, 0, "IsJumping");
+
             AnimatorStateTransition any2Death = stateMachine.AddAnyStateTransition(death);
             any2Death.duration = 0;
             any2Death.hasExitTime = false;
