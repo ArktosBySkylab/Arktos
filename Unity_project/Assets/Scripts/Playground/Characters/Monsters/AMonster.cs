@@ -145,7 +145,7 @@ namespace Playground.Characters.Monsters
              float val_y = rb.position.x + (Vector2.up * 1000 * 1.5f).x;
              if (jumpEnabled && isGrounded)
              {
-                 if (target.position.y>transform.position.y && waitJump <=0)
+                 if (target.position.y>transform.position.y+0.5f && waitJump <=0)
                  {
                      
                      rb.AddForce(Vector2.up * 1000*1.5f);
