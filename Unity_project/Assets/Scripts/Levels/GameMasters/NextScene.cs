@@ -18,7 +18,6 @@ namespace Levels
                 SceneManager.LoadScene(scene);
             }
         }
-
     }
 }
 
