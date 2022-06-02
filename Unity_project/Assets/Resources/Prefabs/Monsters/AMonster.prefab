@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 3700205650943015782}
   - component: {fileID: 352181050442479713}
   - component: {fileID: 6138585187260428735}
-  - component: {fileID: 7141427438754530912}
   - component: {fileID: 6565179673672200240}
   m_Layer: 0
   m_Name: AMonster
@@ -406,37 +405,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1710089755809182783}
-  runSpeed: 100
-  speed: 5
+  runSpeed: 5
+  speed: 120
   target: {fileID: 1374398808491168007, guid: a96063400a7ff384bac044775efef2f0, type: 3}
   minimumDistance: 0.05
   initial_time: 0.3
   damage: 20
   attackPos: {fileID: 5433911794207420853}
   attackRange: 1
---- !u!114 &7141427438754530912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7155594802245520071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62127af1c70338449b1d7cab7939bd7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
   activateDistance: 50
   pathUpdateSeconds: 0.5
-  speed: 1000
-  jumpforce: 2500
   nextWaypointDistance: 3
-  jumpNodeHeightRequirement: 0.9
   jumpCheckOffset: 0.1
-  followEnabled: 1
-  jumpEnabled: 1
-  directionLookEnabled: 1
 --- !u!114 &6565179673672200240
 MonoBehaviour:
   m_ObjectHideFlags: 0
