@@ -184,7 +184,7 @@ namespace Playground.Characters
 				m_NormalGravity ^= true; // Switch the boolean
 				return true;
 			}
-
+			
 			return false;
 		}
 

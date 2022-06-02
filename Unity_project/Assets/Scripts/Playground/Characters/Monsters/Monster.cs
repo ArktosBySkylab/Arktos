@@ -7,9 +7,10 @@ namespace Playground.Characters.Monsters
 {
     public abstract class Monster : Character
     {
+        //pour modifier la vitesse des monstres veuillez modifier direct via l'IA
         public float speed;
         
-        public Transform target;
+        private Transform target;
         
         public float minimumDistance;
         

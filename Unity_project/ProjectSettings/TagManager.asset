@@ -9,6 +9,7 @@ TagManager:
   - Heros
   - Monsters
   - Weapons
+  - EnableJump
   layers:
   - Default
   - TransparentFX
