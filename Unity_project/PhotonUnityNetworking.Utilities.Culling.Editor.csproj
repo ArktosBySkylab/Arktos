@@ -55,6 +55,7 @@
      <Compile Include="Assets\Photon\PhotonUnityNetworking\UtilityScripts\Culling\Editor\CullAreaEditor.cs" />
      <None Include="Assets\Photon\PhotonUnityNetworking\UtilityScripts\Culling\Editor\PhotonUnityNetworking.Utilities.Culling.Editor.asmdef" />
  <Reference Include="UnityEngine">
+
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">

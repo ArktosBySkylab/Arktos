@@ -82,6 +82,7 @@
      <Compile Include="Assets\Photon\PhotonUnityNetworking\UtilityScripts\PhotonPlayer\PhotonTeamsManager.cs" />
      <None Include="Assets\Photon\PhotonUnityNetworking\UtilityScripts\PhotonUnityNetworking.Utilities.asmdef" />
  <Reference Include="UnityEngine">
+
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
