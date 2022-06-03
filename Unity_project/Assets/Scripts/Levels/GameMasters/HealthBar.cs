@@ -9,11 +9,8 @@ public class HealthBar : MonoBehaviour
 {
     private Hero hero;
     public Slider slider;
-
-    public void Awake()
-    {
-        Debug.LogError($"Coucou {hero is null}");
-    }
+    public Gradient gradient;
+    public Image fill;
 
     public void SetupHero(Hero hero)
     {
@@ -21,11 +18,12 @@ public class HealthBar : MonoBehaviour
         slider.maxValue = hero.MaxPv;
         slider.value = hero.MaxPv;
         this.hero = hero;
+        fill.color = gradient.Evaluate(1f);
     }
 
     public void SetHealth()
     {
-        Debug.LogWarning("Set health bar");
         slider.value = hero.Pv;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }
