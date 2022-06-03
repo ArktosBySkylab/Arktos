@@ -37,6 +37,8 @@ namespace Playground.Characters.Heros
         /// </summary>
         protected int maxInventory = 16; // Arbitrary number
 
+        protected HealthBar healthBar;
+
         // Getters and setters
         public HerosNames Name => heroName;
 
@@ -45,8 +47,21 @@ namespace Playground.Characters.Heros
         
         // Unity state related variables
         protected bool UseSecondaryWeapon = false;
-        
-        
+
+
+        public override int Pv
+        {
+            get => pv;
+            set
+            {
+                pv = value < 0 ? 0 : value > maxPv ? maxPv : value;
+                healthBar.SetHealth();
+                if (pv == 0)
+                    StartCoroutine(TheDeathIsComing());
+            }
+        }
+
+
         /// <summary>
         /// Add an item to the inventory if it's possible
         /// </summary>
@@ -142,7 +157,7 @@ namespace Playground.Characters.Heros
 
         public void SetupHealthBar(HealthBar healthBar)
         {
-            
+            healthBar!.SetupHero(this);
         }
         
         protected override IEnumerator TheDeathIsComing()

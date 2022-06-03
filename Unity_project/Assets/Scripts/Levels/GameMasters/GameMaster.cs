@@ -63,7 +63,7 @@ namespace Levels
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
 
-                hero.GetComponent<Hero>().SetupHealthBar(HealthBar.);
+                hero.GetComponent<Hero>().SetupHealthBar(HealthBar.GetComponent<HealthBar>());
             }
             else
             {
