@@ -69,8 +69,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5994549800766578076}
+  - component: {fileID: 7126067532777839847}
   - component: {fileID: 3057720073366145243}
-  - component: {fileID: 449512778433793379}
   - component: {fileID: -3350021031452648258}
   - component: {fileID: 1513311938534775153}
   - component: {fileID: 5787212861004639126}
@@ -103,6 +103,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &7126067532777839847
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6020288151096362862}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 2
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 8658562db2953da97973f11c43c743e0, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!212 &3057720073366145243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -154,27 +175,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &449512778433793379
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6020288151096362862}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDrag: 2
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 8658562db2953da97973f11c43c743e0, type: 2}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!95 &-3350021031452648258
 Animator:
   serializedVersion: 3
@@ -313,9 +313,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1895244, y: -0.73366404}
-  m_Size: {x: 3.6684365, y: 5.3060923}
-  m_Direction: 0
+  m_Offset: {x: 1.189524, y: -0.8414376}
+  m_Size: {x: 5, y: 5}
+  m_Direction: 1
 --- !u!114 &2411187916272381796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
       m_Bits: 4294967295
     useGraphRaycasting: 0
   traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  tagPenalties: 0000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
 --- !u!114 &2029728675421159479
