@@ -17,6 +17,7 @@ using Image = UnityEngine.UI.Image;
 public class Main_Menu_Interaction : MonoBehaviour
 {
     protected LoadLevelInfos dataManager;
+    public Animator transition;
     //information to save
     protected string HerosName;
     protected string WeaponsName;
@@ -66,10 +67,18 @@ public class Main_Menu_Interaction : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Assets/Scenes/"+LevelsName+".unity");
+            StartCoroutine(LoadLevel("Assets/Scenes/"+LevelsName+".unity"));
         }
     }
 
+    IEnumerator LoadLevel(string sceneName)
+    {
+        transition.SetTrigger("start");
+        Debug.Log("animation should be play");
+        yield return new WaitForSeconds(1);
+        Debug.Log("animation should be finish");
+        SceneManager.LoadScene(sceneName);
+    }
     public void saveInformation()
     {
         PlayerPrefs.SetString("Character",HerosName);
@@ -81,7 +90,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     {
         HerosName = PlayerPrefs.GetString("Character","Kitsune");
         WeaponsName = PlayerPrefs.GetString("Weapon","SmallSword");
-        LevelsName = PlayerPrefs.GetString("level","test");
+        LevelsName = PlayerPrefs.GetString("level","city");
         SoundsLevel = PlayerPrefs.GetFloat("sound",0.0f);
     }
     public void resetSavedInformation()
