@@ -10,9 +10,6 @@ namespace Playground.Characters.Monsters
         {
         }
         //TODO 
-        //rendre les deplacements fluides 
-        //mettre une logique dans la physique utilise car la je comprend pas 
-        //faire monter les monstres sur les plateformes 
         //faire en sortes que les monstres ne reste pas stuck sous la plateforme 
         // update les conditions d'attaques 
 
@@ -25,7 +22,7 @@ namespace Playground.Characters.Monsters
         public float pathUpdateSeconds = 0.5f;
 
         [Header("Physics")]
-        public float nextWaypointDistance = 3f; 
+        private float nextWaypointDistance = 3f; 
         public float jumpCheckOffset = 0.1f;
         private int waitJump = 0;
 
@@ -171,9 +168,10 @@ namespace Playground.Characters.Monsters
         rb.AddForce(force);
         
         // flip le monstre pour qu'il regarde du bon cote 
-        if (force.magnitude > 0 && !FacingRight)
+        if (force.x > 0 && !FacingRight)
             Flip();
-        else if (force.magnitude<0 && FacingRight)
+        
+        else if (force.x<0 && FacingRight)
             Flip();
 
         // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max 
