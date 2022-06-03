@@ -65,6 +65,7 @@ namespace Playground.Characters.Monsters
                             transform.position = new Vector3( transform.position.x+1f,transform.position.y,transform.position.z);
                         }
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
+                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
                         Debug.Log("nonnonononnnoonoonoononononononoono");
                         for (int k = 0; k < 10; k++)
                         {
@@ -78,7 +79,8 @@ namespace Playground.Characters.Monsters
                         {
                             transform.position = new Vector3( transform.position.x-1f,transform.position.y,transform.position.z);
                         }
-
+                        
+                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
                         Debug.Log("coucoucoucoucoucoucucuucoucocuocouocuucocoucuocu");
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
                         

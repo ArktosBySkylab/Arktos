@@ -357,8 +357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1513311938534775153}
-  runSpeed: 10
-  speed: 300
+  runSpeed: 50
+  speed: 2000
   minimumDistance: 0.05
   initial_time: 0.3
   damage: 5

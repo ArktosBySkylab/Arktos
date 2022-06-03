@@ -165,7 +165,7 @@ namespace Playground.Characters.Monsters
               
 
         // Movement
-        rb.AddForce(force);
+        rb.AddForce(force*3f);
         
         // flip le monstre pour qu'il regarde du bon cote 
         if (force.x > 0 && !FacingRight)

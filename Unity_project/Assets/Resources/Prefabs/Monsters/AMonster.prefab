@@ -406,15 +406,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1710089755809182783}
   runSpeed: 5
-  speed: 120
+  speed: 200
   minimumDistance: 0.05
   initial_time: 0.3
   damage: 20
   attackPos: {fileID: 5433911794207420853}
   attackRange: 1
-  activateDistance: 50
+  activateDistance: 8
   pathUpdateSeconds: 0.5
-  nextWaypointDistance: 3
   jumpCheckOffset: 0.1
 --- !u!114 &6565179673672200240
 MonoBehaviour:
