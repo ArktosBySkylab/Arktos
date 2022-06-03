@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Playground.Characters.Heros;
 using Playground.Weapons;
+using Object = UnityEngine.Object;
 
 namespace Levels
 {
@@ -16,7 +17,7 @@ namespace Levels
         private string pathToPrefabs = "Prefabs"; // The path to init prefabs
         [SerializeField] protected int startX = 0;
         [SerializeField] protected int startY = 0;
-        [SerializeField] protected Canvas HealthBar;
+        [SerializeField] protected HealthBar healthBar;
         public void Start()
         {
 
@@ -63,7 +64,7 @@ namespace Levels
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
 
-                hero.GetComponent<Hero>().SetupHealthBar(HealthBar.GetComponent<HealthBar>());
+                heros.GetComponent<Hero>().SetupHealthBar(healthBar);
             }
             else
             {

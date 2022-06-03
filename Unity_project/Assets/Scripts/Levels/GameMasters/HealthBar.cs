@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Playground.Characters.Heros;
@@ -9,6 +10,11 @@ public class HealthBar : MonoBehaviour
     private Hero hero;
     public Slider slider;
 
+    public void Awake()
+    {
+        Debug.LogError($"Coucou {hero is null}");
+    }
+
     public void SetupHero(Hero hero)
     {
         slider = gameObject.GetComponent<Slider>();
@@ -19,6 +25,7 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth()
     {
+        Debug.LogWarning("Set health bar");
         slider.value = hero.Pv;
     }
 }

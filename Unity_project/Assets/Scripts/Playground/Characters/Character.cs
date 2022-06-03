@@ -45,7 +45,7 @@ namespace Playground.Characters
         #region Setters & Getters
 
         // Setters and getters and associated functions
-        protected void PvSetter(int value)
+        protected virtual void PvSetter(int value)
         {
             // The first condition is used to see if the result is out of bound
             // The second one return 0 if the player loose pv, max weither
