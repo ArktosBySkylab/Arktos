@@ -16,6 +16,7 @@ namespace Levels
         private string pathToPrefabs = "Prefabs"; // The path to init prefabs
         [SerializeField] protected int startX = 0;
         [SerializeField] protected int startY = 0;
+        [SerializeField] protected Canvas HealthBar;
         public void Start()
         {
 
@@ -41,10 +42,11 @@ namespace Levels
                     firstHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/SmallSword");
                 }
 
+                GameObject heros;
                 if (infos.multiplayer)
                 {
 
-                    var heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
+                    heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
                         Quaternion.identity);
                     var weapon = PhotonNetwork.Instantiate($"{pathToPrefabs}/Weapons/{firstHand.name}",
                         new Vector3(startX, startY), Quaternion.identity);
@@ -55,11 +57,13 @@ namespace Levels
                 }
                 else
                 {
-                    var heros = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
+                    heros = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
                     var weapon = Instantiate(firstHand, heros.transform.Find("HandPosition"));
                     heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
+
+                hero.GetComponent<Hero>().SetupHealthBar(HealthBar.);
             }
             else
             {

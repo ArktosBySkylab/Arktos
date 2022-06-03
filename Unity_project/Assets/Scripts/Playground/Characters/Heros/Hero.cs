@@ -140,6 +140,11 @@ namespace Playground.Characters.Heros
             }
         }
 
+        public void SetupHealthBar(HealthBar healthBar)
+        {
+            
+        }
+        
         protected override IEnumerator TheDeathIsComing()
         {
             Time.timeScale = 0;

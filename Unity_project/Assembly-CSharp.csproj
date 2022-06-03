@@ -124,7 +124,6 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
-     <Compile Include="Assets\Scripts\Playground\Characters\Monsters\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\Stick.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
@@ -144,6 +143,8 @@
      <Compile Include="Assets\Scripts\Menus\Main_Menu_Interaction.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\HerosNames.cs" />
+     <Compile Include="Assets\Scripts\Playground\Characters\Monsters\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\Levels\GameMasters\HealthBar.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

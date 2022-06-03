@@ -83,6 +83,8 @@ namespace Playground.Characters
             this.level = level;
         }
 
+        public int MaxPv => maxPv;
+
         #endregion
 
         protected void Awake()
