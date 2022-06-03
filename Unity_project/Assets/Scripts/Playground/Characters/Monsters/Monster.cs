@@ -26,6 +26,7 @@ namespace Playground.Characters.Monsters
         {
             this.name = name;
             timeBtwAttack = initial_time;
+            
         }
         
         public override void Update()

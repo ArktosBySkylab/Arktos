@@ -36,6 +36,8 @@ namespace Playground.Characters.Monsters
         RaycastHit2D isGrounded;
         Seeker seeker;
         Rigidbody2D rb;
+
+        private bool IsGravitySwitched = false;
         
          public void Start()
          {
@@ -46,6 +48,7 @@ namespace Playground.Characters.Monsters
              rb = GetComponent<Rigidbody2D>();
              
              target = GameObject.FindGameObjectWithTag("Heros").transform;
+
              InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
              jumpPosition = GetPostion();
          }
@@ -164,27 +167,27 @@ namespace Playground.Characters.Monsters
              }
               
 
-        // Movement
-        rb.AddForce(force*3f);
-        
-        // flip le monstre pour qu'il regarde du bon cote 
-        if (force.x > 0 && !FacingRight)
-            Flip();
-        
-        else if (force.x<0 && FacingRight)
-            Flip();
+             // Movement
+             rb.AddForce(force*3f);
+             
+             // flip le monstre pour qu'il regarde du bon cote 
+             if (force.x > 0 && !FacingRight)
+                 Flip();
+             
+             else if (force.x<0 && FacingRight)
+                 Flip();
+     
+             // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max 
+             // -> a modifier avec le calcule de la distance directement prcq sert a rien 
+             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+             if (distance < nextWaypointDistance)
+             {
+                 currentWaypoint++; 
+             } 
+         }
 
-        // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max 
-        // -> a modifier avec le calcule de la distance directement prcq sert a rien 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
-    }
-    
-    
-        private void Flip()
+
+         private void Flip()
         {
             // Switch the way the player is labelled as facing.
             FacingRight = !FacingRight;
