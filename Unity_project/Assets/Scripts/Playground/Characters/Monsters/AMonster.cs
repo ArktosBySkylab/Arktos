@@ -49,8 +49,8 @@ namespace Playground.Characters.Monsters
              // j'ai pas reussi a reutiliser le CC2D ducoup je recupere le rigidbody pour faire 
              // faire bouger le monstre 
              rb = GetComponent<Rigidbody2D>();
-             
-             target = GameObject.FindGameObjectWithTag("Heros").transform;
+
+             target = GetTarget();
 
              InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
              jumpPosition = GetPostion();
@@ -81,10 +81,24 @@ namespace Playground.Characters.Monsters
              {
                  PathFollow();
              }
-             else
+         }
+
+         //function used to know the closest player to chase 
+         // we asume there is a player in the room 
+         public Transform GetTarget()
+         {
+             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Heros");
+             Transform targ  = gameObjects[0].transform;
+             
+             foreach (var tar in gameObjects)
              {
-                 seeker.StartPath(rb.position, InitialePos, OnPathComplete);
+                 if (Vector2.Distance(tar.transform.position, rb.position) <
+                     Vector2.Distance(targ.position, rb.position))
+                 {
+                     targ = tar.transform;
+                 }
              }
+             return targ;
          }
 
          //fonction pour savoir si le monstre se situe au bon endroit pour sauter 
@@ -97,7 +111,6 @@ namespace Playground.Characters.Monsters
              for (int i = 0; i < gameObjects.Length; i++)
              {
                  pos[i] = gameObjects[i].transform.position;
-                 Debug.Log(pos[i].x);
              }
              return pos;
          }
@@ -139,25 +152,12 @@ namespace Playground.Characters.Monsters
                  return;
              }
 
-             if (rb.position.x == target.position.x && rb.position.y != target.position.y)
+             if (rb.position.x+0.5f >= target.position.x&&
+                 rb.position.x-0.5f <= target.position.x&&
+                 target.position.y - rb.position.y > 5f )
              {
-                 Random random = new System.Random();
-                 int choice = random.Next(0, 2);
-                 switch (choice)
-                 {
-                     case 1 :
-                         for (int i = 0; i < 10; i++)
-                         {
-                             rb.AddForce(new Vector2(1,0));
-                         }
-                         break;
-                     default:
-                         for (int i = 0; i < 20; i++)
-                         {
-                             rb.AddForce(new Vector2(-1,0));
-                         }
-                         break;
-                 }
+                 target = GameObject.FindGameObjectWithTag("EnableJump").transform;
+                 Debug.Log("jambon");
              }
      
              // verfication de si le joueur est bien sur le soleuh 
