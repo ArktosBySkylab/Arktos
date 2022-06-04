@@ -1,6 +1,7 @@
 using Pathfinding;
 using Playground.Weapons;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Playground.Characters.Monsters
 {
@@ -22,11 +23,11 @@ namespace Playground.Characters.Monsters
         public float pathUpdateSeconds = 0.5f;
 
         [Header("Physics")]
-        private float nextWaypointDistance = 3f; 
+        private float nextWaypointDistance = 1f; //3f 
         public float jumpCheckOffset = 0.1f;
         private int waitJump = 0;
 
-    
+
         private bool jumpEnabled = false;
         private Vector3[] jumpPosition;
         private bool FacingRight = true;
@@ -36,6 +37,8 @@ namespace Playground.Characters.Monsters
         RaycastHit2D isGrounded;
         Seeker seeker;
         Rigidbody2D rb;
+
+        private Vector3 InitialePos;
 
         private bool IsGravitySwitched = false;
         
@@ -51,6 +54,8 @@ namespace Playground.Characters.Monsters
 
              InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
              jumpPosition = GetPostion();
+
+             InitialePos = new Vector3(34, -15,0);
          }
               
          // bool pour activer/desactiver le monstre en fonction de la distance avec le joueur 
@@ -76,6 +81,10 @@ namespace Playground.Characters.Monsters
              {
                  PathFollow();
              }
+             else
+             {
+                 seeker.StartPath(rb.position, InitialePos, OnPathComplete);
+             }
          }
 
          //fonction pour savoir si le monstre se situe au bon endroit pour sauter 
@@ -97,10 +106,10 @@ namespace Playground.Characters.Monsters
          {
              foreach (var pos in jumpPosition)
              {
-                 if (transform.position.x >= pos.x - 0.5f
-                     && transform.position.x <= pos.x + 0.5f
-                     && transform.position.y >= pos.y - 0.5f
-                     && transform.position.y <= pos.y + 0.5f
+                 if (transform.position.x >= pos.x - 1f
+                     && transform.position.x <= pos.x + 1f
+                     && transform.position.y >= pos.y - 1f
+                     && transform.position.y <= pos.y + 1f
                      && -1*(target.position.x -transform.position.x) <= 1.5f)
                      return true;
              }
@@ -128,6 +137,27 @@ namespace Playground.Characters.Monsters
              if (currentWaypoint >= path.vectorPath.Count)
              {
                  return;
+             }
+
+             if (rb.position.x == target.position.x && rb.position.y != target.position.y)
+             {
+                 Random random = new System.Random();
+                 int choice = random.Next(0, 2);
+                 switch (choice)
+                 {
+                     case 1 :
+                         for (int i = 0; i < 10; i++)
+                         {
+                             rb.AddForce(new Vector2(1,0));
+                         }
+                         break;
+                     default:
+                         for (int i = 0; i < 20; i++)
+                         {
+                             rb.AddForce(new Vector2(-1,0));
+                         }
+                         break;
+                 }
              }
      
              // verfication de si le joueur est bien sur le soleuh 

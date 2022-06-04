@@ -412,7 +412,7 @@ MonoBehaviour:
   damage: 20
   attackPos: {fileID: 5433911794207420853}
   attackRange: 1
-  activateDistance: 8
+  activateDistance: 15
   pathUpdateSeconds: 0.5
   jumpCheckOffset: 0.1
 --- !u!114 &6565179673672200240
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 0
+  drawGizmos: 1
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
