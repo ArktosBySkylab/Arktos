@@ -1,4 +1,5 @@
 using Pathfinding;
+using Photon.Realtime;
 using Playground.Weapons;
 using UnityEngine;
 using Random = System.Random;
@@ -122,8 +123,8 @@ namespace Playground.Characters.Monsters
                  if (transform.position.x >= pos.x - 1f
                      && transform.position.x <= pos.x + 1f
                      && transform.position.y >= pos.y - 1f
-                     && transform.position.y <= pos.y + 1f
-                     && -1*(target.position.x -transform.position.x) <= 1.5f)
+                     && transform.position.y <= pos.y + 1f)
+                     //&& -1*(target.position.x -transform.position.x) <= 1.5f)
                      return true;
              }
              return false;
@@ -154,10 +155,13 @@ namespace Playground.Characters.Monsters
 
              if (rb.position.x+0.5f >= target.position.x&&
                  rb.position.x-0.5f <= target.position.x&&
-                 target.position.y - rb.position.y > 5f )
+                 target.position.y - rb.position.y > 5f)
              {
-                 target = GameObject.FindGameObjectWithTag("EnableJump").transform;
-                 Debug.Log("jambon");
+                 // try to make the monster jump 
+                 // j'udpate la condition une fois le multi fixe 
+                 // mais l'idee c'est de faire des paths predefini sur toute la maps pour que le monstres
+                 // puisse jump pour rattraper le player 
+                 //target = GameObject.FindGameObjectWithTag("EnableJump").transform;
              }
      
              // verfication de si le joueur est bien sur le soleuh 

@@ -90,7 +90,7 @@ namespace Playground.Characters.Monsters
              Vector2 force = direction * speed * Time.deltaTime*1.3f;
              
              // Movement
-             rb.AddForce(force);
+             rb.AddForce(force*1.5f);
              
              // flip le monstre pour qu'il regarde du bon cote 
              if (force.x > 0 && !FacingRight) 
