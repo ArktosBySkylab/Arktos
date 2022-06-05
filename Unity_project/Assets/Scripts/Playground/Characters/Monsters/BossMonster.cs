@@ -1,7 +1,11 @@
 
+using System;
+using System.Numerics;
 using Pathfinding;
 using UnityEngine;
 using Playground.Weapons;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Playground.Characters.Monsters
 {
@@ -15,27 +19,21 @@ namespace Playground.Characters.Monsters
         [Header("Pathfinding")]
         private Transform target;
         public float activateDistance = 50f;
-        public float pathUpdateSeconds = 0.5f;
 
         [Header("Physics")]
         public float nextWaypointDistance = 3f;
         private bool FacingRight = true;
 
-        private Path path;
         private int currentWaypoint = 0;
-        Seeker seeker;
         Rigidbody2D rb;
         
          public void Start()
          {
-             // le seeker c'est un composante du package A* 
-             seeker = GetComponent<Seeker>();
              // j'ai pas reussi a reutiliser le CC2D ducoup je recupere le rigidbody pour faire 
              // faire bouger le monstre 
              rb = GetComponent<Rigidbody2D>();
-
              target = GetTarget();
-             InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+             
          }
            
          
@@ -66,14 +64,7 @@ namespace Playground.Characters.Monsters
     
     
          //verification du path 
-         private void OnPathComplete(Path p)
-         { 
-             if (!p.error)
-             {
-                 path = p;
-                 currentWaypoint = 0;
-             }
-         }
+         
     
          private void FixedUpdate()
          {
@@ -84,36 +75,34 @@ namespace Playground.Characters.Monsters
          }
          
 
-         private void UpdatePath()
-         {
-             if (TargetInDistance() && seeker.IsDone())
-             {
-                 //calcule du path entre les positions du monstres 
-                 // on passe la methode OnPathComplete en parametre pour verifier l'existance d'un path,
-                 seeker.StartPath(rb.position, target.position, OnPathComplete);
-             }
-         }
+         
          
          private void PathFollow()
          {
-             if (path == null)
-             {
-                 return;
-             }
+             // transform.position.y = -18.2f;
+             
      
              // condition pour l'arret du monstre qd il est a proximite du joueur 
-             if (currentWaypoint >= path.vectorPath.Count)
+             if (Vector2.Distance(target.position,this.transform.position) <= minimumDistance)
              {
                  return;
              }
              
              // calcul de la direction 
-             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+             Vector2 direction = (target.position.x > transform.position.x ? new Vector2(1,0):new Vector2(-1,0) );
              Vector2 force = direction * speed * Time.deltaTime*1.3f;
              
              // Movement
              rb.AddForce(force*1.5f);
              
+             if (Math.Abs(rb.position.y - (-18.2f)) > 1f)
+             {
+                 rb.AddForce(new Vector2(0,-18.2f - (-1)*rb.position.y)*10f);
+             }
+
+             
+             
+
              // flip le monstre pour qu'il regarde du bon cote 
              if (force.x > 0 && !FacingRight) 
                  Flip();
@@ -123,7 +112,7 @@ namespace Playground.Characters.Monsters
              // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max
              // -> a modifier avec le calcule de la distance directement prcq sert a rien 
         
-             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]); 
+             float distance = Vector2.Distance(rb.position, target.position); 
              if (distance < nextWaypointDistance) 
              { 
                  currentWaypoint++;

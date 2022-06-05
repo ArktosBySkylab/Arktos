@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!70 &2852594820409486133
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 9190225741154686442}
   runSpeed: 50
-  speed: 5000
+  speed: 2000
   minimumDistance: 1.5
   initial_time: 1
   damage: 100
@@ -364,7 +364,6 @@ MonoBehaviour:
   attackRange: 1
   DropOnDeath: {fileID: 7246227481970415527, guid: 5947bd78e52d27f4a912f07d3348ebd1, type: 3}
   activateDistance: 50
-  pathUpdateSeconds: 0.5
   nextWaypointDistance: 3
 --- !u!1 &7913926474457049940
 GameObject:
@@ -390,7 +389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7913926474457049940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -5, z: 0}
+  m_LocalPosition: {x: -1, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1059522999461499417}
