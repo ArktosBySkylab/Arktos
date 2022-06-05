@@ -23,7 +23,10 @@ namespace Playground.Characters.Monsters
         [Header("Physics")]
         public float nextWaypointDistance = 3f;
         private bool FacingRight = true;
+        private RaycastHit2D isGrounded;
+        private int getGroundPos = 0;
 
+        private float initialPos;
         private int currentWaypoint = 0;
         Rigidbody2D rb;
         
@@ -33,7 +36,7 @@ namespace Playground.Characters.Monsters
              // faire bouger le monstre 
              rb = GetComponent<Rigidbody2D>();
              target = GetTarget();
-             
+
          }
            
          
@@ -79,7 +82,12 @@ namespace Playground.Characters.Monsters
          
          private void PathFollow()
          {
-             // transform.position.y = -18.2f;
+             Vector3 startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y );
+             isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);
+             if (getGroundPos == 0 && isGrounded)
+             {
+                 initialPos = (float)Math.Round(transform.position.y)+5.5f;
+             }
              
      
              // condition pour l'arret du monstre qd il est a proximite du joueur 
@@ -94,11 +102,15 @@ namespace Playground.Characters.Monsters
              
              // Movement
              rb.AddForce(force*1.5f);
-             
-             if (Math.Abs(rb.position.y - (-18.2f)) > 1f)
+             Debug.Log(initialPos);
+             if (initialPos != null)
              {
-                 rb.AddForce(new Vector2(0,-18.2f - (-1)*rb.position.y)*10f);
+                 if (Math.Abs(rb.position.y - (initialPos)) > 1f)
+                 {
+                     rb.AddForce(new Vector2(0,initialPos - (-1)*rb.position.y)*10f);
+                 }
              }
+             
 
              
              

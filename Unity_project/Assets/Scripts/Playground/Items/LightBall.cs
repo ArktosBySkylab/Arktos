@@ -11,7 +11,6 @@ namespace Playground.Items
         private CircleCollider2D _circleCollider2D = new CircleCollider2D();
 
         
-
         public void Start()
         {
             light = new GameObject("The Light");
