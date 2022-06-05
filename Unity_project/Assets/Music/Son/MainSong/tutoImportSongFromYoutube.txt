@@ -1,0 +1,7 @@
+this is a tuto to import MP3 from youtube to unity
+
+step 1:
+download the song on your computer using https://ytmp3.ltd/
+step 2:
+convert the song and download the new version in unity using https://online-audio-converter.com/
+    tips : you can convert several songs at once
