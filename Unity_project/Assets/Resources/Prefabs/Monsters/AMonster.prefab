@@ -407,7 +407,6 @@ MonoBehaviour:
   controller: {fileID: 1710089755809182783}
   runSpeed: 5
   speed: 120
-  target: {fileID: 1374398808491168007, guid: a96063400a7ff384bac044775efef2f0, type: 3}
   minimumDistance: 0.05
   initial_time: 0.3
   damage: 20
