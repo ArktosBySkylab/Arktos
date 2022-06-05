@@ -412,6 +412,7 @@ MonoBehaviour:
   damage: 20
   attackPos: {fileID: 5433911794207420853}
   attackRange: 1
+  DropOnDeath: {fileID: 0}
   activateDistance: 15
   pathUpdateSeconds: 0.5
   jumpCheckOffset: 0.1

@@ -140,8 +140,5 @@ namespace Playground.Characters.Monsters
             theScale.x *= -1;
             transform.localScale = theScale;
         }
-    
-    
-    
     }
 }

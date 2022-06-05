@@ -362,6 +362,7 @@ MonoBehaviour:
   damage: 100
   attackPos: {fileID: 6543340826039264212}
   attackRange: 1
+  DropOnDeath: {fileID: 7246227481970415527, guid: 5947bd78e52d27f4a912f07d3348ebd1, type: 3}
   activateDistance: 50
   pathUpdateSeconds: 0.5
   nextWaypointDistance: 3

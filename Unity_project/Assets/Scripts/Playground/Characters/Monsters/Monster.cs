@@ -1,6 +1,7 @@
 using System.Collections;
 using Playground.Characters.Heros;
 using Playground.Weapons;
+using UnityEditor;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ namespace Playground.Characters.Monsters
         public float attackRange;
         
         protected new MonstersNames name;
+        public GameObject DropOnDeath;
         protected Monster(MonstersNames name, WeaponsNames primaryWeapon, int maxPv, int level) : base(maxPv, level)
         {
             this.name = name;
@@ -84,6 +86,10 @@ namespace Playground.Characters.Monsters
         
         protected override IEnumerator TheDeathIsComing()
         {
+            if (this.name == MonstersNames.BossMonster)
+            {
+                Instantiate( DropOnDeath, transform.position, Quaternion.identity);
+            }
             yield return base.TheDeathIsComing();
         }
     }
