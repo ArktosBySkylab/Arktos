@@ -1,12 +1,14 @@
+
 using Pathfinding;
-using Playground.Weapons;
 using UnityEngine;
+using Playground.Weapons;
 
 namespace Playground.Characters.Monsters
 {
-    public class AnotherMonster : Monster
-    { 
-        public AnotherMonster() : base(MonstersNames.AnotherMonster, WeaponsNames.Stick, 50, 1)
+    public class BossMonster: Monster
+
+    {
+        public BossMonster() : base(MonstersNames.BossMonster, WeaponsNames.Stick, 1000, 1)
         {
         }
         
@@ -35,7 +37,8 @@ namespace Playground.Characters.Monsters
              target = GetTarget();
              InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
          }
-              
+           
+         
          //function used to select the closest player to chase 
          // we asume there is a player in the room 
          public Transform GetTarget()
@@ -127,7 +130,7 @@ namespace Playground.Characters.Monsters
              }
          }
 
-         private void Flip()
+        private void Flip()
         {
             // Switch the way the player is labelled as facing.
             FacingRight = !FacingRight;
@@ -137,5 +140,8 @@ namespace Playground.Characters.Monsters
             theScale.x *= -1;
             transform.localScale = theScale;
         }
+    
+    
+    
     }
 }

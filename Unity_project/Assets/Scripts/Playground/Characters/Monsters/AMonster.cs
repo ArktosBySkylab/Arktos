@@ -12,9 +12,7 @@ namespace Playground.Characters.Monsters
         {
         }
         //TODO 
-        //faire en sortes que les monstres ne reste pas stuck sous la plateforme 
-        // update les conditions d'attaques 
-
+        
         //MULTI ONLY 
         // faire switch la cible du monstre en fonction de la postion du joueur le +proche
 
@@ -40,7 +38,7 @@ namespace Playground.Characters.Monsters
         Rigidbody2D rb;
 
         private Vector3 InitialePos;
-
+        
         private bool IsGravitySwitched = false;
         
          public void Start()
@@ -84,7 +82,7 @@ namespace Playground.Characters.Monsters
              }
          }
 
-         //function used to know the closest player to chase 
+         //function used to select the closest player to chase 
          // we asume there is a player in the room 
          public Transform GetTarget()
          {

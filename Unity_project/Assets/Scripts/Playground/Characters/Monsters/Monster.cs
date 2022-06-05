@@ -61,34 +61,16 @@ namespace Playground.Characters.Monsters
                 {
                     if (heroToDammage[i].GetComponent<Hero>().transform.position.x > transform.position.x )
                     {
-                        for (int k = 0; k < 10; k++)
-                        {
-                            transform.position = new Vector3( transform.position.x+1f,transform.position.y,transform.position.z);
-                        }
+                        transform.position = new Vector3( transform.position.x+1f,transform.position.y,transform.position.z);
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
                         Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
-                        Debug.Log("nonnonononnnoonoonoononononononoono");
-                        for (int k = 0; k < 10; k++)
-                        {
-                            transform.position = new Vector3( transform.position.x-1f,transform.position.y,transform.position.z);
-                        }
                     }
 
                     else
                     { 
-                        for (int k = 0; k < 10; k++)
-                        {
-                            transform.position = new Vector3( transform.position.x-1f,transform.position.y,transform.position.z);
-                        }
-                        
-                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
-                        Debug.Log("coucoucoucoucoucoucucuucoucocuocouocuucocoucuocu");
+                        transform.position = new Vector3( transform.position.x-1f,transform.position.y,transform.position.z);
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
-                        
-                        for (int k = 0; k < 10; k++)
-                        {
-                            transform.position = new Vector3( transform.position.x+1f,transform.position.y,transform.position.z);
-                        }
+                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
                     }
                 }
             }
