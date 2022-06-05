@@ -85,9 +85,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     IEnumerator LoadLevel(string sceneName)
     {
         transition.SetTrigger("start");
-        Debug.Log("animation should be play");
         yield return new WaitForSeconds(1);
-        Debug.Log("animation should be finish");
         SceneManager.LoadScene(sceneName);
     }
     public void saveInformation()
