@@ -1,3 +1,4 @@
+using Playground.Characters.Monsters;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -182,6 +183,13 @@ namespace Playground.Characters
 				Physics2D.gravity = -Physics2D.gravity;
 				gameObject.transform.Rotate(0f, 180f, 180f);
 				m_NormalGravity ^= true; // Switch the boolean
+				
+				//loop for monster
+				GameObject[] SwitchMonster = GameObject.FindGameObjectsWithTag("Monsters");
+				foreach (var monster in SwitchMonster)
+				{
+					monster.gameObject.transform.Rotate(0f, 180f, 180f);
+				}
 				return true;
 			}
 			

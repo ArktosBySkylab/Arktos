@@ -1,6 +1,8 @@
 using Pathfinding;
+using Photon.Realtime;
 using Playground.Weapons;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Playground.Characters.Monsters
 {
@@ -10,12 +12,7 @@ namespace Playground.Characters.Monsters
         {
         }
         //TODO 
-        //rendre les deplacements fluides 
-        //mettre une logique dans la physique utilise car la je comprend pas 
-        //faire monter les monstres sur les plateformes 
-        //faire en sortes que les monstres ne reste pas stuck sous la plateforme 
-        // update les conditions d'attaques 
-
+        
         //MULTI ONLY 
         // faire switch la cible du monstre en fonction de la postion du joueur le +proche
 
@@ -25,11 +22,11 @@ namespace Playground.Characters.Monsters
         public float pathUpdateSeconds = 0.5f;
 
         [Header("Physics")]
-        public float nextWaypointDistance = 3f; 
+        private float nextWaypointDistance = 1f; //3f 
         public float jumpCheckOffset = 0.1f;
         private int waitJump = 0;
 
-    
+
         private bool jumpEnabled = false;
         private Vector3[] jumpPosition;
         private bool FacingRight = true;
@@ -39,6 +36,10 @@ namespace Playground.Characters.Monsters
         RaycastHit2D isGrounded;
         Seeker seeker;
         Rigidbody2D rb;
+
+        private Vector3 InitialePos;
+        
+        private bool IsGravitySwitched = false;
         
          public void Start()
          {
@@ -47,10 +48,13 @@ namespace Playground.Characters.Monsters
              // j'ai pas reussi a reutiliser le CC2D ducoup je recupere le rigidbody pour faire 
              // faire bouger le monstre 
              rb = GetComponent<Rigidbody2D>();
-             
-             target = GameObject.FindGameObjectWithTag("Heros").transform;
+
+             target = GetTarget();
+
              InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
              jumpPosition = GetPostion();
+
+             InitialePos = new Vector3(34, -15,0);
          }
               
          // bool pour activer/desactiver le monstre en fonction de la distance avec le joueur 
@@ -78,6 +82,24 @@ namespace Playground.Characters.Monsters
              }
          }
 
+         //function used to select the closest player to chase 
+         // we asume there is a player in the room 
+         public Transform GetTarget()
+         {
+             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Heros");
+             Transform targ  = gameObjects[0].transform;
+             
+             foreach (var tar in gameObjects)
+             {
+                 if (Vector2.Distance(tar.transform.position, rb.position) <
+                     Vector2.Distance(targ.position, rb.position))
+                 {
+                     targ = tar.transform;
+                 }
+             }
+             return targ;
+         }
+
          //fonction pour savoir si le monstre se situe au bon endroit pour sauter 
          public Vector3[] GetPostion()
          {
@@ -88,7 +110,6 @@ namespace Playground.Characters.Monsters
              for (int i = 0; i < gameObjects.Length; i++)
              {
                  pos[i] = gameObjects[i].transform.position;
-                 Debug.Log(pos[i].x);
              }
              return pos;
          }
@@ -97,11 +118,11 @@ namespace Playground.Characters.Monsters
          {
              foreach (var pos in jumpPosition)
              {
-                 if (transform.position.x >= pos.x - 0.5f
-                     && transform.position.x <= pos.x + 0.5f
-                     && transform.position.y >= pos.y - 0.5f
-                     && transform.position.y <= pos.y + 0.5f
-                     && -1*(target.position.x -transform.position.x) <= 1.5f)
+                 if (transform.position.x >= pos.x - 1f
+                     && transform.position.x <= pos.x + 1f
+                     && transform.position.y >= pos.y - 1f
+                     && transform.position.y <= pos.y + 1f)
+                     //&& -1*(target.position.x -transform.position.x) <= 1.5f)
                      return true;
              }
              return false;
@@ -128,6 +149,17 @@ namespace Playground.Characters.Monsters
              if (currentWaypoint >= path.vectorPath.Count)
              {
                  return;
+             }
+
+             if (rb.position.x+0.5f >= target.position.x&&
+                 rb.position.x-0.5f <= target.position.x&&
+                 target.position.y - rb.position.y > 5f)
+             {
+                 // try to make the monster jump 
+                 // j'udpate la condition une fois le multi fixe 
+                 // mais l'idee c'est de faire des paths predefini sur toute la maps pour que le monstres
+                 // puisse jump pour rattraper le player 
+                 //target = GameObject.FindGameObjectWithTag("EnableJump").transform;
              }
      
              // verfication de si le joueur est bien sur le soleuh 
@@ -167,26 +199,27 @@ namespace Playground.Characters.Monsters
              }
               
 
-        // Movement
-        rb.AddForce(force);
-        
-        // flip le monstre pour qu'il regarde du bon cote 
-        if (force.magnitude > 0 && !FacingRight)
-            Flip();
-        else if (force.magnitude<0 && FacingRight)
-            Flip();
+             // Movement
+             rb.AddForce(force*3f);
+             
+             // flip le monstre pour qu'il regarde du bon cote 
+             if (force.x > 0 && !FacingRight)
+                 Flip();
+             
+             else if (force.x<0 && FacingRight)
+                 Flip();
+     
+             // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max 
+             // -> a modifier avec le calcule de la distance directement prcq sert a rien 
+             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+             if (distance < nextWaypointDistance)
+             {
+                 currentWaypoint++; 
+             } 
+         }
 
-        // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max 
-        // -> a modifier avec le calcule de la distance directement prcq sert a rien 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
-    }
-    
-    
-        private void Flip()
+
+         private void Flip()
         {
             // Switch the way the player is labelled as facing.
             FacingRight = !FacingRight;
