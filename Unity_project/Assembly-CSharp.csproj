@@ -400,13 +400,13 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/rapha/arktos/try_git/Arktos/Unity_project/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/USER/Desktop/julie/personnel/Arktos/Unity_project/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
  <HintPath>C:/Users/rapha/arktos/try_git/Arktos/Unity_project/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/rapha/arktos/try_git/Arktos/Unity_project/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>C:/Users/USER/Desktop/julie/personnel/Arktos/Unity_project/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -754,7 +754,7 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Animation.Editor">
- <HintPath>C:/Users/rapha/arktos/try_git/Arktos/Unity_project/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+ <HintPath>C:/Users/USER/Desktop/julie/personnel/Arktos/Unity_project/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.InternalAPIEngineBridge.001">
  <HintPath>C:/Users/rapha/arktos/try_git/Arktos/Unity_project/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
