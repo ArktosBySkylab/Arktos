@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Playground.Characters.Heros;
 using Playground.Weapons;
+using Object = UnityEngine.Object;
 
 namespace Levels
 {
@@ -16,6 +17,7 @@ namespace Levels
         private string pathToPrefabs = "Prefabs"; // The path to init prefabs
         [SerializeField] protected int startX = 0;
         [SerializeField] protected int startY = 0;
+        [SerializeField] protected HealthBar healthBar;
         public void Start()
         {
 
@@ -41,10 +43,11 @@ namespace Levels
                     firstHand = Resources.Load<GameObject>($"{pathToPrefabs}/Weapons/SmallSword");
                 }
 
+                GameObject heros;
                 if (infos.multiplayer)
                 {
 
-                    var heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
+                    heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
                         Quaternion.identity);
                     var weapon = PhotonNetwork.Instantiate($"{pathToPrefabs}/Weapons/{firstHand.name}",
                         new Vector3(startX, startY), Quaternion.identity);
@@ -55,11 +58,13 @@ namespace Levels
                 }
                 else
                 {
-                    var heros = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
+                    heros = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
                     var weapon = Instantiate(firstHand, heros.transform.Find("HandPosition"));
                     heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
                 }
+
+                heros.GetComponent<Hero>().SetupHealthBar(healthBar);
             }
             else
             {
