@@ -71,6 +71,7 @@
      <Compile Include="Assets\Scripts\Playground\Characters\Monsters\Monster.cs" />
      <Compile Include="Assets\Scripts\Playground\Weapons\WeaponsNames.cs" />
      <Compile Include="Assets\Scripts\Levels\GameMasters\SpawnPoints.cs" />
+     <Compile Include="Assets\Scripts\Playground\Characters\Monsters\BossMonster.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
      <Compile Include="Assets\Scripts\Levels\GameMasters\NextScene.cs" />
@@ -98,6 +99,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\Rogue.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+     <Compile Include="Assets\Scripts\Playground\Items\LightBall.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />

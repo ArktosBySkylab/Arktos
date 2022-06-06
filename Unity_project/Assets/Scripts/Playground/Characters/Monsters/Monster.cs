@@ -1,6 +1,8 @@
 using System.Collections;
 using Playground.Characters.Heros;
 using Playground.Weapons;
+using UnityEditor;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 namespace Playground.Characters.Monsters
@@ -21,10 +23,12 @@ namespace Playground.Characters.Monsters
         public float attackRange;
         
         protected new MonstersNames name;
+        public GameObject DropOnDeath;
         protected Monster(MonstersNames name, WeaponsNames primaryWeapon, int maxPv, int level) : base(maxPv, level)
         {
             this.name = name;
             timeBtwAttack = initial_time;
+            
         }
         
         public override void Update()
@@ -52,34 +56,21 @@ namespace Playground.Characters.Monsters
         public void Attack()
         {
             Collider2D[] heroToDammage = Physics2D.OverlapCircleAll(attackPos.position, attackRange);
-            Debug.Log(heroToDammage.Length);
+            
             for (int i = 0; i < heroToDammage.Length; i++)
             {
                 if (heroToDammage[i].GetComponent<Hero>() != null)
                 {
-                    if (heroToDammage[i].GetComponent<Hero>().transform.position.x - transform.position.x > 0f &&
-                        heroToDammage[i].GetComponent<Hero>().transform.position.x - transform.position.x <= 1.5f)
+                    if (heroToDammage[i].GetComponent<Hero>().transform.position.x > transform.position.x )
                     {
-                        transform.position = new Vector3( transform.position.x+0.5f,transform.position.y,transform.position.z);
-                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Name);
+                        transform.position = new Vector3( transform.position.x+1f,transform.position.y,transform.position.z);
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
                         Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
-                        transform.position = new Vector3( transform.position.x-0.5f,transform.position.y,transform.position.z);
-                    }
-
-                    if (heroToDammage[i].GetComponent<Hero>().transform.position.x - transform.position.x < 0f &&
-                        heroToDammage[i].GetComponent<Hero>().transform.position.x - transform.position.x >= -1.5f)
-                    {
-                        transform.position = new Vector3( transform.position.x-0.5f,transform.position.y,transform.position.z);
-                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Name);
-                        heroToDammage[i].GetComponent<Hero>().Pv -= damage;
-                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
-                        transform.position = new Vector3( transform.position.x+0.5f,transform.position.y,transform.position.z);
                     }
 
                     else
-                    {
-                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Name);
+                    { 
+                        transform.position = new Vector3( transform.position.x-1f,transform.position.y,transform.position.z);
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
                         Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
                     }
@@ -95,6 +86,10 @@ namespace Playground.Characters.Monsters
         
         protected override IEnumerator TheDeathIsComing()
         {
+            if (this.name == MonstersNames.BossMonster)
+            {
+                Instantiate( DropOnDeath, transform.position, Quaternion.identity);
+            }
             yield return base.TheDeathIsComing();
         }
     }
