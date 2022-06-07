@@ -183,9 +183,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6020288151096362862}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc0554fdcb5e76b418259e4abebf3563, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -364,6 +364,7 @@ MonoBehaviour:
   damage: 5
   attackPos: {fileID: 513698139842882609}
   attackRange: 1
+  DropOnDeath: {fileID: 0}
   activateDistance: 50
   pathUpdateSeconds: 0.5
   nextWaypointDistance: 3
