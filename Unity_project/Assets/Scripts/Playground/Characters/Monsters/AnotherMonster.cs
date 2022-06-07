@@ -72,8 +72,9 @@ namespace Playground.Characters.Monsters
              }
          }
     
-         private void FixedUpdate()
+         public override void FixedUpdate()
          {
+             base.FixedUpdate();
              if (TargetInDistance())
              {
                  PathFollow();
