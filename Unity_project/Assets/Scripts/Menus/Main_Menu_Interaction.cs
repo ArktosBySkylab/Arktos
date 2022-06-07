@@ -73,9 +73,10 @@ public class Main_Menu_Interaction : MonoBehaviour
         dataManager.hero = getCharactaireTypeHerosNames();
         dataManager.firstHand = getWeaponTypeWeponNames();
         saveInformation();
+        
         if (dataManager.multiplayer)
         {
-            SceneManager.LoadScene("Loading");
+            StartCoroutine(LoadLevel("Assets/Scenes/Loading.unity"));
         }
         else
         {
@@ -96,7 +97,7 @@ public class Main_Menu_Interaction : MonoBehaviour
         PlayerPrefs.SetString("level",LevelsName);
         
         PlayerPrefs.SetInt("levelunlock",levelunlock);
-        PlayerPrefs.SetInt("persounlock",persounlock);
+        PlayerPrefs.SetInt("persounlock",persounlock);  
     }
     public void GetSavedInformation()
     {
