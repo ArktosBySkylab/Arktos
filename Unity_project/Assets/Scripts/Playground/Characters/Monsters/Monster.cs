@@ -17,6 +17,8 @@ namespace Playground.Characters.Monsters
         
         // Animator variables
         protected Vector3 OldPosition;
+        public bool AlreadyFighting = false;
+        
         
         public float minimumDistance;
         
@@ -90,6 +92,7 @@ namespace Playground.Characters.Monsters
                         // Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
                     }
                     */
+                    AlreadyFighting = true;
                     animator.SetInteger("IsFighting", 1);
                     heroToDammage[i].GetComponent<Hero>().Pv -= damage;
                 }

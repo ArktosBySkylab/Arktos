@@ -159,6 +159,10 @@ namespace Playground.Characters.Monsters
                  return;
              }
 
+             // Do not move if the boss is attacking
+             if (AlreadyFighting)
+                 return;
+             
              if (rb.position.x+0.5f >= target.position.x&&
                  rb.position.x-0.5f <= target.position.x&&
                  target.position.y - rb.position.y > 5f)

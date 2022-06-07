@@ -15,7 +15,7 @@ namespace Playground.Characters.Monsters
         public BossMonster() : base(MonstersNames.BossMonster, WeaponsNames.Stick, 1000, 1)
         {
         }
-        
+
         [Header("Pathfinding")]
         private Transform target;
         public float activateDistance = 50f;
@@ -93,6 +93,10 @@ namespace Playground.Characters.Monsters
              {
                  return;
              }
+             
+             // Do not move if the boss is attacking
+             if (AlreadyFighting)
+                 return;
              
              // calcul de la direction 
              Vector2 direction = (target.position.x > transform.position.x ? new Vector2(1,0):new Vector2(-1,0) );

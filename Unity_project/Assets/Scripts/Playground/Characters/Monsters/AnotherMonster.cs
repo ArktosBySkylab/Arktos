@@ -106,6 +106,10 @@ namespace Playground.Characters.Monsters
                  return;
              }
              
+             // Do not move if the boss is attacking
+             if (AlreadyFighting)
+                 return;
+             
              // calcul de la direction 
              Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
              Vector2 force = direction * speed * Time.deltaTime*1.3f;
