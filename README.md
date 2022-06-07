@@ -19,3 +19,10 @@ TechMesh Pro c'est pour des polices d'ecritures jolies
 ## A character
 Animate colliders + foot/head/hand checks
 Make sure that curves are segment and not curves
+
+
+# CREDIT MUSIC
+#Dark Moon by Purrple Cat | https://purrplecat.com
+#Music promoted by https://www.free-stock-music.com
+#Creative Commons Attribution-ShareAlike 3.0 Unported
+#https://creativecommons.org/licenses/by-sa/3.0/deed.en_US

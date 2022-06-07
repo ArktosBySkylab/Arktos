@@ -344,7 +344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 1448263324}
-  scene: mizar
+  scene: benetnash
+
 --- !u!58 &161814355
 CircleCollider2D:
   m_ObjectHideFlags: 0
