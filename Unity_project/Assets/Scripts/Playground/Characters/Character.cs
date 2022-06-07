@@ -179,7 +179,8 @@ namespace Playground.Characters
 
         protected virtual IEnumerator TheDeathIsComing()
         {
-            Debug.LogWarning("The death");
+            Debug.LogWarning("The death is coming");
+            Time.timeScale = 0;
             animator.SetBool("IsDying", true);
             yield return new WaitForSecondsRealtime(1);
         }

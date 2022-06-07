@@ -40,16 +40,6 @@ namespace Playground.Characters.Monsters
         
         public override void Update()
         {
-             horizontalMove = Math.Abs(OldPosition.x - transform.position.x);
-             OldPosition = transform.position;
-             
-             if (horizontalMove > 0.02)
-                animator.SetBool("IsRunning", true);
-            
-            else
-                animator.SetBool("IsRunning", false);
-             
-            
             target = GameObject.FindGameObjectWithTag("Heros").transform;
 
             if (timeBtwAttack <= 0)
@@ -66,6 +56,20 @@ namespace Playground.Characters.Monsters
             {
                 timeBtwAttack -= Time.deltaTime;
             }
+        }
+
+        public virtual void FixedUpdate()
+        {
+             horizontalMove = Math.Abs(OldPosition.x - transform.position.x);
+             OldPosition = transform.position;
+             
+             if (horizontalMove > 0.02)
+                animator.SetBool("IsRunning", true);
+            
+            else
+                animator.SetBool("IsRunning", false);
+             
+            
         }
 
         public void Attack()
