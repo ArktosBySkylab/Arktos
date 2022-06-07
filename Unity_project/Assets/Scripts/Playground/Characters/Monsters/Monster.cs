@@ -48,14 +48,8 @@ namespace Playground.Characters.Monsters
                     Attack();
                 timeBtwAttack = initial_time;
             }
-            if (pv <= 0)
-            {
-                Destroy(gameObject);
-            }
             else
-            {
                 timeBtwAttack -= Time.deltaTime;
-            }
         }
 
         public virtual void FixedUpdate()
@@ -110,6 +104,7 @@ namespace Playground.Characters.Monsters
                 Instantiate( DropOnDeath, transform.position, Quaternion.identity);
             }
             yield return base.TheDeathIsComing();
+            Destroy(gameObject);
         }
     }
 
