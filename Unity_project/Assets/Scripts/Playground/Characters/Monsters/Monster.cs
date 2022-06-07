@@ -40,6 +40,7 @@ namespace Playground.Characters.Monsters
         
         public override void Update()
         {
+            base.Update();
             target = GameObject.FindGameObjectWithTag("Heros").transform;
 
             if (timeBtwAttack <= 0)
