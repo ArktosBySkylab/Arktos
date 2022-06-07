@@ -142,6 +142,7 @@ namespace Playground.Characters.Heros
                     switchGravity = true;
 
                 if (Input.GetButtonDown("PrimaryWeapon"))
+                    //try to put the soundtrigger here
                     UsePrimaryWeapon = true;
                 
                 if (Input.GetButtonDown("SecondaryWeapon"))

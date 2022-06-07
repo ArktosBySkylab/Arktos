@@ -23,7 +23,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     protected string HerosName;// save the name of the last played character
     protected string WeaponsName;// save the name of the last played weapon
     protected string LevelsName; // save the name of the last played level
-    protected float SoundsLevel;
+    
     protected int levelunlock; // save the last unlocked level
     protected int persounlock; // save the last unlocked character
     protected int waeponunlock; // save the last unlocked weapon
@@ -36,7 +36,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     void Awake()//peremt d'afficher au lancement du jeu le personnage choisit et son arme
         {
             GetSavedInformation();
-            resetSavedInformation();
+            
             ShowUnlockedcharacter(persounlock);
             ShowUnlockedWeapon(waeponunlock);
             markSelectedHero(GameObject.Find("CharacterSelection/CharacterScroll/ButtonListViewPort/ButtonListContent/" + HerosName).GetComponent<Image>());
@@ -46,6 +46,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     void Start()
     {
         
+        GameObject.Find("SETTING-MENU").SetActive(false); // permet de régler le son en fonction des playerpref
         dataManager = FindObjectOfType<LoadLevelInfos>();
         if (dataManager is null)
         {
@@ -93,7 +94,7 @@ public class Main_Menu_Interaction : MonoBehaviour
         PlayerPrefs.SetString("Character",HerosName);
         PlayerPrefs.SetString("Weapon",WeaponsName);
         PlayerPrefs.SetString("level",LevelsName);
-        PlayerPrefs.SetFloat("sound",SoundsLevel);
+        
         PlayerPrefs.SetInt("levelunlock",levelunlock);
         PlayerPrefs.SetInt("persounlock",persounlock);
     }
@@ -102,7 +103,7 @@ public class Main_Menu_Interaction : MonoBehaviour
         HerosName = PlayerPrefs.GetString("Character","Kitsune");
         WeaponsName = PlayerPrefs.GetString("Weapon","SmallSword");
         LevelsName = PlayerPrefs.GetString("level","city");
-        SoundsLevel = PlayerPrefs.GetFloat("sound",0.0f);
+        
         levelunlock = PlayerPrefs.GetInt("levelunlock",levelTab.Length - 1);//mettre à 0
         persounlock = PlayerPrefs.GetInt("persounlock",characterTab.Length - 1);// mettre à 0
     }
