@@ -30,13 +30,13 @@ namespace Playground.Characters.Monsters
         private int currentWaypoint = 0;
         Rigidbody2D rb;
         
-         public void Start()
+         public override void Start()
          {
              // j'ai pas reussi a reutiliser le CC2D ducoup je recupere le rigidbody pour faire 
              // faire bouger le monstre 
              rb = GetComponent<Rigidbody2D>();
              target = GetTarget();
-
+             base.Start();
          }
            
          
@@ -69,16 +69,14 @@ namespace Playground.Characters.Monsters
          //verification du path 
          
     
-         private void FixedUpdate()
+         public override void FixedUpdate()
          {
+             base.FixedUpdate();
              if (TargetInDistance())
              {
                  PathFollow();
              }
          }
-         
-
-         
          
          private void PathFollow()
          {

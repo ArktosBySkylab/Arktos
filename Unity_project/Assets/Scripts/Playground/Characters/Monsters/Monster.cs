@@ -57,7 +57,7 @@ namespace Playground.Characters.Monsters
              horizontalMove = Math.Abs(OldPosition.x - transform.position.x);
              OldPosition = transform.position;
              
-             if (horizontalMove > 0.02)
+             if (horizontalMove > 0.01)
                 animator.SetBool("IsRunning", true);
             
             else
