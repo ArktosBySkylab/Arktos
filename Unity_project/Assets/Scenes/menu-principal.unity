@@ -8744,30 +8744,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1441883357}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1968096100}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 167040350}
         m_TargetAssemblyTypeName: Main_Menu_Interaction, Assembly-CSharp
         m_MethodName: StartGame
@@ -10280,6 +10256,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 167040349}
     m_Modifications:
+    - target: {fileID: 399672627849513391, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 674529179075712784, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -10318,6 +10298,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2030335473189129670, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467157250629991706, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6338743575361144063, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
@@ -10344,12 +10328,20 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Slider, UnityEngine.UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7317651546097792144, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7317651547183007981, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7317651547183007981, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317651547269916269, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7317651547269916270, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
@@ -10450,6 +10442,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7317651547289098507, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317651547400945194, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7317651547400945195, guid: c0ecc75a262b3f1439ab3e0270818dcf, type: 3}
