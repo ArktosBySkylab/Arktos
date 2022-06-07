@@ -274,6 +274,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: BeginJump
+  - Type: 3
+    SynchronizeType: 2
+    Name: IsFighting
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -292,8 +295,8 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
+    TeleportIfDistanceGreaterThan: 10000
+    InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 0

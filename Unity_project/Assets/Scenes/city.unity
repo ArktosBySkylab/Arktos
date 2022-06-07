@@ -5299,6 +5299,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limitX: 29
   limitY: 16
+  startX: 0
+  startY: 0
   playerT: {fileID: 1766844054406355929, guid: a96063400a7ff384bac044775efef2f0, type: 3}
 --- !u!81 &1873951550
 AudioListener:

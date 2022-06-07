@@ -7,12 +7,12 @@ namespace Playground.Camera
     {
         [SerializeField] protected int limitX =0;
         [SerializeField] protected int limitY =0;
-        public Transform playerT;
+        private Transform playerT;
         private Vector3 offset;
         
         void Start ()
         {
-            playerT = GameObject.FindGameObjectWithTag("Heros").transform;
+            playerT = GameObject.FindGameObjectWithTag("Heros").GetComponent<Transform>();
         }
 
         private void Update()
@@ -22,7 +22,9 @@ namespace Playground.Camera
         
         void LateUpdate ()
         {
+            
             Vector3 temp = transform.position;
+            playerT = GameObject.FindGameObjectWithTag("Heros").GetComponent<Transform>();
             if (playerT.position.x > -limitX && playerT.position.x < limitX)
                 temp.x = playerT.position.x;
             else

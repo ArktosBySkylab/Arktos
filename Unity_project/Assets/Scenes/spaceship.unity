@@ -5056,94 +5056,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!1 &335677705
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 335677707}
-  - component: {fileID: 335677706}
-  m_Layer: 0
-  m_Name: A*
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &335677706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335677705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  data:
-    dataString: UEsDBBQAAAgIAAAIIezUvXqxVgIAABMFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VEtz2jAQ/iuMzqVjp2mB3lpDSA9JmJBOLr4IaY01yJJHjwDJ8N+7kp9lJieWb7/d/fYhfxChbA3MabM2gj9oDuTnhASbfJkMzns40b1WW/EOHedVcFcGEo2cZ+qERjwNYVZX4Ixgv9ReBnKCoFei0KZa8T1k2jqLcEGlBXQZ7UK0QuhjQk74M12EkDNaN7NgvaO1SCYXNBkoB2agdsSO1rC8YpJWNfAgeSD3ab83NIXNtIwgnGkphW2VEHeuY6cZra3HPpDABcXOYvnk6wyBEsS+dEHnOPypKCy4VpSh56UwOKImL/mtm7lV1B4aZW9U+lBpmkZRTc6Hz9yF0dV9VzZNQglXCnZ4pmdGrRvNdQwvB+VpnM+RygPdSXgtQT3qtdFecXQ640Oot3CzHP72nWUlsMOAN1KvQF9/vp3QwyU2f8qkqHZxkLcNsJU6DjwuCQyu5g8Kjpdh2xSIBhV/LbzQ/fiEWsedMNahq+1SBXk77U2gklWcWejGu0wbBRFuRdegqHTnDaZx1xu88o3KXnnuaHgsbfHW172Bq5AID/wkuXJt9LFfli318QFs+eSdFAoG0cHxiHPKtFLNgY1n0oVtvSkoG4XtveD/nxa5XVBIgSa7b/NizmazaZrO+JzPF8AXO/aD70i8PaGwTyo3jdB2PLg1NSRXeGfdN2SyNrSOx84NPa7Fe6VHIxeq0FtmANRTk6EXDgaL4LPkKy5wQFtwTqi4b/KRE6nZAXjeJ8pjp6uTMzQfsuSkFm/aBSQnWfxo5CTA/S1vDLwJOIbiXbILufwDUEsDBBQAAAgIAAAIIezJn5W1bQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSiWViqmFqokGSsUWaRbK5ua6hoXmKRYqFZWqKZVKyWUqSUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIezUvXqxVgIAABMFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIezJn5W1bQAAAHgAAAAJACQAAAAAAAAAAAAAAKMCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWwMAAAAA
-    upgradeData: 
-    file_cachedStartup: {fileID: 0}
-    data_cachedStartup: 
-    cacheStartup: 0
-  showNavGraphs: 1
-  showUnwalkableNodes: 1
-  debugMode: 0
-  debugFloor: 0
-  debugRoof: 1
-  manualDebugFloorRoof: 0
-  showSearchTree: 0
-  unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
-  maxNearestNodeDistance: 100
-  scanOnStartup: 1
-  fullGetNearestSearch: 0
-  prioritizeGraphs: 0
-  prioritizeGraphsLimit: 1
-  colorSettings:
-    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
-    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
-    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
-    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
-    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
-    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
-    _AreaColors:
-    - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
-  heuristic: 2
-  heuristicScale: 1
-  threadCount: 1
-  maxFrameTime: 1
-  batchGraphUpdates: 0
-  graphUpdateBatchingInterval: 0.2
-  euclideanEmbedding:
-    mode: 0
-    seed: 0
-    pivotPointRoot: {fileID: 0}
-    spreadOutCount: 1
-  showGraphs: 1
---- !u!4 &335677707
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335677705}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6684372, y: -7.6611047, z: -2.0029905}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &537350023
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,7 +5239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limitX: 0
   limitY: 59
-  playerT: {fileID: 7614514637497785889, guid: 69e695a785797db92aefeaef217d8208, type: 3}
 --- !u!81 &868529453
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5645,7 +5558,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3128223049086235968, guid: 9a49da095b99e3947994ff60933e6b4e, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3128223049086235968, guid: 9a49da095b99e3947994ff60933e6b4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6581,7 +6494,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746191370
 GameObject:

@@ -450,7 +450,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limitX: 38
   limitY: 24
-  playerT: {fileID: 7614514637497785889, guid: 69e695a785797db92aefeaef217d8208, type: 3}
+  startX: 0
+  startY: 0
+  playerT: {fileID: 0}
 --- !u!81 &363636298
 AudioListener:
   m_ObjectHideFlags: 0
@@ -510,7 +512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363636296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39, y: 28.5, z: -15}
+  m_LocalPosition: {x: 39, y: 0, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

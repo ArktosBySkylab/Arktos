@@ -27,7 +27,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Assets/Scenes/city.unity");
+        PhotonNetwork.LoadLevel("Assets/Scenes/spaceship.unity");
+        
     }
     void Start()
     {
