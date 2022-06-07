@@ -24,7 +24,7 @@ namespace Playground.Characters.Monsters
         Seeker seeker;
         Rigidbody2D rb;
         
-         public void Start()
+         public override void Start()
          {
              // le seeker c'est un composante du package A* 
              seeker = GetComponent<Seeker>();
@@ -34,6 +34,7 @@ namespace Playground.Characters.Monsters
 
              target = GetTarget();
              InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+             base.Start();
          }
               
          //function used to select the closest player to chase 
