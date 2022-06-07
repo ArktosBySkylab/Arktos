@@ -75,6 +75,7 @@ namespace Playground.Characters.Monsters
             {
                 if (heroToDammage[i].GetComponent<Hero>() != null)
                 {
+                    /*
                     if (heroToDammage[i].GetComponent<Hero>().transform.position.x > transform.position.x )
                     {
                         transform.position = new Vector3( transform.position.x+1f,transform.position.y,transform.position.z);
@@ -88,6 +89,9 @@ namespace Playground.Characters.Monsters
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
                         // Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
                     }
+                    */
+                    animator.SetInteger("IsFighting", 1);
+                    heroToDammage[i].GetComponent<Hero>().Pv -= damage;
                 }
             }
         }
