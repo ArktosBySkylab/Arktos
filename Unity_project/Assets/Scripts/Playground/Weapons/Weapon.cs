@@ -70,7 +70,7 @@ namespace Playground.Weapons
             if(nbUse == 0 || activated)
                 return false;
 
-            Debug.Log("Not Fighting");
+            // Debug.Log("Not Fighting");
             ToogleActivation();
             animator.SetInteger("IsFighting", 1);
             owner.Animator.SetInteger("IsFighting", 1);

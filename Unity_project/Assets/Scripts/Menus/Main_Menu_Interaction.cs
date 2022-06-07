@@ -182,22 +182,22 @@ public class Main_Menu_Interaction : MonoBehaviour
         switch (HerosName)// permet de covertir le string en type HerosNames
         {
             case "Kitsune":
-                Debug.Log("getCharactaireTypeHerosNames Kitsune");
+                // Debug.Log("getCharactaireTypeHerosNames Kitsune");
                 return HerosNames.Kitsune;
             case "JojoTheKing":
-                Debug.Log("getCharactaireTypeHerosNames JojoTheKing");
+                // Debug.Log("getCharactaireTypeHerosNames JojoTheKing");
                 return HerosNames.JojoTheKing;
             case "Ian":
-                Debug.Log("getCharactaireTypeHerosNames Ian");
+                // Debug.Log("getCharactaireTypeHerosNames Ian");
                 return HerosNames.Ian;
             case "Drow":
-                Debug.Log("getCharactaireTypeHerosNames Drow");
+                // Debug.Log("getCharactaireTypeHerosNames Drow");
                 return HerosNames.Drow;
             case "Max":
-                Debug.Log("getCharactaireTypeHerosNames Max");
+                // Debug.Log("getCharactaireTypeHerosNames Max");
                 return HerosNames.Max;
             default:
-                Debug.Log("getCharactaireTypeHerosNames default : kitsune");
+                // Debug.Log("getCharactaireTypeHerosNames default : kitsune");
                 return HerosNames.Kitsune;
         }
     }
@@ -206,10 +206,10 @@ public class Main_Menu_Interaction : MonoBehaviour
         switch (WeaponsName)// permet de covertir le string en type HerosNames
         {
             case "SmallSword":
-                Debug.Log("getWeaponTypeWeponNames : SmallSword");
+                // Debug.Log("getWeaponTypeWeponNames : SmallSword");
                 return WeaponsNames.SmallSword;
             default:
-                Debug.Log("getWeaponTypeWeponNames default : SmallSword");
+                // Debug.Log("getWeaponTypeWeponNames default : SmallSword");
                 return WeaponsNames.SmallSword;
         }
         

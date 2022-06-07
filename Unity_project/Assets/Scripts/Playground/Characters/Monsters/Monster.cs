@@ -65,14 +65,14 @@ namespace Playground.Characters.Monsters
                     {
                         transform.position = new Vector3( transform.position.x+1f,transform.position.y,transform.position.z);
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
-                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
+                        // Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
                     }
 
                     else
                     { 
                         transform.position = new Vector3( transform.position.x-1f,transform.position.y,transform.position.z);
                         heroToDammage[i].GetComponent<Hero>().Pv -= damage;
-                        Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
+                        // Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace Playground.Characters.Monsters
         public void TakeDamage(int damage)
         {
             pv -= damage;
-            Debug.Log(pv);
+            // Debug.Log(pv);
         }
         
         protected override IEnumerator TheDeathIsComing()

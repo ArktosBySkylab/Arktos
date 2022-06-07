@@ -102,7 +102,7 @@ namespace Playground.Characters.Monsters
              
              // Movement
              rb.AddForce(force*1.5f);
-             Debug.Log(initialPos);
+             // Debug.Log(initialPos);
              if (initialPos != null)
              {
                  if (Math.Abs(rb.position.y - (initialPos)) > 1f)

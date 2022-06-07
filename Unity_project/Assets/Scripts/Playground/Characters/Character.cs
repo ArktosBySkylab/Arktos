@@ -128,11 +128,6 @@ namespace Playground.Characters
         public virtual void Update()
         {
             JumpAnimation();
-            // if (pv <= 0)
-            // {
-            //     TheDeathIsComing();
-            //     Debug.Log("Kitsune dead");
-            // }
         }
 
         public virtual void FixedUpdate()
@@ -165,7 +160,7 @@ namespace Playground.Characters
             if (Enum.TryParse(col.gameObject.name, out WeaponsNames _))
             {
                 Weapon weapon = col.gameObject.GetComponent<Weapon>();
-                Debug.LogWarning(weapon.Shooted());
+                // Debug.LogWarning(weapon.Shooted());
                 Pv -= weapon.Shooted();
                 
                 Debug.Log(name + ": LOST PV -> " + pv);
@@ -179,7 +174,7 @@ namespace Playground.Characters
         public void TakeDamage(int damage)
         {
             pv -= damage;
-            Debug.Log(pv);
+            // Debug.Log(pv);
         }
 
         protected virtual IEnumerator TheDeathIsComing()
