@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &131866482045717454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 8984744220973817974, guid: 46919a6a4d5e5e54a95b8dc058d863df, type: 3}
+  m_PrefabInstance: {fileID: 5259167107555922021}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 302873193063168976}
+  m_Layer: 0
+  m_Name: 'MenuCanvas (Missing Prefab with guid: 46919a6a4d5e5e54a95b8dc058d863df)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &302873193063168976
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 5532765664077327285, guid: 46919a6a4d5e5e54a95b8dc058d863df, type: 3}
+  m_PrefabInstance: {fileID: 5259167107555922021}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131866482045717454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6739734545582153717}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1858367102256325244
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,10 +467,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -724,8 +759,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46919a6a4d5e5e54a95b8dc058d863df, type: 3}
---- !u!224 &302873193063168976 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5532765664077327285, guid: 46919a6a4d5e5e54a95b8dc058d863df, type: 3}
-  m_PrefabInstance: {fileID: 5259167107555922021}
-  m_PrefabAsset: {fileID: 0}
