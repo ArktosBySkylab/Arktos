@@ -78,6 +78,13 @@ namespace Playground.Characters.Monsters
     
          public override void FixedUpdate()
          {
+             float verticalSpeed = Math.Abs(OldPosition.y - transform.position.y);
+             
+             if (verticalSpeed > 0.1)
+                 animator.SetBool("IsJumping", true);
+             else
+                 animator.SetBool("IsJumping", false);
+             
              base.FixedUpdate();
              if (TargetInDistance())
                  PathFollow();
