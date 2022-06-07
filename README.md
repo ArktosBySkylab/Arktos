@@ -26,3 +26,8 @@ Make sure that curves are segment and not curves
 #Music promoted by https://www.free-stock-music.com
 #Creative Commons Attribution-ShareAlike 3.0 Unported
 #https://creativecommons.org/licenses/by-sa/3.0/deed.en_US
+#---------
+#Epic Cinematic Inspirational Music | Alive by Alex-Productions | https://www.youtube.com/channel/UCx0_M61F81Nfb-BRXE-SeVA
+#Music promoted by https://www.free-stock-music.com
+#Creative Commons Attribution 3.0 Unported License
+#https://creativecommons.org/licenses/by/3.0/deed.en_US
