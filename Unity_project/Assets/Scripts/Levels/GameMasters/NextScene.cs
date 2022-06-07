@@ -21,7 +21,7 @@ namespace Levels
             }
         }
 
-        IEnumerator LoadLevel(string sceneName)
+        IEnumerator LoadLevel(string sceneName)//utilisé pour  faire la transition
         {
             transition.SetTrigger("start");
             yield return new WaitForSeconds(2);
