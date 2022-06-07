@@ -1,3 +1,4 @@
+using System;
 using Pathfinding;
 using Photon.Realtime;
 using Playground.Weapons;
@@ -41,7 +42,7 @@ namespace Playground.Characters.Monsters
         
         private bool IsGravitySwitched = false;
         
-         public void Start()
+         public override void Start()
          {
              // le seeker c'est un composante du package A* 
              seeker = GetComponent<Seeker>();
@@ -55,6 +56,7 @@ namespace Playground.Characters.Monsters
              jumpPosition = GetPostion();
 
              InitialePos = new Vector3(34, -15,0);
+             base.Start();
          }
               
          // bool pour activer/desactiver le monstre en fonction de la distance avec le joueur 
@@ -77,9 +79,7 @@ namespace Playground.Characters.Monsters
          private void FixedUpdate()
          {
              if (TargetInDistance())
-             {
                  PathFollow();
-             }
          }
 
          //function used to select the closest player to chase 

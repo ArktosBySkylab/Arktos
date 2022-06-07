@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Playground.Characters.Heros;
 using Playground.Weapons;
@@ -13,6 +14,9 @@ namespace Playground.Characters.Monsters
         public float speed;
         
         private Transform target;
+        
+        // Animator variables
+        protected Vector3 OldPosition;
         
         public float minimumDistance;
         
@@ -30,10 +34,21 @@ namespace Playground.Characters.Monsters
             timeBtwAttack = initial_time;
             
         }
+
+        public virtual void Start() =>
+             OldPosition = gameObject.transform.position;
         
         public override void Update()
         {
-            //UsePrimaryWeapon = true;
+             horizontalMove = Math.Abs(OldPosition.x - transform.position.x);
+             OldPosition = transform.position;
+             
+             if (horizontalMove > 0.02)
+                animator.SetBool("IsRunning", true);
+            
+            else
+                animator.SetBool("IsRunning", false);
+             
             
             target = GameObject.FindGameObjectWithTag("Heros").transform;
 
