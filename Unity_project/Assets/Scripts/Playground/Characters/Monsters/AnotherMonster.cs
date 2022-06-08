@@ -24,7 +24,7 @@ namespace Playground.Characters.Monsters
         Seeker seeker;
         Rigidbody2D rb;
         
-         public void Start()
+         public override void Start()
          {
              // le seeker c'est un composante du package A* 
              seeker = GetComponent<Seeker>();
@@ -34,6 +34,7 @@ namespace Playground.Characters.Monsters
 
              target = GetTarget();
              InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+             base.Start();
          }
               
          //function used to select the closest player to chase 
@@ -72,8 +73,9 @@ namespace Playground.Characters.Monsters
              }
          }
     
-         private void FixedUpdate()
+         public override void FixedUpdate()
          {
+             base.FixedUpdate();
              if (TargetInDistance())
              {
                  PathFollow();
@@ -103,6 +105,10 @@ namespace Playground.Characters.Monsters
              {
                  return;
              }
+             
+             // Do not move if the boss is attacking
+             if (AlreadyFighting)
+                 return;
              
              // calcul de la direction 
              Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;

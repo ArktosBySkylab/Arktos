@@ -142,6 +142,7 @@ namespace Playground.Characters.Heros
                     switchGravity = true;
 
                 if (Input.GetButtonDown("PrimaryWeapon"))
+                    //try to put the soundtrigger here
                     UsePrimaryWeapon = true;
                 
                 if (Input.GetButtonDown("SecondaryWeapon"))
@@ -167,7 +168,6 @@ namespace Playground.Characters.Heros
             yield return base.TheDeathIsComing();
             if (Physics2D.gravity.y > 0)
             {
-                Debug.Log("cocuou");
                 Physics2D.gravity *= -1;
             }
 

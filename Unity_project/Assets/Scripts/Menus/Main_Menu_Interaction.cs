@@ -23,7 +23,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     protected string HerosName;// save the name of the last played character
     protected string WeaponsName;// save the name of the last played weapon
     protected string LevelsName; // save the name of the last played level
-    protected float SoundsLevel;
+    
     protected int levelunlock; // save the last unlocked level
     protected int persounlock; // save the last unlocked character
     protected int waeponunlock; // save the last unlocked weapon
@@ -36,7 +36,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     void Awake()//peremt d'afficher au lancement du jeu le personnage choisit et son arme
         {
             GetSavedInformation();
-            resetSavedInformation();
+            
             ShowUnlockedcharacter(persounlock);
             ShowUnlockedWeapon(waeponunlock);
             markSelectedHero(GameObject.Find("CharacterSelection/CharacterScroll/ButtonListViewPort/ButtonListContent/" + HerosName).GetComponent<Image>());
@@ -46,6 +46,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     void Start()
     {
         
+        GameObject.Find("SETTING-MENU").SetActive(false); // permet de régler le son en fonction des playerpref
         dataManager = FindObjectOfType<LoadLevelInfos>();
         if (dataManager is null)
         {
@@ -85,9 +86,7 @@ public class Main_Menu_Interaction : MonoBehaviour
     IEnumerator LoadLevel(string sceneName)
     {
         transition.SetTrigger("start");
-        Debug.Log("animation should be play");
         yield return new WaitForSeconds(1);
-        Debug.Log("animation should be finish");
         SceneManager.LoadScene(sceneName);
     }
     public void saveInformation()
@@ -95,7 +94,7 @@ public class Main_Menu_Interaction : MonoBehaviour
         PlayerPrefs.SetString("Character",HerosName);
         PlayerPrefs.SetString("Weapon",WeaponsName);
         PlayerPrefs.SetString("level",LevelsName);
-        PlayerPrefs.SetFloat("sound",SoundsLevel);
+        
         PlayerPrefs.SetInt("levelunlock",levelunlock);
         PlayerPrefs.SetInt("persounlock",persounlock);
     }
@@ -104,7 +103,7 @@ public class Main_Menu_Interaction : MonoBehaviour
         HerosName = PlayerPrefs.GetString("Character","Kitsune");
         WeaponsName = PlayerPrefs.GetString("Weapon","SmallSword");
         LevelsName = PlayerPrefs.GetString("level","city");
-        SoundsLevel = PlayerPrefs.GetFloat("sound",0.0f);
+        
         levelunlock = PlayerPrefs.GetInt("levelunlock",levelTab.Length - 1);//mettre à 0
         persounlock = PlayerPrefs.GetInt("persounlock",characterTab.Length - 1);// mettre à 0
     }
@@ -183,22 +182,22 @@ public class Main_Menu_Interaction : MonoBehaviour
         switch (HerosName)// permet de covertir le string en type HerosNames
         {
             case "Kitsune":
-                Debug.Log("getCharactaireTypeHerosNames Kitsune");
+                // Debug.Log("getCharactaireTypeHerosNames Kitsune");
                 return HerosNames.Kitsune;
             case "JojoTheKing":
-                Debug.Log("getCharactaireTypeHerosNames JojoTheKing");
+                // Debug.Log("getCharactaireTypeHerosNames JojoTheKing");
                 return HerosNames.JojoTheKing;
             case "Ian":
-                Debug.Log("getCharactaireTypeHerosNames Ian");
+                // Debug.Log("getCharactaireTypeHerosNames Ian");
                 return HerosNames.Ian;
             case "Drow":
-                Debug.Log("getCharactaireTypeHerosNames Drow");
+                // Debug.Log("getCharactaireTypeHerosNames Drow");
                 return HerosNames.Drow;
             case "Max":
-                Debug.Log("getCharactaireTypeHerosNames Max");
+                // Debug.Log("getCharactaireTypeHerosNames Max");
                 return HerosNames.Max;
             default:
-                Debug.Log("getCharactaireTypeHerosNames default : kitsune");
+                // Debug.Log("getCharactaireTypeHerosNames default : kitsune");
                 return HerosNames.Kitsune;
         }
     }
@@ -207,10 +206,10 @@ public class Main_Menu_Interaction : MonoBehaviour
         switch (WeaponsName)// permet de covertir le string en type HerosNames
         {
             case "SmallSword":
-                Debug.Log("getWeaponTypeWeponNames : SmallSword");
+                // Debug.Log("getWeaponTypeWeponNames : SmallSword");
                 return WeaponsNames.SmallSword;
             default:
-                Debug.Log("getWeaponTypeWeponNames default : SmallSword");
+                // Debug.Log("getWeaponTypeWeponNames default : SmallSword");
                 return WeaponsNames.SmallSword;
         }
         

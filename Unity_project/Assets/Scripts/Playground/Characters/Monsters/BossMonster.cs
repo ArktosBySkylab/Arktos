@@ -15,7 +15,7 @@ namespace Playground.Characters.Monsters
         public BossMonster() : base(MonstersNames.BossMonster, WeaponsNames.Stick, 1000, 1)
         {
         }
-        
+
         [Header("Pathfinding")]
         private Transform target;
         public float activateDistance = 50f;
@@ -30,13 +30,13 @@ namespace Playground.Characters.Monsters
         private int currentWaypoint = 0;
         Rigidbody2D rb;
         
-         public void Start()
+         public override void Start()
          {
              // j'ai pas reussi a reutiliser le CC2D ducoup je recupere le rigidbody pour faire 
              // faire bouger le monstre 
              rb = GetComponent<Rigidbody2D>();
              target = GetTarget();
-
+             base.Start();
          }
            
          
@@ -67,16 +67,14 @@ namespace Playground.Characters.Monsters
     
     
          //verification du path 
-         private void FixedUpdate()
+         public override void FixedUpdate()
          {
+             base.FixedUpdate();
              if (TargetInDistance())
              {
                  PathFollow();
              }
          }
-         
-
-         
          
          private void PathFollow()
          {
@@ -95,13 +93,17 @@ namespace Playground.Characters.Monsters
                  return;
              }
              
+             // Do not move if the boss is attacking
+             if (AlreadyFighting)
+                 return;
+             
              // calcul de la direction 
              Vector2 direction = (target.position.x > transform.position.x ? new Vector2(1,0):new Vector2(-1,0) );
              Vector2 force = direction * speed * Time.deltaTime*1.3f;
              
              // Movement
              rb.AddForce(force*1.5f);
-             Debug.Log(initialPos);
+             // Debug.Log(initialPos);
              if (initialPos != null)
              {
                  if (Math.Abs(rb.position.y - (initialPos)) > 0.1f)

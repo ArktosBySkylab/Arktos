@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Playground.Characters.Heros;
 using Playground.Weapons;
@@ -12,6 +13,11 @@ namespace Playground.Characters.Monsters
         public float speed;
         
         private Transform target;
+        
+        // Animator variables
+        protected Vector3 OldPosition;
+        public bool AlreadyFighting = false;
+        
         
         public float minimumDistance;
         
@@ -29,11 +35,13 @@ namespace Playground.Characters.Monsters
             timeBtwAttack = initial_time;
             
         }
+
+        public virtual void Start() =>
+             OldPosition = gameObject.transform.position;
         
         public override void Update()
         {
-            //UsePrimaryWeapon = true;
-            
+            base.Update();
             target = GameObject.FindGameObjectWithTag("Heros").transform;
 
             if (timeBtwAttack <= 0)
@@ -42,14 +50,22 @@ namespace Playground.Characters.Monsters
                     Attack();
                 timeBtwAttack = initial_time;
             }
-            if (pv <= 0)
-            {
-                Destroy(gameObject);
-            }
             else
-            {
                 timeBtwAttack -= Time.deltaTime;
-            }
+        }
+
+        public virtual void FixedUpdate()
+        {
+             horizontalMove = Math.Abs(OldPosition.x - transform.position.x);
+             OldPosition = transform.position;
+             
+             if (horizontalMove > 0.01)
+                animator.SetBool("IsRunning", true);
+            
+            else
+                animator.SetBool("IsRunning", false);
+             
+            
         }
 
         public void Attack()
@@ -60,14 +76,9 @@ namespace Playground.Characters.Monsters
             {
                 if (heroToDammage[i].GetComponent<Hero>() != null)
                 {
-                    if (heroToDammage[i].GetComponent<Hero>().transform.position.x > transform.position.x )
-                    {
-                        heroToDammage[i].GetComponent<Hero>().Pv -= damage;
-                    }
-                    else
-                    { 
-                        heroToDammage[i].GetComponent<Hero>().Pv -= damage;
-                    }
+                    AlreadyFighting = true;
+                    animator.SetInteger("IsFighting", 1);
+                    heroToDammage[i].GetComponent<Hero>().Pv -= damage;
                 }
             }
         }
@@ -75,7 +86,7 @@ namespace Playground.Characters.Monsters
         public void TakeDamage(int damage)
         {
             pv -= damage;
-            Debug.Log(pv);
+            // Debug.Log(pv);
         }
         
         protected override IEnumerator TheDeathIsComing()
@@ -85,6 +96,7 @@ namespace Playground.Characters.Monsters
                 Instantiate( DropOnDeath, transform.position, Quaternion.identity);
             }
             yield return base.TheDeathIsComing();
+            Destroy(gameObject);
         }
     }
 

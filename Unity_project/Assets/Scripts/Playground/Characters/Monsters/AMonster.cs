@@ -1,3 +1,4 @@
+using System;
 using Pathfinding;
 using Photon.Realtime;
 using Playground.Weapons;
@@ -41,7 +42,7 @@ namespace Playground.Characters.Monsters
         
         private bool IsGravitySwitched = false;
         
-         public void Start()
+         public override void Start()
          {
              // le seeker c'est un composante du package A* 
              seeker = GetComponent<Seeker>();
@@ -55,6 +56,7 @@ namespace Playground.Characters.Monsters
              jumpPosition = GetPostion();
 
              InitialePos = new Vector3(34, -15,0);
+             base.Start();
          }
               
          // bool pour activer/desactiver le monstre en fonction de la distance avec le joueur 
@@ -74,12 +76,18 @@ namespace Playground.Characters.Monsters
              }
          }
     
-         private void FixedUpdate()
+         public override void FixedUpdate()
          {
+             float verticalSpeed = Math.Abs(OldPosition.y - transform.position.y);
+             
+             if (verticalSpeed > 0.1)
+                 animator.SetBool("IsJumping", true);
+             else
+                 animator.SetBool("IsJumping", false);
+             
+             base.FixedUpdate();
              if (TargetInDistance())
-             {
                  PathFollow();
-             }
          }
 
          //function used to select the closest player to chase 
@@ -151,6 +159,10 @@ namespace Playground.Characters.Monsters
                  return;
              }
 
+             // Do not move if the boss is attacking
+             if (AlreadyFighting)
+                 return;
+             
              if (rb.position.x+0.5f >= target.position.x&&
                  rb.position.x-0.5f <= target.position.x&&
                  target.position.y - rb.position.y > 5f)

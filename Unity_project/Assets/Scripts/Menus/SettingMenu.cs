@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 //using UnityEngine.iOS;
 using UnityEngine.Audio;
@@ -9,18 +10,26 @@ using UnityEngine.UI;
 public class SettingMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public Slider volumeController;
 
-    private void Start()
+    private void Start()// à finir
     {
-        audioMixer.SetFloat("MainVolume", PlayerPrefs.GetFloat("sound"));
-        volumeController.value = PlayerPrefs.GetFloat("sound");
+        Slider volumeController = GameObject.Find("Master/Volume").GetComponent<Slider>();
+        Slider SoundEffectController = GameObject.Find("SoundEffect/SoundEffect").GetComponent<Slider>();
+        Slider MusicController = GameObject.Find("Music/Music").GetComponent<Slider>();
+        
+        volumeController.value = PlayerPrefs.GetFloat(volumeController.name,0);
+        audioMixer.SetFloat(volumeController.name, volumeController.value);
+        
+        SoundEffectController.value = PlayerPrefs.GetFloat(SoundEffectController.name,0);
+        audioMixer.SetFloat(SoundEffectController.name, SoundEffectController.value);
+        
+        MusicController.value = PlayerPrefs.GetFloat(MusicController.name,0);
+        audioMixer.SetFloat(MusicController.name, MusicController.value);
     }
 
-    public void SetVolume(float volume)
+    public void SetVolume(Slider slider)
     {
-        audioMixer.SetFloat("MainVolume", volume);
-        PlayerPrefs.SetFloat("sound", volume);
+        audioMixer.SetFloat(slider.name, slider.value);
+        PlayerPrefs.SetFloat(slider.name, slider.value);
     }
-    
 }
