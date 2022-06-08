@@ -482,11 +482,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_text
-      value: phecda
+      value: Phecda
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_fontSize
-      value: 33.3
+      value: 68.55
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825965, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_Name
@@ -2833,7 +2833,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1345780435}
   m_Direction: 0
   m_Value: 0.5
-  m_Size: 0.44016096
+  m_Size: 0.5020615
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3626,7 +3626,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1672759550}
   m_Direction: 0
   m_Value: 0.5
-  m_Size: 0.68902904
+  m_Size: 0.78592825
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4323,11 +4323,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_text
-      value: merak
+      value: Merak
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_fontSize
-      value: 39.35
+      value: 94.6
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825965, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_Name
@@ -5315,11 +5315,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_text
-      value: megrez
+      value: Megrez
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_fontSize
-      value: 32.65
+      value: 75.75
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825965, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_Name
@@ -6988,11 +6988,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_text
-      value: mizar
+      value: Mizar
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_fontSize
-      value: 44.15
+      value: 73.65
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825965, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_Name
@@ -7640,11 +7640,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_text
-      value: benetnash
+      value: Benetnash
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_fontSize
-      value: 23.15
+      value: 55.85
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825965, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_Name
@@ -9211,11 +9211,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_text
-      value: dubhe
+      value: Dubhe
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_fontSize
-      value: 39.55
+      value: 61.75
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825965, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_Name
@@ -9543,11 +9543,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_text
-      value: alioth
+      value: Alioth
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_fontSize
-      value: 44.15
+      value: 72.9
       objectReference: {fileID: 0}
     - target: {fileID: 4237679614429825965, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_Name
@@ -10228,7 +10228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &2618216285863181248
 Animator:
   serializedVersion: 3
@@ -10476,6 +10476,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1363175278}
     m_Modifications:
+    - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
+      propertyPath: m_text
+      value: City
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237679614429825939, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
+      propertyPath: m_fontSize
+      value: 149.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4237679614741593156, guid: c414302b9db293a4cbe28c95bd244a67, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
