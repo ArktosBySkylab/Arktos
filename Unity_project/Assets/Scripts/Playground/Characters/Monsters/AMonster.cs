@@ -209,16 +209,13 @@ namespace Playground.Characters.Monsters
                      waitJump--;
                  }
              }
-              
-
              // Movement
              rb.AddForce(force*3f);
              
              // flip le monstre pour qu'il regarde du bon cote 
-             if (force.x > 0 && !FacingRight)
+             if (target.transform.position.x - transform.position.x >0 && !FacingRight)
                  Flip();
-             
-             else if (force.x<0 && FacingRight)
+             else if (target.transform.position.x - transform.position.x <0 && FacingRight)
                  Flip();
      
              // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max 

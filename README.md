@@ -21,7 +21,7 @@ Animate colliders + foot/head/hand checks
 Make sure that curves are segment and not curves
 
 
-# CREDIT MUSIC
+ CREDIT MUSIC
 #Dark Moon by Purrple Cat | https://purrplecat.com
 #Music promoted by https://www.free-stock-music.com
 #Creative Commons Attribution-ShareAlike 3.0 Unported

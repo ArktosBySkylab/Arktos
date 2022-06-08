@@ -10,7 +10,7 @@ TagManager:
   - Monsters
   - Weapons
   - EnableJump
-  - AI A*
+  - Door
   layers:
   - Default
   - TransparentFX

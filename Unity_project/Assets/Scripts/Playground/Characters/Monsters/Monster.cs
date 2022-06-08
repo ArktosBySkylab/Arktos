@@ -3,7 +3,6 @@ using System.Collections;
 using Playground.Characters.Heros;
 using Playground.Weapons;
 using UnityEditor;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 namespace Playground.Characters.Monsters
@@ -77,21 +76,6 @@ namespace Playground.Characters.Monsters
             {
                 if (heroToDammage[i].GetComponent<Hero>() != null)
                 {
-                    /*
-                    if (heroToDammage[i].GetComponent<Hero>().transform.position.x > transform.position.x )
-                    {
-                        transform.position = new Vector3( transform.position.x+1f,transform.position.y,transform.position.z);
-                        heroToDammage[i].GetComponent<Hero>().Pv -= damage;
-                        // Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
-                    }
-
-                    else
-                    { 
-                        transform.position = new Vector3( transform.position.x-1f,transform.position.y,transform.position.z);
-                        heroToDammage[i].GetComponent<Hero>().Pv -= damage;
-                        // Debug.Log(heroToDammage[i].GetComponent<Hero>().Pv);
-                    }
-                    */
                     AlreadyFighting = true;
                     animator.SetInteger("IsFighting", 1);
                     heroToDammage[i].GetComponent<Hero>().Pv -= damage;

@@ -1,4 +1,7 @@
 using System;
+using Levels;
+using Levels.DataManager;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Playground.Camera
@@ -7,12 +10,17 @@ namespace Playground.Camera
     {
         [SerializeField] protected int limitX =0;
         [SerializeField] protected int limitY =0;
-        public Transform playerT;
+        private Transform playerT;
         private Vector3 offset;
         
         void Start ()
         {
-            playerT = GameObject.FindGameObjectWithTag("Heros").transform;
+            LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+            if (infos.multiplayer && NextScene.Players.Count>0)
+                playerT = NextScene.Players[PhotonNetwork.CurrentRoom.PlayerCount-1].transform;
+            else
+                playerT = GameObject.FindGameObjectWithTag("Heros").GetComponent<Transform>();
+
         }
 
         private void Update()
@@ -23,6 +31,14 @@ namespace Playground.Camera
         void LateUpdate ()
         {
             Vector3 temp = transform.position;
+            
+            LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+            if (infos.multiplayer && NextScene.Players.Count>0)
+                playerT = NextScene.Players[PhotonNetwork.CurrentRoom.PlayerCount-1].transform;
+            else
+                playerT = GameObject.FindGameObjectWithTag("Heros").GetComponent<Transform>();
+            
+            
             if (playerT.position.x > -limitX && playerT.position.x < limitX)
                 temp.x = playerT.position.x;
             else

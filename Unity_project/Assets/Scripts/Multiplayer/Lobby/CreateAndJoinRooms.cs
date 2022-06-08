@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
+    public List<GameObject> players;
 
     public void CreateRoom()
     {
@@ -27,7 +29,16 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Assets/Scenes/city.unity");
+        PhotonNetwork.LoadLevel("Assets/Scenes/spaceship.unity");
+        //a remplacer
+        if (PhotonNetwork.PlayerList.Length == 4)
+        {
+            foreach (var hero in GameObject.FindGameObjectsWithTag("Heros"))
+            {
+                players.Add(hero);
+            }
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+        }
     }
     void Start()
     {

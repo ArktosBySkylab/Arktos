@@ -67,8 +67,6 @@ namespace Playground.Characters.Monsters
     
     
          //verification du path 
-         
-    
          public override void FixedUpdate()
          {
              base.FixedUpdate();
@@ -84,6 +82,7 @@ namespace Playground.Characters.Monsters
              isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);
              if (getGroundPos == 0 && isGrounded)
              {
+                 //5.5 est la distance entre le bidou et les pieds du monstres a l'echelle
                  initialPos = (float)Math.Round(transform.position.y)+5.5f;
              }
              
@@ -107,25 +106,20 @@ namespace Playground.Characters.Monsters
              // Debug.Log(initialPos);
              if (initialPos != null)
              {
-                 if (Math.Abs(rb.position.y - (initialPos)) > 1f)
+                 if (Math.Abs(rb.position.y - (initialPos)) > 0.1f)
                  {
-                     rb.AddForce(new Vector2(0,initialPos - (-1)*rb.position.y)*10f);
+                     rb.AddForce(new Vector2(0,initialPos - (-1)*rb.position.y)*20f);
                  }
              }
-             
-
-             
-             
 
              // flip le monstre pour qu'il regarde du bon cote 
-             if (force.x > 0 && !FacingRight) 
+             if (target.transform.position.x - transform.position.x >0&& !FacingRight) 
                  Flip();
-             else if (force.x <0 && FacingRight) 
+             else if (target.transform.position.x - transform.position.x <0 && FacingRight) 
                  Flip();
 
              // on augmente le currentwaypoint qui l'arret du monstre lorsque superieur ou egal au max
              // -> a modifier avec le calcule de la distance directement prcq sert a rien 
-        
              float distance = Vector2.Distance(rb.position, target.position); 
              if (distance < nextWaypointDistance) 
              { 

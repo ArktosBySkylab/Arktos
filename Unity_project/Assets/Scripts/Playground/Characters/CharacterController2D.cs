@@ -29,6 +29,9 @@ namespace Playground.Characters
 		private Rigidbody2D m_Rigidbody2D;
 		private bool m_FacingRight = true; // For determining which way the player is currently facing.
 		private Vector3 m_Velocity = Vector3.zero;
+		
+		//multiplayer things
+		private bool isMultiPlayer;
 
 		[Header("Events")] [Space] public UnityEvent OnLandEvent; // All event that have to be done when landing
 
@@ -54,6 +57,8 @@ namespace Playground.Characters
 			
 			m_WhatIsCeil = LayerMask.GetMask("Ceiling");
 			m_WhatIsGround = LayerMask.GetMask("Floor");
+
+			isMultiPlayer = GameObject.FindGameObjectsWithTag("Heros").Length > 1;
 		}
 
 		private void FixedUpdate()
@@ -181,8 +186,15 @@ namespace Playground.Characters
 			if (m_Grounded || m_Ceiled)
 			{
 				Physics2D.gravity = -Physics2D.gravity;
-				gameObject.transform.Rotate(0f, 180f, 180f);
+				//gameObject.transform.Rotate(0f, 180f, 180f);
 				m_NormalGravity ^= true; // Switch the boolean
+				//loop for multiplayer 
+				GameObject[] SwitchOtherPlayers = GameObject.FindGameObjectsWithTag("Heros");
+				Debug.Log("Nbr player :"+ SwitchOtherPlayers.Length);
+				foreach (var player in SwitchOtherPlayers)
+				{
+					player.gameObject.transform.Rotate(0f,180f,180f);
+				}
 				
 				//loop for monster
 				GameObject[] SwitchMonster = GameObject.FindGameObjectsWithTag("Monsters");
