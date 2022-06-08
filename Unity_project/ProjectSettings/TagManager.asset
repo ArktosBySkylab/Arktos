@@ -11,6 +11,7 @@ TagManager:
   - Weapons
   - EnableJump
   - Door
+  - BossMonster
   layers:
   - Default
   - TransparentFX
