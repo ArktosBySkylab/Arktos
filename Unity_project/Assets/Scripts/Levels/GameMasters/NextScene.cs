@@ -16,7 +16,13 @@ namespace Levels
             {
                 if (Physics2D.gravity.y > 0)
                     Physics2D.gravity = -Physics2D.gravity;
-
+                Debug.Log(SceneManager.GetActiveScene().buildIndex + 1 );
+                Debug.Log(PlayerPrefs.GetInt("reachedLevel", 0));
+                if (SceneManager.GetActiveScene().buildIndex + 1 > PlayerPrefs.GetInt("reachedLevel", 0))
+                {
+                    Debug.Log("new level");
+                    PlayerPrefs.SetInt("reachedLevel", SceneManager.GetActiveScene().buildIndex + 1 );
+                }
                 StartCoroutine(LoadLevel(scene));
             }
         }
