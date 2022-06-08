@@ -107,13 +107,11 @@ namespace Playground.Characters.Monsters
              // Debug.Log(initialPos);
              if (initialPos != null)
              {
-                 if (Math.Abs(rb.position.y - (initialPos)) > 1f)
+                 if (Math.Abs(rb.position.y - (initialPos)) > 0.1f)
                  {
-                     rb.AddForce(new Vector2(0,initialPos - (-1)*rb.position.y)*10f);
+                     rb.AddForce(new Vector2(0,initialPos - (-1)*rb.position.y)*20f);
                  }
              }
-             
-
              
              
 
