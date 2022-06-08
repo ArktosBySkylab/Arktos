@@ -313,9 +313,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.189524, y: -0.8414376}
-  m_Size: {x: 5, y: 5}
-  m_Direction: 1
+  m_Offset: {x: 1.2618481, y: -0.8414376}
+  m_Size: {x: 3.7704914, y: 5}
+  m_Direction: 0
 --- !u!114 &2411187916272381796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +359,7 @@ MonoBehaviour:
   controller: {fileID: 1513311938534775153}
   runSpeed: 50
   speed: 2000
+  AlreadyFighting: 0
   minimumDistance: 1.5
   initial_time: 0.5
   damage: 5
