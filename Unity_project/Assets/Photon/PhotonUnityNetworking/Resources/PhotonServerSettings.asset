@@ -41,6 +41,7 @@ MonoBehaviour:
   - RespawnSpaceship
   - LoadLevel
   - SpawnMonsters
+  - OnTriggerEnter2D
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

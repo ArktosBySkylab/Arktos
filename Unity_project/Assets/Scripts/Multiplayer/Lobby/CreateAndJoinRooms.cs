@@ -30,20 +30,15 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Assets/Scenes/spaceship.unity");
-        if (PhotonNetwork.PlayerList.Length == 2)
+        //a remplacer
+        if (PhotonNetwork.PlayerList.Length == 4)
         {
             foreach (var hero in GameObject.FindGameObjectsWithTag("Heros"))
             {
                 players.Add(hero);
             }
-            Debug.Log("nbr game obj:"+GameObject.FindGameObjectsWithTag("Heros").Length);
-            StartGame();
+            PhotonNetwork.CurrentRoom.IsOpen = false;
         }
-    }
-
-    public void StartGame()
-    {
-        PhotonNetwork.CurrentRoom.IsOpen = false;
     }
     void Start()
     {

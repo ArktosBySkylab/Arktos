@@ -61,6 +61,7 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
      <Compile Include="Assets\Scripts\Levels\GameMasters\Scene.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+     <Compile Include="Assets\Scripts\Playground\Items\OpenDoor.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
      <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
@@ -146,7 +147,6 @@
      <Compile Include="Assets\Scripts\Menus\Main_Menu_Interaction.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\Playground\Characters\Heros\HerosNames.cs" />
-     <Compile Include="Assets\Scripts\Playground\Items\OpenDoor.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

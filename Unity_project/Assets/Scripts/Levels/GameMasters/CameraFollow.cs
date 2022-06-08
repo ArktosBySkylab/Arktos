@@ -30,7 +30,6 @@ namespace Playground.Camera
         
         void LateUpdate ()
         {
-            
             Vector3 temp = transform.position;
             
             LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();

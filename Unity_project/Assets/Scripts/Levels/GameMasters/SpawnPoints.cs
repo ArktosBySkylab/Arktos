@@ -47,7 +47,8 @@ namespace Levels
             }
             multiplayer = FindObjectOfType<LoadLevelInfos>().multiplayer;
         }
-
+        
+        
         public void OnTriggerEnter2D(Collider2D col)
         {
             if (!alreadyActivated)
@@ -64,8 +65,7 @@ namespace Levels
         {
             StopCoroutine(SpawnMonsters());
         }
-
-        [PunRPC]
+        
         private IEnumerator SpawnMonsters()
         {
             foreach (Tuple<Monster, float> pair in monstersList)
