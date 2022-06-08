@@ -2833,7 +2833,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1345780435}
   m_Direction: 0
   m_Value: 0.5
-  m_Size: 0.5020615
+  m_Size: 0.501864
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3625,8 +3625,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1672759551}
   m_HandleRect: {fileID: 1672759550}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0.78592825
+  m_Value: 0.49999976
+  m_Size: 0.7856191
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3953,7 +3953,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1363175277}
+      - m_Target: {fileID: 1968096100}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -10228,7 +10228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &2618216285863181248
 Animator:
   serializedVersion: 3
