@@ -1,4 +1,7 @@
 using System;
+using Levels;
+using Levels.DataManager;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Playground.Camera
@@ -12,7 +15,12 @@ namespace Playground.Camera
         
         void Start ()
         {
-            playerT = GameObject.FindGameObjectWithTag("Heros").GetComponent<Transform>();
+            LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+            if (infos.multiplayer && NextScene.Players.Count>0)
+                playerT = NextScene.Players[PhotonNetwork.CurrentRoom.PlayerCount-1].transform;
+            else
+                playerT = GameObject.FindGameObjectWithTag("Heros").GetComponent<Transform>();
+
         }
 
         private void Update()
@@ -24,7 +32,14 @@ namespace Playground.Camera
         {
             
             Vector3 temp = transform.position;
-            playerT = GameObject.FindGameObjectWithTag("Heros").GetComponent<Transform>();
+            
+            LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+            if (infos.multiplayer && NextScene.Players.Count>0)
+                playerT = NextScene.Players[PhotonNetwork.CurrentRoom.PlayerCount-1].transform;
+            else
+                playerT = GameObject.FindGameObjectWithTag("Heros").GetComponent<Transform>();
+            
+            
             if (playerT.position.x > -limitX && playerT.position.x < limitX)
                 temp.x = playerT.position.x;
             else

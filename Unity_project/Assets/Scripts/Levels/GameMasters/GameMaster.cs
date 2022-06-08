@@ -46,15 +46,35 @@ namespace Levels
                 GameObject heros;
                 if (infos.multiplayer)
                 {
-
-                    heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
+                    if (NextScene.Players.Count > 0)
+                    {
+                        NextScene.Players.Clear();
+                        foreach (var aName in NextScene.PlayersNames)
+                        {
+                            heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{aName}", new Vector3(startX, startY), Quaternion.identity);
+                            var weapon = PhotonNetwork.Instantiate($"{pathToPrefabs}/Weapons/{firstHand.name}",
+                                new Vector3(startX, startY), Quaternion.identity);
+                            weapon.transform.parent = heros.transform.Find("HandPosition");
+                            heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
+                            gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
+                            heros.GetComponent<Hero>().SetupHealthBar(healthBar);
+                            NextScene.Players.Add(heros);
+                        }
+                    }
+                    else
+                    {
+                        heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
                         Quaternion.identity);
-                    var weapon = PhotonNetwork.Instantiate($"{pathToPrefabs}/Weapons/{firstHand.name}",
-                        new Vector3(startX, startY), Quaternion.identity);
-                    weapon.transform.parent = heros.transform.Find("HandPosition");
-                    heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
-                    gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
-
+                        var weapon = PhotonNetwork.Instantiate($"{pathToPrefabs}/Weapons/{firstHand.name}",
+                            new Vector3(startX, startY), Quaternion.identity);
+                        weapon.transform.parent = heros.transform.Find("HandPosition");
+                        heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
+                        gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
+                        heros.GetComponent<Hero>().SetupHealthBar(healthBar);
+                    }
+                    //heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
+                        //Quaternion.identity);
+                        
                 }
                 else
                 {
@@ -62,9 +82,11 @@ namespace Levels
                     var weapon = Instantiate(firstHand, heros.transform.Find("HandPosition"));
                     heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
+                    heros.GetComponent<Hero>().SetupHealthBar(healthBar);
+
                 }
 
-                heros.GetComponent<Hero>().SetupHealthBar(healthBar);
+                //heros.GetComponent<Hero>().SetupHealthBar(healthBar);
             }
             else
             {

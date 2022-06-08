@@ -1,5 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using JetBrains.Annotations;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,11 +12,18 @@ namespace Levels
     {
         public Animator transition;
         public string scene;
-
+        public static List<GameObject> Players = new List<GameObject>();
+        public static List<string> PlayersNames = new List<string>();
+        
         void OnTriggerEnter2D(Collider2D obj)
         {
             if (obj.CompareTag("Heros"))
             {
+                Players.Clear();
+                foreach (var hero in GameObject.FindGameObjectsWithTag("Heros"))
+                {
+                    PlayersNames.Add(hero.name);
+                }
                 if (Physics2D.gravity.y > 0)
                     Physics2D.gravity = -Physics2D.gravity;
 
@@ -21,6 +31,7 @@ namespace Levels
             }
         }
 
+        [PunRPC]
         IEnumerator LoadLevel(string sceneName)
         {
             transition.SetTrigger("start");

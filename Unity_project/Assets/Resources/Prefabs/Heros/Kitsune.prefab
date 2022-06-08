@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6941198645749132408}
   - component: {fileID: 1317715380752115960}
   - component: {fileID: 28069097577315242}
+  - component: {fileID: 6751937871940673105}
   m_Layer: 0
   m_Name: Kitsune
   m_TagString: Heros
@@ -241,6 +242,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2996622167748256802}
   - {fileID: 4100583069680226899}
+  - {fileID: 6751937871940673105}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -299,7 +301,7 @@ MonoBehaviour:
     InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
+    ExtrapolateOption: 1
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -394,6 +396,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 3115264059715536481}
   runSpeed: 50
+--- !u!114 &6751937871940673105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3023534253588095440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &5161670797521377179
 GameObject:
   m_ObjectHideFlags: 0

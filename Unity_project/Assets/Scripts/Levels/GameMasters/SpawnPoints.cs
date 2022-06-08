@@ -65,6 +65,7 @@ namespace Levels
             StopCoroutine(SpawnMonsters());
         }
 
+        [PunRPC]
         private IEnumerator SpawnMonsters()
         {
             foreach (Tuple<Monster, float> pair in monstersList)

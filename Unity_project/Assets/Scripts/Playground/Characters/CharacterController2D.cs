@@ -190,6 +190,7 @@ namespace Playground.Characters
 				m_NormalGravity ^= true; // Switch the boolean
 				//loop for multiplayer 
 				GameObject[] SwitchOtherPlayers = GameObject.FindGameObjectsWithTag("Heros");
+				Debug.Log("Nbr player :"+ SwitchOtherPlayers.Length);
 				foreach (var player in SwitchOtherPlayers)
 				{
 					player.gameObject.transform.Rotate(0f,180f,180f);
