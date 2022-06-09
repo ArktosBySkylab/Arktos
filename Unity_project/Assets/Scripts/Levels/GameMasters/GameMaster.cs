@@ -49,6 +49,7 @@ namespace Levels
                     if (NextScene.Players.Count > 0)
                     {
                         NextScene.Players.Clear();
+                        
                         foreach (var aName in NextScene.PlayersNames)
                         {
                             heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{aName}", new Vector3(startX, startY), Quaternion.identity);

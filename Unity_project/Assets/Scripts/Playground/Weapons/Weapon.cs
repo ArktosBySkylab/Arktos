@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using ExitGames.Client.Photon.StructWrapping;
 using Levels;
+using Photon.Pun;
 using Playground.Characters;
 using Playground.Characters.Heros;
 using Playground.Items;
@@ -45,6 +46,7 @@ namespace Playground.Weapons
             this.type = type;
         }
 
+        [PunRPC]
         public void Awake()
         {
             activated = false;
@@ -54,6 +56,7 @@ namespace Playground.Weapons
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         }
 
+        [PunRPC]
         public void ToogleActivation()
         {
             activated ^= true;
@@ -65,11 +68,11 @@ namespace Playground.Weapons
         /// Start the animation only if it is possible
         /// </summary>
         /// <remarks>Have to activate the animations</remarks>
+       [PunRPC]
         public virtual bool TryShoot()
         {
             if(nbUse == 0 || activated)
                 return false;
-
             // Debug.Log("Not Fighting");
             ToogleActivation();
             animator.SetInteger("IsFighting", 1);
