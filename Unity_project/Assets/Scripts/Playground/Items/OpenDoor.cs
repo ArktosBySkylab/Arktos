@@ -32,11 +32,10 @@ namespace Playground.Items
             Debug.Log("nbr hero:"+nbr_hero);
             if (nbr_hero == GameObject.FindGameObjectsWithTag("Heros").Length)
             {
-                if (IsOpen)
+                if (IsOpen && GameObject.FindGameObjectsWithTag("BossMonster").Length == 0)
                 {
                     Destroy(Door);
                 }
-                
             }
         }
     }
