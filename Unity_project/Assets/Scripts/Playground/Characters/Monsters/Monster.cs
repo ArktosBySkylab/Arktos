@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using Levels.DataManager;
+using Photon.Pun;
 using Playground.Characters.Heros;
 using Playground.Weapons;
 using UnityEditor;
@@ -26,6 +28,8 @@ namespace Playground.Characters.Monsters
         public int damage;
         public Transform attackPos;
         public float attackRange;
+        private LoadLevelInfos infos;
+        private PhotonView view;
         
         protected new MonstersNames name;
         public GameObject DropOnDeath;
@@ -33,7 +37,6 @@ namespace Playground.Characters.Monsters
         {
             this.name = name;
             timeBtwAttack = initial_time;
-            
         }
 
         public virtual void Start() =>
@@ -43,7 +46,7 @@ namespace Playground.Characters.Monsters
         {
             base.Update();
             target = GameObject.FindGameObjectWithTag("Heros").transform;
-
+            view = gameObject.GetComponent<PhotonView>();
             if (timeBtwAttack <= 0)
             {
                 if (Vector2.Distance(transform.position,target.position ) > minimumDistance)
@@ -61,11 +64,8 @@ namespace Playground.Characters.Monsters
              
              if (horizontalMove > 0.01)
                 animator.SetBool("IsRunning", true);
-            
-            else
+             else
                 animator.SetBool("IsRunning", false);
-             
-            
         }
 
         public void Attack()
@@ -86,17 +86,30 @@ namespace Playground.Characters.Monsters
         public void TakeDamage(int damage)
         {
             pv -= damage;
-            // Debug.Log(pv);
         }
         
+        [PunRPC]
         protected override IEnumerator TheDeathIsComing()
         {
+            LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+            view = gameObject.GetComponent<PhotonView>();
             if (this.name == MonstersNames.BossMonster)
             {
-                Instantiate( DropOnDeath, transform.position, Quaternion.identity);
+                if (infos.multiplayer)
+                    PhotonNetwork.Instantiate(DropOnDeath.name, transform.position, Quaternion.identity);
+                else
+                    Instantiate( DropOnDeath, transform.position, Quaternion.identity);
             }
             yield return base.TheDeathIsComing();
-            Destroy(gameObject);
+            if (infos.multiplayer && view != null && !view.IsMine)
+            {
+                // if(gameObject != null)
+                PhotonView.Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

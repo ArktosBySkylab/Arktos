@@ -176,7 +176,8 @@ namespace Playground.Characters
             pv -= damage;
             // Debug.Log(pv);
         }
-
+        
+        [PunRPC]
         protected virtual IEnumerator TheDeathIsComing()
         {
             Debug.LogWarning("The death is coming");

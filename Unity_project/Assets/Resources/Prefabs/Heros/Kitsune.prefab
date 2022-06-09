@@ -184,6 +184,7 @@ MonoBehaviour:
   m_FootCheck: {fileID: 7636016731038592508}
   m_HeadCheck: {fileID: 4542672732552076184}
   m_CrouchDisableCollider: {fileID: 0}
+  infos: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:

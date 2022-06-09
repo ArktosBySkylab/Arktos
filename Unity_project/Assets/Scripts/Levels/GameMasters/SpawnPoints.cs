@@ -29,6 +29,8 @@ namespace Levels
         public float gapSpawn;
         private bool alreadyActivated = false;
         private bool multiplayer;
+        protected PhotonView view;
+
 
         public void Start()
         {
@@ -45,10 +47,13 @@ namespace Levels
                     break;
                 }
             }
+            Debug.Log("nombre de monstre dans le spawn : "+_monsters.Length);
             multiplayer = FindObjectOfType<LoadLevelInfos>().multiplayer;
+            view = gameObject.GetComponent<PhotonView>();
+
         }
         
-        
+        [PunRPC]
         public void OnTriggerEnter2D(Collider2D col)
         {
             if (!alreadyActivated)
@@ -75,7 +80,7 @@ namespace Levels
                 while (number > 0)
                 {
                     number--;
-                    if (multiplayer)
+                    if (multiplayer && view != null)
                     {
                         PhotonNetwork.Instantiate($"Prefabs/Monsters/{pair.Item1.name}", gameObject.transform.position, Quaternion.identity);
                     }
@@ -83,7 +88,6 @@ namespace Levels
                     {
                         Instantiate(pair.Item1, gameObject.transform.position, Quaternion.identity);
                     }
-
                     yield return new WaitForSeconds(gapSpawn);
                 }
             }

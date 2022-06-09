@@ -42,6 +42,13 @@ MonoBehaviour:
   - LoadLevel
   - SpawnMonsters
   - OnTriggerEnter2D
+  - OnStateEnter
+  - OnStateExit
+  - ToogleActivation
+  - Awake
+  - TheDeathIsComing
+  - TryShoot
+  - Start
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

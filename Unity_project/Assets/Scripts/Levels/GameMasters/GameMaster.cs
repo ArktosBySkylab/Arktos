@@ -17,6 +17,7 @@ namespace Levels
         private string pathToPrefabs = "Prefabs"; // The path to init prefabs
         [SerializeField] protected GameObject StartPos;
         [SerializeField] protected HealthBar healthBar;
+        
         public void Start()
         {
 
@@ -48,6 +49,7 @@ namespace Levels
                     if (NextScene.Players.Count > 0)
                     {
                         NextScene.Players.Clear();
+                        
                         foreach (var aName in NextScene.PlayersNames)
                         {
                             heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{aName}", new Vector3(StartPos.transform.position.x, StartPos.transform.position.y), Quaternion.identity);
