@@ -18,6 +18,7 @@ namespace Levels
         [SerializeField] protected int startX = 0;
         [SerializeField] protected int startY = 0;
         [SerializeField] protected HealthBar healthBar;
+        
         public void Start()
         {
 

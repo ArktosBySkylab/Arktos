@@ -29,6 +29,7 @@ namespace Playground.Characters.Monsters
         public Transform attackPos;
         public float attackRange;
         private LoadLevelInfos infos;
+        private PhotonView view;
         
         protected new MonstersNames name;
         public GameObject DropOnDeath;
@@ -45,7 +46,7 @@ namespace Playground.Characters.Monsters
         {
             base.Update();
             target = GameObject.FindGameObjectWithTag("Heros").transform;
-
+            view = gameObject.GetComponent<PhotonView>();
             if (timeBtwAttack <= 0)
             {
                 if (Vector2.Distance(transform.position,target.position ) > minimumDistance)
@@ -87,9 +88,11 @@ namespace Playground.Characters.Monsters
             pv -= damage;
         }
         
+        [PunRPC]
         protected override IEnumerator TheDeathIsComing()
         {
             LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+            view = gameObject.GetComponent<PhotonView>();
             if (this.name == MonstersNames.BossMonster)
             {
                 if (infos.multiplayer)
@@ -98,7 +101,15 @@ namespace Playground.Characters.Monsters
                     Instantiate( DropOnDeath, transform.position, Quaternion.identity);
             }
             yield return base.TheDeathIsComing();
-            Destroy(gameObject);
+            if (infos.multiplayer && view != null && !view.IsMine)
+            {
+                // if(gameObject != null)
+                PhotonView.Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

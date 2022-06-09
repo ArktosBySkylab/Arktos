@@ -1,3 +1,5 @@
+using Levels.DataManager;
+using Photon.Pun;
 using Playground.Characters.Monsters;
 using UnityEngine;
 using UnityEngine.Events;
@@ -32,7 +34,11 @@ namespace Playground.Characters
 		
 		//multiplayer things
 		private bool isMultiPlayer;
-
+		private PhotonView view;
+		private Vector3 networkPos = new Vector3();
+		private Vector3 networkVel = new Vector3();
+		public LoadLevelInfos infos;
+		
 		[Header("Events")] [Space] public UnityEvent OnLandEvent; // All event that have to be done when landing
 
 		[System.Serializable]
@@ -46,7 +52,8 @@ namespace Playground.Characters
 		private void Awake()
 		{
 			m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
+			view = gameObject.GetComponent<PhotonView>();
+			infos = FindObjectOfType<LoadLevelInfos>();
 			if (OnLandEvent == null)
 				OnLandEvent = new UnityEvent();
 
@@ -63,6 +70,14 @@ namespace Playground.Characters
 
 		private void FixedUpdate()
 		{
+			
+			if (infos.multiplayer && !view.IsMine)
+			{
+				m_Rigidbody2D.position = Vector3.MoveTowards(m_Rigidbody2D.position, networkPos, Time.fixedDeltaTime);
+				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, networkVel, ref m_Velocity, m_MovementSmoothing);
+
+			}
+			
 			bool wasGrounded = m_Grounded;
 			m_Grounded = false;
 
@@ -217,6 +232,22 @@ namespace Playground.Characters
 			Vector3 theScale = transform.localScale;
 			theScale.x *= -1;
 			transform.localScale = theScale;
+		}
+		
+		public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+		{
+			if (stream.IsWriting)
+			{
+				stream.SendNext(m_Rigidbody2D.position);
+				stream.SendNext(m_Rigidbody2D.velocity);
+			}
+			else
+			{
+				networkPos = (Vector3) stream.ReceiveNext(); 
+				networkVel = (Vector3) stream.ReceiveNext();
+				float lag = Mathf.Abs((float) (PhotonNetwork.Time - info.timestamp));
+				networkPos *= lag;
+			}
 		}
 	}
 }
