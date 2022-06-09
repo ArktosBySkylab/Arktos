@@ -15,8 +15,7 @@ namespace Levels
     public class GameMaster : MonoBehaviour
     {
         private string pathToPrefabs = "Prefabs"; // The path to init prefabs
-        [SerializeField] protected int startX = 0;
-        [SerializeField] protected int startY = 0;
+        [SerializeField] protected GameObject StartPos;
         [SerializeField] protected HealthBar healthBar;
         public void Start()
         {
@@ -51,9 +50,9 @@ namespace Levels
                         NextScene.Players.Clear();
                         foreach (var aName in NextScene.PlayersNames)
                         {
-                            heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{aName}", new Vector3(startX, startY), Quaternion.identity);
+                            heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{aName}", new Vector3(StartPos.transform.position.x, StartPos.transform.position.y), Quaternion.identity);
                             var weapon = PhotonNetwork.Instantiate($"{pathToPrefabs}/Weapons/{firstHand.name}",
-                                new Vector3(startX, startY), Quaternion.identity);
+                                new Vector3(StartPos.transform.position.x, StartPos.transform.position.y), Quaternion.identity);
                             weapon.transform.parent = heros.transform.Find("HandPosition");
                             heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
                             gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
@@ -63,10 +62,10 @@ namespace Levels
                     }
                     else
                     {
-                        heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(startX, startY),
+                        heros = PhotonNetwork.Instantiate($"{pathToPrefabs}/Heros/{hero.name}", new Vector3(StartPos.transform.position.x, StartPos.transform.position.y),
                         Quaternion.identity);
                         var weapon = PhotonNetwork.Instantiate($"{pathToPrefabs}/Weapons/{firstHand.name}",
-                            new Vector3(startX, startY), Quaternion.identity);
+                            new Vector3(StartPos.transform.position.x, StartPos.transform.position.y), Quaternion.identity);
                         weapon.transform.parent = heros.transform.Find("HandPosition");
                         heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
                         gameObject.GetComponentInChildren<PauseMenu>().enabled = false;
@@ -78,7 +77,7 @@ namespace Levels
                 }
                 else
                 {
-                    heros = Instantiate(hero, new Vector3(startX, startY), Quaternion.identity);
+                    heros = Instantiate(hero, new Vector3(StartPos.transform.position.x, StartPos.transform.position.y), Quaternion.identity);
                     var weapon = Instantiate(firstHand, heros.transform.Find("HandPosition"));
                     heros.GetComponent<Hero>().SetupPrimatyWeapon(weapon);
                     gameObject.GetComponentInChildren<PauseMenu>().enabled = true;
