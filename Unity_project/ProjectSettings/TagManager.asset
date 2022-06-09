@@ -12,6 +12,8 @@ TagManager:
   - EnableJump
   - Door
   - BossMonster
+  - LeftBoundBoss
+  - RightBoundBoss
   layers:
   - Default
   - TransparentFX
