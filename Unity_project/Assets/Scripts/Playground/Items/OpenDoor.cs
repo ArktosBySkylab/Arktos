@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Levels;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ namespace Playground.Items
     {
         private GameObject Door;
         private bool IsOpen = true;
+        private bool LightBall = false;
         
         public void Awake()
         {
@@ -25,18 +27,33 @@ namespace Playground.Items
             int nbr_hero = 0;
             foreach (var elem in detectHeros)
             {
-                if (!elem.CompareTag("Heros")) continue;
-                nbr_hero += 1;
+                if (elem.CompareTag("Heros"))
+                    nbr_hero += 1;
             }
 
-            Debug.Log("nbr hero:"+nbr_hero);
             if (nbr_hero == GameObject.FindGameObjectsWithTag("Heros").Length)
             {
-                if (IsOpen && GameObject.FindGameObjectsWithTag("BossMonster").Length == 0)
+                if (IsOpen && GameObject.FindGameObjectsWithTag("BossMonster").Length == 0 && LightBall)
                 {
                     Destroy(Door);
+                    foreach (GameObject o in GameObject.FindGameObjectsWithTag("Light"))
+                    {
+                        Destroy(o);
+                    }
                 }
             }
+        }
+
+        public void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag("Light"))
+                GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel = true;
+        }
+        
+        public void OnTriggerStay2D(Collider2D col)
+        {
+            if (col.CompareTag("Light"))
+                GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel = true;
         }
     }
 }

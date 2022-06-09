@@ -336,6 +336,7 @@ MonoBehaviour:
   m_FootCheck: {fileID: 1424510451286439565}
   m_HeadCheck: {fileID: 2573186770217973598}
   m_CrouchDisableCollider: {fileID: 0}
+  infos: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -505,7 +506,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 216a3bd4ba00e857b87a66bbfba58d8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
