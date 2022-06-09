@@ -15001,6 +15001,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3155675688279513585, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
+      propertyPath: scene
+      value: dubhe
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155675688279513585, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1935406722}
     - target: {fileID: 3155675688279513587, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
       propertyPath: m_Name
       value: 'Door '
@@ -79728,6 +79736,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a49da095b99e3947994ff60933e6b4e, type: 3}
+--- !u!95 &1935406722 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6519439876485542432, guid: 9a49da095b99e3947994ff60933e6b4e, type: 3}
+  m_PrefabInstance: {fileID: 1935406721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1974446952
 GameObject:
   m_ObjectHideFlags: 0
