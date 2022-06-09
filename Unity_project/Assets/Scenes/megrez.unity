@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8eb48cfd5394d21be6173f885e939db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitX: 50
-  limitY: 30
+  limitX: 49.3
+  limitY: 31.21
 --- !u!81 &48203939
 AudioListener:
   m_ObjectHideFlags: 0

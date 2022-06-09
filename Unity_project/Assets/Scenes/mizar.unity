@@ -4694,7 +4694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limitX: 29
-  limitY: 9
+  limitY: 8.6
 --- !u!81 &1279127689
 AudioListener:
   m_ObjectHideFlags: 0
