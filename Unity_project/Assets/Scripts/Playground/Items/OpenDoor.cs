@@ -18,7 +18,7 @@ namespace Playground.Items
         public void Awake()
         {
             Door = GameObject.FindGameObjectWithTag("Door");
-            LightBall = !GameObject.FindGameObjectWithTag("Boss") && GameObject.FindGameObjectWithTag("Light");
+            LightBall = !GameObject.FindGameObjectWithTag("BossMonster") && GameObject.FindGameObjectWithTag("Light");
         }
 
 
