@@ -4213,6 +4213,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3155675688279513584, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
+      propertyPath: m_Radius
+      value: 1.4688427
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155675688279513584, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.46996433
+      objectReference: {fileID: 0}
     - target: {fileID: 3155675688279513585, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
       propertyPath: scene
       value: benetnash

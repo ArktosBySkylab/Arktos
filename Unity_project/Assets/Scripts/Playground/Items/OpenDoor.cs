@@ -13,11 +13,12 @@ namespace Playground.Items
     {
         private GameObject Door;
         private bool IsOpen = true;
-        private bool LightBall = false;
+        private bool LightBall;
         
         public void Awake()
         {
             Door = GameObject.FindGameObjectWithTag("Door");
+            LightBall = !GameObject.FindGameObjectWithTag("Boss") && GameObject.FindGameObjectWithTag("Light");
         }
 
 
@@ -29,7 +30,10 @@ namespace Playground.Items
             {
                 if (elem.CompareTag("Heros"))
                     nbr_hero += 1;
+                if (elem.CompareTag("Light"))
+                    LightBall = true;
             }
+            
 
             if (nbr_hero == GameObject.FindGameObjectsWithTag("Heros").Length)
             {

@@ -104,6 +104,9 @@ namespace Playground.Characters.Monsters
              
              // calcul de la direction 
              Vector2 direction = (target.position.x > transform.position.x ? new Vector2(1,0):new Vector2(-1,0));
+             //Debug.Log("x : "+direction.x);
+             Debug.Log("rb : "+rightBound.position.x);
+             //Debug.Log("tr : "+transform.position.x);
              if (direction.x > 0 && Math.Abs(transform.position.x - rightBound.position.x) < 1)
                  return;
              

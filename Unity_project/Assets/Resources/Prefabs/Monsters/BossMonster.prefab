@@ -219,6 +219,7 @@ MonoBehaviour:
   m_FootCheck: {fileID: 6863297243973740646}
   m_HeadCheck: {fileID: 3185938497296511262}
   m_CrouchDisableCollider: {fileID: 0}
+  infos: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -265,7 +266,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsRunning
   - Type: 4
     SynchronizeType: 0
@@ -277,8 +278,11 @@ MonoBehaviour:
     SynchronizeType: 0
     Name: IsGChanging
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsDying
+  - Type: 3
+    SynchronizeType: 2
+    Name: IsFighting
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -295,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2
