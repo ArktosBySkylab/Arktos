@@ -2448,6 +2448,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.2799988
       objectReference: {fileID: 0}
+    - target: {fileID: 2765909474145663858, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.75860596
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367191762906929065, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.26861572
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383368381831944413, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.72003174
+      objectReference: {fileID: 0}
     - target: {fileID: 6739734545582153716, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_Name
       value: GameMaster
