@@ -17,8 +17,9 @@ namespace Levels
         
         void OnTriggerEnter2D(Collider2D obj)
         {
-            if (obj.CompareTag("Heros"))
+            if (obj.CompareTag("Heros") && GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel)
             {
+                Debug.LogWarning("PUTAIN WSH");
                 Players.Clear();
                 foreach (var hero in GameObject.FindGameObjectsWithTag("Heros"))
                 {

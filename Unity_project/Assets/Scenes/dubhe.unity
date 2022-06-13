@@ -2246,7 +2246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplayer: 0
-  LevelsName: 
+  LevelsName: dubhe
   hero: 9
   firstHand: 1
   secondHand: 1
@@ -2408,7 +2408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3128223049086235969, guid: 9a49da095b99e3947994ff60933e6b4e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a49da095b99e3947994ff60933e6b4e, type: 3}
@@ -2443,6 +2443,22 @@ PrefabInstance:
     - target: {fileID: 1858367103462327282, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480969333310244538, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.2799988
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765909474145663858, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.75860596
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367191762906929065, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.26861572
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383368381831944413, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.72003174
       objectReference: {fileID: 0}
     - target: {fileID: 6739734545582153716, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_Name
@@ -2491,6 +2507,10 @@ PrefabInstance:
     - target: {fileID: 6739734545582153717, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895166617398465103, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.9999943
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9376f2417ce241448296ae1546980ab, type: 3}
@@ -2587,8 +2607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8eb48cfd5394d21be6173f885e939db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitX: 13
-  limitY: 12
+  limitX: 13.3
+  limitY: 12.9
 --- !u!81 &1258960130
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2773,11 +2793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3155675688279513591, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.02
+      value: -25.56
       objectReference: {fileID: 0}
     - target: {fileID: 3155675688279513591, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.41
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 3155675688279513591, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2864,6 +2884,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4661123682966463563, guid: 06bb13623d8ded3e295b451b1072c2ff, type: 3}
+      propertyPath: playlist.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: eaf204207fd40db4a8713014b0dfc038, type: 3}
     - target: {fileID: 4661123682966463604, guid: 06bb13623d8ded3e295b451b1072c2ff, type: 3}
       propertyPath: m_Name
       value: AudioManager

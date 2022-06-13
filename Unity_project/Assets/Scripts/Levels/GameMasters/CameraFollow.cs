@@ -8,8 +8,8 @@ namespace Playground.Camera
 {
     public class CameraFollow : MonoBehaviour
     {
-        [SerializeField] protected int limitX =0;
-        [SerializeField] protected int limitY =0;
+        [SerializeField] protected float limitX =0f;
+        [SerializeField] protected float limitY =0f;
         private Transform playerT;
         private Vector3 offset;
         

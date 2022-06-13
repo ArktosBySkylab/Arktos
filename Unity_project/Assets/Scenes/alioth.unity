@@ -1933,6 +1933,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2480969333310244538, guid: f9376f2417ce241448296ae1546980ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.2799911
+      objectReference: {fileID: 0}
     - target: {fileID: 6739734545582153716, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_Name
       value: GameMaster
@@ -7438,8 +7442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8eb48cfd5394d21be6173f885e939db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitX: 50
-  limitY: 30
+  limitX: 49.3
+  limitY: 31.21
 --- !u!81 &1995576497
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7562,7 +7566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3128223049086235969, guid: 9a49da095b99e3947994ff60933e6b4e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a49da095b99e3947994ff60933e6b4e, type: 3}
@@ -7622,6 +7626,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4661123682966463563, guid: 06bb13623d8ded3e295b451b1072c2ff, type: 3}
+      propertyPath: playlist.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e1ace6fb79ac1e4fb6b2619850d5b69, type: 3}
     - target: {fileID: 4661123682966463604, guid: 06bb13623d8ded3e295b451b1072c2ff, type: 3}
       propertyPath: m_Name
       value: AudioManager

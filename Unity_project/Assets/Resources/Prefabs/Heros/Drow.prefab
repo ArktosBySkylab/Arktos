@@ -366,6 +366,7 @@ MonoBehaviour:
   m_FootCheck: {fileID: 9220841203734951262}
   m_HeadCheck: {fileID: 4334300600110618481}
   m_CrouchDisableCollider: {fileID: 0}
+  infos: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -466,11 +467,11 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 1000
-    InterpolateOption: 2
+    TeleportIfDistanceGreaterThan: 10000
+    InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
+    ExtrapolateOption: 1
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -523,7 +524,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2f83102608f5073f399dfdd7f90a78be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 6638416469738395762}
   - component: {fileID: 8962893208943072287}
   - component: {fileID: 279317986900597845}
+  - component: {fileID: 3925611488043165998}
   m_Layer: 0
   m_Name: BossMonster
   m_TagString: BossMonster
@@ -219,6 +220,7 @@ MonoBehaviour:
   m_FootCheck: {fileID: 6863297243973740646}
   m_HeadCheck: {fileID: 3185938497296511262}
   m_CrouchDisableCollider: {fileID: 0}
+  infos: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -265,7 +267,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsRunning
   - Type: 4
     SynchronizeType: 0
@@ -277,8 +279,14 @@ MonoBehaviour:
     SynchronizeType: 0
     Name: IsGChanging
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsDying
+  - Type: 3
+    SynchronizeType: 2
+    Name: IsFighting
+  - Type: 3
+    SynchronizeType: 0
+    Name: IsFighting
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -295,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2
@@ -364,7 +372,8 @@ MonoBehaviour:
   damage: 100
   attackPos: {fileID: 6543340826039264212}
   attackRange: 1
-  DropOnDeath: {fileID: 7246227481970415527, guid: 5947bd78e52d27f4a912f07d3348ebd1, type: 3}
+  DropOnDeath: {fileID: 7246227481970415527, guid: 5947bd78e52d27f4a912f07d3348ebd1,
+    type: 3}
   activateDistance: 50
   nextWaypointDistance: 3
 --- !u!61 &279317986900597845
@@ -393,6 +402,103 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.437885, y: 10.67979}
   m_EdgeRadius: 0
+--- !u!82 &3925611488043165998
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6745837643502989502}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -1217432160164828133, guid: 150bc069c1dedc54f8fc1e5256f2fb1a,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7403fb66eeb29aa42a33a4ca8f21051f, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7913926474457049940
 GameObject:
   m_ObjectHideFlags: 0

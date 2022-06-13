@@ -30,17 +30,12 @@ namespace Playground.Characters.Monsters
         private int currentWaypoint = 0;
         Rigidbody2D rb;
 
-        private Transform leftBound;
-        private Transform rightBound;
-        
          public override void Start()
          {
              // j'ai pas reussi a reutiliser le CC2D ducoup je recupere le rigidbody pour faire 
              // faire bouger le monstre 
              rb = GetComponent<Rigidbody2D>();
              target = GetTarget();
-             leftBound = GameObject.FindGameObjectWithTag("LeftBoundBoss").transform;
-             rightBound = GameObject.FindGameObjectWithTag("RightBoundBoss").transform;
              base.Start();
          }
            
@@ -104,11 +99,8 @@ namespace Playground.Characters.Monsters
              
              // calcul de la direction 
              Vector2 direction = (target.position.x > transform.position.x ? new Vector2(1,0):new Vector2(-1,0));
-             if (direction.x > 0 && Math.Abs(transform.position.x - rightBound.position.x) < 1)
-                 return;
-             
-             if (direction.x < 0 && Math.Abs(transform.position.x - leftBound.position.x) < 1)
-                 return;
+             //Debug.Log("x : "+direction.x);
+             //Debug.Log("tr : "+transform.position.x);
              
              Vector2 force = direction * speed * Time.deltaTime*1.3f;
              

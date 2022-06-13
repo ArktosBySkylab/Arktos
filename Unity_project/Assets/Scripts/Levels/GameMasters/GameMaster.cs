@@ -17,12 +17,20 @@ namespace Levels
         private string pathToPrefabs = "Prefabs"; // The path to init prefabs
         [SerializeField] protected GameObject StartPos;
         [SerializeField] protected HealthBar healthBar;
+        public bool CanPassToNextLevel = false;
         
         public void Start()
         {
-
             // Load all infos of the level for this player
             LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
+            CanPassToNextLevel = infos.LevelsName switch
+            {
+                "mizar" => false,
+                "dubhe" => false,
+                "benetnash" => false,
+                "phecda" => false,
+                _ => true
+            };
             if (infos != null)
             {
                 GameObject hero = Resources.Load<GameObject>($"{pathToPrefabs}/Heros/{infos.hero.ToString()}");
