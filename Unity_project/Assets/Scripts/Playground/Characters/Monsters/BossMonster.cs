@@ -12,7 +12,7 @@ namespace Playground.Characters.Monsters
     public class BossMonster: Monster
 
     {
-        public BossMonster() : base(MonstersNames.BossMonster, WeaponsNames.Stick, 1000, 1)
+        public BossMonster() : base(MonstersNames.BossMonster, WeaponsNames.Stick, 100, 1)
         {
         }
 

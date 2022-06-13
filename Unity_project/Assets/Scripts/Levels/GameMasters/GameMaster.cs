@@ -23,7 +23,8 @@ namespace Levels
         {
             // Load all infos of the level for this player
             LoadLevelInfos infos = FindObjectOfType<LoadLevelInfos>();
-            CanPassToNextLevel = infos.LevelsName switch
+            string scene_name = SceneManager.GetActiveScene().name;
+            CanPassToNextLevel = scene_name switch
             {
                 "mizar" => false,
                 "dubhe" => false,
@@ -31,6 +32,8 @@ namespace Levels
                 "phecda" => false,
                 _ => true
             };
+            Debug.Log(scene_name);
+            Debug.Log("start :"+CanPassToNextLevel);
             if (infos != null)
             {
                 GameObject hero = Resources.Load<GameObject>($"{pathToPrefabs}/Heros/{infos.hero.ToString()}");

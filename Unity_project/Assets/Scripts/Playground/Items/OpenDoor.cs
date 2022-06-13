@@ -18,7 +18,6 @@ namespace Playground.Items
         public void Awake()
         {
             Door = GameObject.FindGameObjectWithTag("Door");
-            LightBall = !GameObject.FindGameObjectWithTag("BossMonster") && GameObject.FindGameObjectWithTag("Light");
         }
 
 
@@ -33,31 +32,39 @@ namespace Playground.Items
                 if (elem.CompareTag("Light"))
                     LightBall = true;
             }
+            IsOpen = GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel;
+            if (!IsOpen)
+            {
+                LightBall = GameObject.FindGameObjectWithTag("Light");
+                Debug.Log(LightBall = GameObject.FindGameObjectWithTag("Light"));
+                LightBall = IsOpen;
+                Debug.Log("LightBall :"+LightBall);
+                Debug.Log("IsOpen :"+IsOpen);
+            }
             
-
             if (nbr_hero == GameObject.FindGameObjectsWithTag("Heros").Length)
             {
                 if (IsOpen && GameObject.FindGameObjectsWithTag("BossMonster").Length == 0 && LightBall)
                 {
                     Destroy(Door);
-                    foreach (GameObject o in GameObject.FindGameObjectsWithTag("Light"))
-                    {
-                        Destroy(o);
-                    }
+                    // foreach (GameObject o in GameObject.FindGameObjectsWithTag("Light"))
+                    // {
+                    //     Destroy(o);
+                    // }
                 }
             }
         }
 
-        public void OnTriggerEnter2D(Collider2D col)
-        {
-            if (col.CompareTag("Light"))
-                GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel = true;
-        }
-        
-        public void OnTriggerStay2D(Collider2D col)
-        {
-            if (col.CompareTag("Light"))
-                GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel = true;
-        }
+        // public void OnTriggerEnter2D(Collider2D col)
+        // {
+        //     if (col.CompareTag("Light"))
+        //         GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel = true;
+        // }
+        //
+        // public void OnTriggerStay2D(Collider2D col)
+        // {
+        //     if (col.CompareTag("Light"))
+        //         GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel = true;
+        // }
     }
 }

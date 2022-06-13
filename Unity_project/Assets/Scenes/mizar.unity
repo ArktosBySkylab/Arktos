@@ -2803,7 +2803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480969333310244538, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.2799911
+      value: 1.2799988
       objectReference: {fileID: 0}
     - target: {fileID: 2765909474145663858, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6170,7 +6170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplayer: 0
   LevelsName: 
-  hero: 2
+  hero: 9
   firstHand: 1
   secondHand: 1
   debugOption: 1
