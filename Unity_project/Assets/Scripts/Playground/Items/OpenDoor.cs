@@ -33,11 +33,11 @@ namespace Playground.Items
                     LightBall = true;
             }
             IsOpen = GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel;
-            if (!IsOpen)
+            LightBall = GameObject.FindGameObjectsWithTag("Light").Length != 0;
+
+            if (!IsOpen && LightBall)
             {
-                LightBall = GameObject.FindGameObjectWithTag("Light");
-                Debug.Log(LightBall = GameObject.FindGameObjectWithTag("Light"));
-                LightBall = IsOpen;
+                IsOpen = LightBall;
                 Debug.Log("LightBall :"+LightBall);
                 Debug.Log("IsOpen :"+IsOpen);
             }
@@ -47,6 +47,7 @@ namespace Playground.Items
                 if (IsOpen && GameObject.FindGameObjectsWithTag("BossMonster").Length == 0 && LightBall)
                 {
                     Destroy(Door);
+                    FindObjectOfType<GameMaster>().CanPassToNextLevel = true;
                     // foreach (GameObject o in GameObject.FindGameObjectsWithTag("Light"))
                     // {
                     //     Destroy(o);

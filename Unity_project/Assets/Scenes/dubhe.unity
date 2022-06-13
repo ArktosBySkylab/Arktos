@@ -2510,7 +2510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7895166617398465103, guid: f9376f2417ce241448296ae1546980ab, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.9999943
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9376f2417ce241448296ae1546980ab, type: 3}
@@ -2765,7 +2765,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3155675688279513585, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
       propertyPath: scene
-      value: spaceship
+      value: credit
       objectReference: {fileID: 0}
     - target: {fileID: 3155675688279513585, guid: 16c13b78cd5d60c4188ddccec1176061, type: 3}
       propertyPath: transition

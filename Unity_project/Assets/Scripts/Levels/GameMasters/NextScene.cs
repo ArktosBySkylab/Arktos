@@ -17,7 +17,7 @@ namespace Levels
         
         void OnTriggerEnter2D(Collider2D obj)
         {
-            if (obj.CompareTag("Heros") && GameObject.FindObjectOfType<GameMaster>().CanPassToNextLevel)
+            if (obj.CompareTag("Heros") && FindObjectOfType<GameMaster>().CanPassToNextLevel )
             {
                 Players.Clear();
                 foreach (var hero in GameObject.FindGameObjectsWithTag("Heros"))

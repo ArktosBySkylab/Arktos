@@ -27,9 +27,10 @@ namespace Levels
             CanPassToNextLevel = scene_name switch
             {
                 "mizar" => false,
-                "dubhe" => false,
-                "benetnash" => false,
-                "phecda" => false,
+                // remove dubhe and other because no boss for now 
+                // "dubhe" => false,
+                //"benetnash" => false,
+                //"phecda" => false,
                 _ => true
             };
             Debug.Log(scene_name);
